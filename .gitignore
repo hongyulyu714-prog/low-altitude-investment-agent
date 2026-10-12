@@ -19,6 +19,7 @@ dist/
 # Proprietary / raw data exports
 data/raw/
 data/private/
+data/runs/
 *.xlsx
 *.xls
 

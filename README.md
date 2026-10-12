@@ -30,6 +30,18 @@ tests/         # 标准测试案例和回归测试
 
 详见：[团队分工](docs/TEAM_WORK.md)、[数据收集与交付标准](docs/DATA_COLLECTION_STANDARD.md)、[各 Issue 执行卡](docs/tasks/) 与 [开源项目使用方案](docs/OPEN_SOURCE_REFERENCES.md)。
 
+## 本地总控演示（mock）
+
+Issue #1 已提供一个可替换数据源的端到端示例。示例仅验证接口和流程，所有公司、评分、来源和结论均为 mock，不构成事实或投资建议。
+
+```bash
+python -m unittest discover -s tests -v
+python -m backend.orchestrator
+uvicorn backend.main:app --reload
+```
+
+启动服务后可调用 `POST /api/v1/analyze`，请求体为 `{"event_id":"EVT_BATTERY_PRICE_DOWN_001"}`。接口字段与运行留痕说明见 [总控架构](docs/ARCHITECTURE.md)。
+
 ## 已接入的开源基础
 
 > [!TIP]
