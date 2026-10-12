@@ -11,8 +11,8 @@
 ## 边界与接口
 
 - `contracts/models.py` 是跨模块唯一字段定义。模型拒绝未声明字段、检查 ID 与证券代码格式，并限制评分为 `0–100`。
-- `data/mock/` 的五类输入可被对应 Agent 的真实输出原位替换：`events`、`graph_paths`、`companies`、`financial_scores`、`evidence`。
-- `POST /api/v1/analyze` 接收 `event_id`，返回事件、路径、公司影响、证据、结论与 `run_id`；每条结论显式带有 `evidence_ids`，若后续真实数据未能关联证据则应输出 `pending_verification`。`GET /health` 便于前端检查服务可用性。
+- `data/mock/` 的五类输入可被对应 Agent 的真实输出原位替换：`events`、`graph_paths`、`companies`、`financial_scores`、`evidence`。总控仅接受显式注册的 `data_version`，并以该版本选择数据目录；未知版本会记录为失败运行而不会返回错误标注来源的报告。
+- `POST /api/v1/analyze` 接收 `event_id` 和可选 `data_version`，返回事件、路径、公司影响、证据、结论与 `run_id`；每条结论显式带有 `evidence_ids`，总控会校验其均存在于本次事件的证据集。无证据的结论会标记 `pending_verification`。`GET /health` 便于前端检查服务可用性。
 
 ## 可追溯与失败策略
 

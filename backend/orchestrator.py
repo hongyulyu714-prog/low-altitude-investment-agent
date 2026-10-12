@@ -6,6 +6,7 @@ import json
 import uuid
 from datetime import datetime, timezone
 from pathlib import Path
+from typing import Mapping
 
 from contracts import Company, Evidence, Event, FinancialScore, GraphPath, Report, RunRecord
 from contracts.models import CompanyImpact, Conclusion
@@ -54,8 +55,23 @@ def _save_run(record: RunRecord, run_dir: Path) -> None:
 class InvestmentOrchestrator:
     """Loads replaceable agent outputs, validates them, and makes one report."""
 
-    def __init__(self, mock_dir: Path = DEFAULT_MOCK_DIR, run_dir: Path = DEFAULT_RUN_DIR) -> None:
-        self.mock_dir = Path(mock_dir)
+    def __init__(
+        self,
+        mock_dir: Path = DEFAULT_MOCK_DIR,
+        run_dir: Path = DEFAULT_RUN_DIR,
+        data_sources: Mapping[str, Path] | None = None,
+    ) -> None:
+        """Configure explicit version-to-directory mappings for agent data outputs.
+
+        ``mock_dir`` remains a convenient override for the default ``mock-v1`` test
+        dataset. Production integrations should pass ``data_sources`` and register
+        every accepted version deliberately.
+        """
+        self.data_sources = (
+            {version: Path(directory) for version, directory in data_sources.items()}
+            if data_sources is not None
+            else {DATA_VERSION: Path(mock_dir)}
+        )
         self.run_dir = Path(run_dir)
 
     def analyze(self, event_id: str, data_version: str = DATA_VERSION) -> Report:
@@ -63,7 +79,7 @@ class InvestmentOrchestrator:
         record = RunRecord.started(run_id, event_id, data_version)
         _save_run(record, self.run_dir)
         try:
-            report = self._build_report(run_id, event_id)
+            report = self._build_report(run_id, event_id, data_version)
         except Exception as exc:
             failed = record.model_copy(
                 update={
@@ -87,12 +103,13 @@ class InvestmentOrchestrator:
         _save_run(completed, self.run_dir)
         return report
 
-    def _build_report(self, run_id: str, event_id: str) -> Report:
-        events = _validate_many(Event, _load_json(self.mock_dir, "events.json"))
-        paths = _validate_many(GraphPath, _load_json(self.mock_dir, "graph_paths.json"))
-        companies = _validate_many(Company, _load_json(self.mock_dir, "companies.json"))
-        scores = _validate_many(FinancialScore, _load_json(self.mock_dir, "financial_scores.json"))
-        evidence = _validate_many(Evidence, _load_json(self.mock_dir, "evidence.json"))
+    def _build_report(self, run_id: str, event_id: str, data_version: str) -> Report:
+        data_directory = self._data_source_for(data_version)
+        events = _validate_many(Event, _load_json(data_directory, "events.json"))
+        paths = _validate_many(GraphPath, _load_json(data_directory, "graph_paths.json"))
+        companies = _validate_many(Company, _load_json(data_directory, "companies.json"))
+        scores = _validate_many(FinancialScore, _load_json(data_directory, "financial_scores.json"))
+        evidence = _validate_many(Evidence, _load_json(data_directory, "evidence.json"))
 
         event = next((item for item in events if item.event_id == event_id), None)
         if event is None:
@@ -135,27 +152,29 @@ class InvestmentOrchestrator:
             )
 
         path_evidence = {evidence_id for path in selected_paths for evidence_id in path.evidence_ids}
-        unknown_evidence = path_evidence - evidence_ids
-        if unknown_evidence:
-            raise OrchestrationError(f"图谱路径引用了不存在的证据：{', '.join(sorted(unknown_evidence))}")
+        self._validate_evidence_references("图谱路径", path_evidence, evidence_ids)
 
         conclusions = [
             Conclusion(
                 conclusion_id="CONC_PATH_001",
                 text=f"{event.event_name} 的示例传导路径已生成；全部数据均为 mock，须以真实来源替换后才能用于投资判断。",
                 evidence_ids=sorted(path_evidence),
-                verification_status="mock",
+                verification_status="mock" if path_evidence else "pending_verification",
             ),
             Conclusion(
                 conclusion_id="CONC_SCORE_001",
                 text="公司影响分由暴露度、传导敏感度和财务重要性确定性计算；带 pending_verification 标记的结论不可视为已核验事实。",
-                evidence_ids=["EVD_RISK_001"],
-                verification_status="mock",
+                evidence_ids=sorted(evidence_ids),
+                verification_status="mock" if evidence_ids else "pending_verification",
             ),
         ]
+        self._validate_evidence_references(
+            "结论", {evidence_id for conclusion in conclusions for evidence_id in conclusion.evidence_ids}, evidence_ids
+        )
         return Report(
             report_id=f"RPT_{run_id.removeprefix('RUN_')}",
             run_id=run_id,
+            data_version=data_version,
             event=event,
             paths=selected_paths,
             companies=impacts,
@@ -164,6 +183,25 @@ class InvestmentOrchestrator:
             verification_status="mock",
             generated_at=datetime.now(timezone.utc),
         )
+
+    def _data_source_for(self, data_version: str) -> Path:
+        data_directory = self.data_sources.get(data_version)
+        if data_directory is None:
+            supported_versions = ", ".join(sorted(self.data_sources)) or "无"
+            raise OrchestrationError(
+                f"不支持的数据版本 {data_version}；可用版本：{supported_versions}。"
+            )
+        return data_directory
+
+    @staticmethod
+    def _validate_evidence_references(
+        owner: str, referenced_evidence_ids: set[str], available_evidence_ids: set[str]
+    ) -> None:
+        unknown_evidence = referenced_evidence_ids - available_evidence_ids
+        if unknown_evidence:
+            raise OrchestrationError(
+                f"{owner}引用了不存在的证据：{', '.join(sorted(unknown_evidence))}"
+            )
 
     @staticmethod
     def _evidence_for_company(stock_code: str, evidence: list[Evidence]) -> list[str]:

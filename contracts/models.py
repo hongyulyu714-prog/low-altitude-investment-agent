@@ -93,6 +93,7 @@ class Conclusion(ContractModel):
 class Report(ContractModel):
     report_id: str = Field(pattern=r"^RPT_[A-Z0-9_]+$")
     run_id: str
+    data_version: str = Field(min_length=1)
     event: Event
     paths: list[GraphPath]
     companies: list[CompanyImpact]
