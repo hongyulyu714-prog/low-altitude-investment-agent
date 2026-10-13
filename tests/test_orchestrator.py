@@ -108,6 +108,58 @@ class OrchestratorTests(unittest.TestCase):
             self.assertTrue(referenced_ids)
             self.assertTrue(referenced_ids.issubset(available_ids))
 
+    def test_quote_only_stock_code_does_not_link_company_evidence(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            mock_dir = Path(temp_dir) / "mock"
+            mock_dir.mkdir()
+            for source in DEFAULT_MOCK_DIR.glob("*.json"):
+                (mock_dir / source.name).write_text(source.read_text())
+            evidence_path = mock_dir / "evidence.json"
+            evidence = json.loads(evidence_path.read_text())
+            evidence[0]["quote"] = "无关引文恰好出现 000001.SZ。"
+            evidence[0]["stock_codes"] = []
+            evidence_path.write_text(json.dumps(evidence))
+
+            report = InvestmentOrchestrator(mock_dir=mock_dir, run_dir=Path(temp_dir) / "runs").analyze(
+                "EVT_BATTERY_PRICE_DOWN_001"
+            )
+
+            company = next(item for item in report.companies if item.stock_code == "000001.SZ")
+            self.assertEqual(company.evidence_ids, [])
+            self.assertEqual(company.verification_status, "pending_verification")
+
+    def test_evidence_cannot_reference_unregistered_company(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            mock_dir = Path(temp_dir) / "mock"
+            mock_dir.mkdir()
+            for source in DEFAULT_MOCK_DIR.glob("*.json"):
+                (mock_dir / source.name).write_text(source.read_text())
+            evidence_path = mock_dir / "evidence.json"
+            evidence = json.loads(evidence_path.read_text())
+            evidence[0]["stock_codes"] = ["000004.SZ"]
+            evidence_path.write_text(json.dumps(evidence))
+
+            with self.assertRaisesRegex(OrchestrationError, "公司映射中不存在"):
+                InvestmentOrchestrator(mock_dir=mock_dir, run_dir=Path(temp_dir) / "runs").analyze(
+                    "EVT_BATTERY_PRICE_DOWN_001"
+                )
+
+    def test_path_with_mismatched_node_and_relation_counts_is_rejected(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            mock_dir = Path(temp_dir) / "mock"
+            mock_dir.mkdir()
+            for source in DEFAULT_MOCK_DIR.glob("*.json"):
+                (mock_dir / source.name).write_text(source.read_text())
+            paths_path = mock_dir / "graph_paths.json"
+            paths = json.loads(paths_path.read_text())
+            paths[0]["relation_ids"] = ["REL_BATTERY_PROPULSION"]
+            paths_path.write_text(json.dumps(paths))
+
+            with self.assertRaisesRegex(OrchestrationError, "relation_ids 的数量"):
+                InvestmentOrchestrator(mock_dir=mock_dir, run_dir=Path(temp_dir) / "runs").analyze(
+                    "EVT_BATTERY_PRICE_DOWN_001"
+                )
+
 
 if __name__ == "__main__":
     unittest.main()

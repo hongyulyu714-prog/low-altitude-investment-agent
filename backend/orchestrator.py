@@ -121,6 +121,7 @@ class InvestmentOrchestrator:
         selected_evidence = [item for item in evidence if item.event_id == event_id]
         evidence_ids = {item.evidence_id for item in selected_evidence}
         company_by_code = {item.stock_code: item for item in companies}
+        self._validate_evidence_company_references(selected_evidence, company_by_code)
         selected_scores = [item for item in scores if item.event_id == event_id]
 
         impacts: list[CompanyImpact] = []
@@ -204,8 +205,19 @@ class InvestmentOrchestrator:
             )
 
     @staticmethod
+    def _validate_evidence_company_references(
+        evidence: list[Evidence], company_by_code: dict[str, Company]
+    ) -> None:
+        referenced_codes = {stock_code for item in evidence for stock_code in item.stock_codes}
+        unknown_codes = referenced_codes - set(company_by_code)
+        if unknown_codes:
+            raise OrchestrationError(
+                f"证据引用了公司映射中不存在的证券代码：{', '.join(sorted(unknown_codes))}"
+            )
+
+    @staticmethod
     def _evidence_for_company(stock_code: str, evidence: list[Evidence]) -> list[str]:
-        return [item.evidence_id for item in evidence if stock_code in item.quote]
+        return [item.evidence_id for item in evidence if stock_code in item.stock_codes]
 
 
 def run_demo() -> str:

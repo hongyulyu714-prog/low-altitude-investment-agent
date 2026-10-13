@@ -3,13 +3,15 @@
 from __future__ import annotations
 
 from datetime import date, datetime, timezone
+import re
 from typing import Literal
 
-from pydantic import BaseModel, ConfigDict, Field, HttpUrl, field_validator
+from pydantic import BaseModel, ConfigDict, Field, HttpUrl, field_validator, model_validator
 
 
 VerificationStatus = Literal["verified", "pending_verification", "mock"]
 ImpactDirection = Literal["positive", "negative", "neutral", "uncertain"]
+STOCK_CODE_PATTERN = re.compile(r"^\d{6}\.(SZ|SH|BJ)$")
 
 
 class ContractModel(BaseModel):
@@ -38,6 +40,12 @@ class GraphPath(ContractModel):
     rule_id: str = Field(min_length=1)
     impact_direction: ImpactDirection
     evidence_ids: list[str] = Field(default_factory=list)
+
+    @model_validator(mode="after")
+    def relation_count_must_connect_all_nodes(self) -> "GraphPath":
+        if len(self.relation_ids) != len(self.node_ids) - 1:
+            raise ValueError("relation_ids 的数量必须等于 node_ids 的数量减一")
+        return self
 
 
 class Company(ContractModel):
@@ -68,8 +76,19 @@ class Evidence(ContractModel):
     published_date: date | None = None
     source_url: HttpUrl
     quote: str = Field(min_length=1)
+    stock_codes: list[str] = Field(default_factory=list)
     credibility_level: Literal["A", "B", "C", "D", "mock"]
     verification_status: VerificationStatus
+
+    @field_validator("stock_codes")
+    @classmethod
+    def stock_codes_must_be_unique_and_well_formed(cls, values: list[str]) -> list[str]:
+        invalid_codes = [code for code in values if not STOCK_CODE_PATTERN.fullmatch(code)]
+        if invalid_codes:
+            raise ValueError(f"stock_codes 包含无效证券代码：{', '.join(invalid_codes)}")
+        if len(values) != len(set(values)):
+            raise ValueError("stock_codes 不能包含重复证券代码")
+        return values
 
 
 class CompanyImpact(ContractModel):

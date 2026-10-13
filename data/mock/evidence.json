@@ -6,6 +6,7 @@
     "published_date": "2026-10-01",
     "source_url": "https://example.com/mock/evidence/battery-price",
     "quote": "模拟输入：000001.SZ、000002.SZ、000003.SZ 的动力电池价格下降 15%。",
+    "stock_codes": ["000001.SZ", "000002.SZ", "000003.SZ"],
     "credibility_level": "mock",
     "verification_status": "mock"
   },
@@ -16,6 +17,7 @@
     "published_date": "2026-10-01",
     "source_url": "https://example.com/mock/evidence/evtol-cost-pass-through",
     "quote": "模拟规则：000003.SZ 的整机成本可能受电池成本变化影响，需真实采购和订单数据核验。",
+    "stock_codes": ["000003.SZ"],
     "credibility_level": "mock",
     "verification_status": "mock"
   },
@@ -26,6 +28,7 @@
     "published_date": "2026-10-01",
     "source_url": "https://example.com/mock/evidence/risk",
     "quote": "模拟风险提示：所有公司、证券代码和评分仅用于接口演示，并非投资建议或真实映射。",
+    "stock_codes": [],
     "credibility_level": "mock",
     "verification_status": "mock"
   }
