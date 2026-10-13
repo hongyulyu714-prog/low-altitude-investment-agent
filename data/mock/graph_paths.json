@@ -1,0 +1,11 @@
+[
+  {
+    "path_id": "PATH_BATTERY_TO_OPERATION_001",
+    "event_id": "EVT_BATTERY_PRICE_DOWN_001",
+    "node_ids": ["NODE_BATTERY", "NODE_ELECTRIC_PROPULSION", "NODE_EVTOL", "NODE_LOW_ALTITUDE_OPERATION"],
+    "relation_ids": ["REL_BATTERY_PROPULSION", "REL_PROPULSION_EVTOL", "REL_EVTOL_OPERATION"],
+    "rule_id": "RULE_BATTERY_COST_PASS_THROUGH_V1",
+    "impact_direction": "positive",
+    "evidence_ids": ["EVD_BATTERY_001", "EVD_EVTOL_001"]
+  }
+]

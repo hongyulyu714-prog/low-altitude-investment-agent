@@ -1,0 +1,35 @@
+[
+  {
+    "stock_code": "000001.SZ",
+    "event_id": "EVT_BATTERY_PRICE_DOWN_001",
+    "exposure": 88,
+    "sensitivity": 62,
+    "financial_materiality": 70,
+    "impact_score": 38.19,
+    "formula_version": "impact-v1: exposure*sensitivity*financial_materiality/10000",
+    "risk_flags": ["mock_data", "cost-pass-through-unknown"],
+    "impact_direction": "negative"
+  },
+  {
+    "stock_code": "000002.SZ",
+    "event_id": "EVT_BATTERY_PRICE_DOWN_001",
+    "exposure": 76,
+    "sensitivity": 74,
+    "financial_materiality": 66,
+    "impact_score": 37.12,
+    "formula_version": "impact-v1: exposure*sensitivity*financial_materiality/10000",
+    "risk_flags": ["mock_data"],
+    "impact_direction": "positive"
+  },
+  {
+    "stock_code": "000003.SZ",
+    "event_id": "EVT_BATTERY_PRICE_DOWN_001",
+    "exposure": 69,
+    "sensitivity": 81,
+    "financial_materiality": 73,
+    "impact_score": 40.80,
+    "formula_version": "impact-v1: exposure*sensitivity*financial_materiality/10000",
+    "risk_flags": ["mock_data", "demand-elasticity-unknown"],
+    "impact_direction": "positive"
+  }
+]
