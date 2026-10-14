@@ -2,7 +2,7 @@
   "name": "low-altitude-investment-agent-frontend",
   "private": true,
   "version": "0.1.0",
-  "description": "低空智研的产业链图谱与投研报告前端骨架",
+  "description": "\u4f4e\u7a7a\u667a\u7814\u7684\u4ea7\u4e1a\u94fe\u56fe\u8c31\u4e0e\u6295\u7814\u62a5\u544a\u524d\u7aef\u9aa8\u67b6",
   "dependencies": {
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -34,6 +34,7 @@
     "typecheck": "tsc -b --pretty false",
     "lint": "eslint .",
     "test": "vitest run",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "check:names": "node scripts/check-module-names.mjs"
   }
 }

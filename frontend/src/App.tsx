@@ -29,6 +29,7 @@ import {
 } from "./components/spatial/data";
 import { DrawerHost, type DrawerItem } from "./components/DrawerHost";
 import { BusinessGraph } from "./components/BusinessGraph";
+import { initialBusinessView } from "./components/businessView";
 const missing = "数据不足";
 const value = (v: unknown): string =>
   v === null || v === undefined || v === "" ? missing : String(v);
@@ -82,6 +83,7 @@ export function App() {
     [graphMode, setGraphMode] = useState<"business" | "test">("business"),
     [businessPath, setBusinessPath] = useState<string | null>(null),
     [businessNode, setBusinessNode] = useState<string | null>(null);
+  const [businessView, setBusinessView] = useState(initialBusinessView);
   const shell = useRef<HTMLDivElement>(null),
     graph = useRef<SpatialGraphHandle>(null),
     request = useRef(new LatestRequestGuard()),
@@ -109,6 +111,7 @@ export function App() {
     setAscending(false);
     setTab("business");
     setGraphMode("business");
+    setBusinessView(initialBusinessView());
     checkpoint.current = null;
     research.current = null;
   };
@@ -141,6 +144,7 @@ export function App() {
     setAscending(false);
     setTab("business");
     setGraphMode("business");
+    setBusinessView(initialBusinessView());
     setBusinessNode(null);
     setPhase("loading");
     setReport(null);
@@ -430,6 +434,8 @@ export function App() {
               {graphMode === "business" ? (
                 <BusinessGraph
                   key={`${mode}:${eventId}`}
+                  view={businessView}
+                  onViewChange={setBusinessView}
                   paths={report.paths}
                   pathId={businessPath}
                   nodeId={businessNode}

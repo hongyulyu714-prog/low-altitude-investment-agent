@@ -1,11 +1,23 @@
-import { useEffect, useId, useRef, useState } from "react";
+import {
+  useEffect,
+  useId,
+  useRef,
+  useState,
+  type Dispatch,
+  type SetStateAction,
+} from "react";
+import type {
+  BusinessCamera as Camera,
+  BusinessViewState,
+} from "./businessView";
 import type { PathView } from "../adapters/types";
-import { businessEdges } from "./businessGraph";
+import { businessEdges } from "./businessGraphEdges";
 import { directionColors, directionNames } from "./spatial/data";
 import "./spatial/graph.css";
 import "./businessGraph.css";
-type Camera = { x: number; y: number; z: number };
 export function BusinessGraph({
+  view,
+  onViewChange,
   paths,
   pathId,
   nodeId,
@@ -14,6 +26,8 @@ export function BusinessGraph({
   onTest,
   onExpandedChange,
 }: {
+  view: BusinessViewState;
+  onViewChange: Dispatch<SetStateAction<BusinessViewState>>;
   paths: PathView[] | null;
   pathId: string | null;
   nodeId: string | null;
@@ -22,8 +36,11 @@ export function BusinessGraph({
   onTest: () => void;
   onExpandedChange: (expanded: boolean) => void;
 }) {
-  const [camera, setCamera] = useState<Camera>({ x: 0, y: 0, z: 1 });
-  const [held, setHeld] = useState(false);
+  const { camera, held, history } = view;
+  const setCamera = (next: Camera) =>
+    onViewChange((previous) => ({ ...previous, camera: next }));
+  const setHeld = (next: boolean) =>
+    onViewChange((previous) => ({ ...previous, held: next }));
   const [expanded, setExpanded] = useState(false);
   const expandContext = useRef<{
     camera: Camera;
@@ -41,13 +58,15 @@ export function BusinessGraph({
         path: pathId,
         node: nodeId,
         scroll: window.scrollY,
-        history: [...history.current],
+        history: [...history],
       };
     else if (expandContext.current) {
       const saved = expandContext.current;
-      setCamera(saved.camera);
-      setHeld(saved.held);
-      history.current = saved.history;
+      onViewChange({
+        camera: saved.camera,
+        held: saved.held,
+        history: saved.history,
+      });
       if (saved.path) onSelect(saved.path, saved.node);
       requestAnimationFrame(() =>
         window.scrollTo({ top: saved.scroll, behavior: "instant" }),
@@ -56,7 +75,6 @@ export function BusinessGraph({
     setExpanded(!expanded);
     onExpandedChange(!expanded);
   }
-  const history = useRef<Camera[]>([]);
   const pointer = useRef<{
     x: number;
     y: number;
@@ -85,9 +103,11 @@ export function BusinessGraph({
     y: 175,
   });
   function move(next: Camera) {
-    history.current.push(camera);
-    history.current = history.current.slice(-20);
-    setCamera(next);
+    onViewChange((previous) => ({
+      ...previous,
+      camera: next,
+      history: [...previous.history, previous.camera].slice(-20),
+    }));
   }
   function focus(i: number) {
     move({
@@ -181,7 +201,11 @@ export function BusinessGraph({
           onPointerMove={(e) => {
             const p = pointer.current;
             if (!p) return;
-            if (!p.moved) history.current.push(p.camera);
+            if (!p.moved)
+              onViewChange((previous) => ({
+                ...previous,
+                history: [...previous.history, p.camera].slice(-20),
+              }));
             p.moved = true;
             setHeld(true);
             setCamera({
@@ -333,10 +357,17 @@ export function BusinessGraph({
             </button>
             <button onClick={() => move({ x: 0, y: 0, z: 1 })}>全局复位</button>
             <button
-              disabled={!history.current.length}
+              disabled={!history.length}
               onClick={() => {
-                const previous = history.current.pop();
-                if (previous) setCamera(previous);
+                onViewChange((previous) =>
+                  previous.history.length
+                    ? {
+                        ...previous,
+                        camera: previous.history.at(-1)!,
+                        history: previous.history.slice(0, -1),
+                      }
+                    : previous,
+                );
               }}
             >
               视角返回

@@ -164,7 +164,7 @@ test("TEST mapping gated, nested reading scroll, graph return and expanded resto
     .click();
   await expect(page.getByRole("dialog")).toHaveCount(0);
   await expect(page.locator(".sg-card")).toHaveAttribute("data-selected", "B");
-  expect(await camera(page)).toEqual(captured);
+  await expect.poll(() => camera(page)).toEqual(captured);
   expect(await page.evaluate(() => scrollY)).toBe(0);
   await page.getByRole("button", { name: "展开图谱" }).click();
   await expect(page.locator("#companies")).toHaveCount(0);
@@ -174,7 +174,7 @@ test("TEST mapping gated, nested reading scroll, graph return and expanded resto
   await pan(page, 20);
   await page.getByRole("button", { name: "收起图谱" }).click();
   await expect(page.locator("#companies")).toBeVisible();
-  expect(await camera(page)).toEqual(captured);
+  await expect.poll(() => camera(page)).toEqual(captured);
 });
 test("HTTP422, unreadable and network errors never fall back", async ({
   page,

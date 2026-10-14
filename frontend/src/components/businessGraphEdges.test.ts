@@ -1,5 +1,5 @@
 import { it, expect } from "vitest";
-import { businessEdges } from "./businessGraph";
+import { businessEdges } from "./businessGraphEdges";
 import type { PathView } from "../adapters/types";
 const path: PathView = {
   path_id: "P",

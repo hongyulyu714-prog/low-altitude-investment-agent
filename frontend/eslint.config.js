@@ -4,6 +4,7 @@ import globals from "globals";
 export default ts.config(
   { ignores: ["dist/**", "node_modules/**"] },
   js.configs.recommended,
+  { files: ["scripts/**/*.mjs"], languageOptions: { globals: globals.node } },
   ...ts.configs.recommended,
   {
     files: ["**/*.{ts,tsx}"],
