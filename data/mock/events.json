@@ -1,0 +1,13 @@
+[
+  {
+    "event_id": "EVT_BATTERY_PRICE_DOWN_001",
+    "event_name": "动力电池价格下降 15%（模拟事件）",
+    "event_type": "原材料价格变化",
+    "event_date": "2026-10-01",
+    "direction": "下降",
+    "affected_node_ids": ["NODE_BATTERY", "NODE_ELECTRIC_PROPULSION"],
+    "source_title": "模拟数据：动力电池价格变化",
+    "source_url": "https://example.com/mock/events/battery-price-down",
+    "verification_status": "mock"
+  }
+]

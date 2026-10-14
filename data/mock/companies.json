@@ -1,0 +1,26 @@
+[
+  {
+    "company_id": "COMP_DEMO_BATTERY_001",
+    "stock_code": "000001.SZ",
+    "company_name": "示例动力电池公司",
+    "chain_role": "动力电池",
+    "exposure_score": 88,
+    "verification_status": "mock"
+  },
+  {
+    "company_id": "COMP_DEMO_PROPULSION_001",
+    "stock_code": "000002.SZ",
+    "company_name": "示例电推进公司",
+    "chain_role": "电推进系统",
+    "exposure_score": 76,
+    "verification_status": "mock"
+  },
+  {
+    "company_id": "COMP_DEMO_EVTOL_001",
+    "stock_code": "000003.SZ",
+    "company_name": "示例 eVTOL 整机公司",
+    "chain_role": "eVTOL 整机",
+    "exposure_score": 69,
+    "verification_status": "mock"
+  }
+]

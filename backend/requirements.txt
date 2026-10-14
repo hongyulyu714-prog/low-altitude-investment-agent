@@ -1,7 +1,7 @@
 # 后端/图谱工作流基础依赖；由总控与图谱负责人在各自分支安装和锁定版本。
 fastapi
 uvicorn[standard]
-pydantic
+pydantic>=2,<3
 neo4j
 neo4j-graphrag
 pandas

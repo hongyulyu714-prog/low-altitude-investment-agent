@@ -10,6 +10,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: backend/requirements.txt
+      - name: Install backend and test dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r backend/requirements.txt httpx
       - name: Check required collaboration files
         run: |
           test -f README.md
@@ -33,4 +43,5 @@ jobs:
       - name: Validate event and evidence corpus
         run: |
           python scripts/validate_evidence.py
-          python -m unittest discover -s tests -p 'test_*.py'
+      - name: Run backend tests
+        run: python -m unittest discover -s tests -v
