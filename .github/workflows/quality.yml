@@ -40,5 +40,8 @@ jobs:
             echo "Secret-like file tracked"
             exit 1
           fi
+      - name: Validate event and evidence corpus
+        run: |
+          python scripts/validate_evidence.py
       - name: Run backend tests
         run: python -m unittest discover -s tests -v

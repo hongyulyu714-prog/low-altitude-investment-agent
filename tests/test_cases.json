@@ -1,0 +1,900 @@
+[
+  {
+    "case_id": "CASE_001",
+    "question": "广东行动方案如何通过基础设施影响低空物流，能否将政策目标当作已完成建设？",
+    "event_id": "EVT_001",
+    "expected_path": [
+      "NODE_EVID_VERTIPORT",
+      "NODE_EVID_LOW_ALTITUDE_NETWORK",
+      "NODE_EVID_LOGISTICS"
+    ],
+    "expected_company_types": [
+      "起降场建设运营企业",
+      "低空通信导航服务企业",
+      "无人机物流运营企业"
+    ],
+    "required_evidence_ids": [
+      "EVD_001"
+    ],
+    "expected_direction": "positive",
+    "answer_points": [
+      "行动方案提出低空基础设施布局任务，属于政策部署。",
+      "需项目投资、空域及运营审批落地后才能形成业务需求。"
+    ],
+    "conditions": [
+      "需项目投资、空域及运营审批落地后才能形成业务需求。"
+    ],
+    "not_supported": [
+      "不得把规划规模、起降场目标或补贴政策直接计为公司收入。"
+    ],
+    "path_status": "hypothesis_pending_graph_validation"
+  },
+  {
+    "case_id": "CASE_002",
+    "question": "EH216-S取得TC后哪些产业节点可能受影响，TC是否等同于运营合格证？",
+    "event_id": "EVT_002",
+    "expected_path": [
+      "NODE_EVID_AIRWORTHINESS",
+      "NODE_EVID_EVTOL",
+      "NODE_EVID_TOURISM"
+    ],
+    "expected_company_types": [
+      "eVTOL整机制造企业",
+      "适航检测服务企业",
+      "低空旅游运营企业"
+    ],
+    "required_evidence_ids": [
+      "EVD_002"
+    ],
+    "expected_direction": "positive",
+    "answer_points": [
+      "公司公告其EH216-S取得TC，核验范围为型号审定进展。",
+      "量产、单机适航及运营许可仍需分别核验。"
+    ],
+    "conditions": [
+      "量产、单机适航及运营许可仍需分别核验。"
+    ],
+    "not_supported": [
+      "TC不能证明任意区域已获准收费运营，也不能证明盈利。"
+    ],
+    "path_status": "hypothesis_pending_graph_validation"
+  },
+  {
+    "case_id": "CASE_003",
+    "question": "2023年电芯价格下降如何影响电推进与eVTOL成本，为何不能直接判断电池厂受益？",
+    "event_id": "EVT_003",
+    "expected_path": [
+      "NODE_EVID_BATTERY",
+      "NODE_EVID_CELL_PROPULSION",
+      "NODE_EVID_EVTOL"
+    ],
+    "expected_company_types": [
+      "动力电池供应商",
+      "电推进系统企业",
+      "eVTOL整机制造企业"
+    ],
+    "required_evidence_ids": [
+      "EVD_003"
+    ],
+    "expected_direction": "uncertain",
+    "answer_points": [
+      "全国行业统计显示2023年电芯和锂盐价格下降，非航空级电池报价。",
+      "需确认航空电池规格、采购合同、库存周期和成本传导比例；上游售价压力与下游降本方向不同。"
+    ],
+    "conditions": [
+      "需确认航空电池规格、采购合同、库存周期和成本传导比例；上游售价压力与下游降本方向不同。"
+    ],
+    "not_supported": [
+      "不能将行业降幅直接套用为某公司航空电池成本降幅或利润变化。"
+    ],
+    "path_status": "hypothesis_pending_graph_validation"
+  },
+  {
+    "case_id": "CASE_004",
+    "question": "文成30架采购协议会涉及什么产业路径，270架后续计划是否能算确定订单？",
+    "event_id": "EVT_004",
+    "expected_path": [
+      "NODE_EVID_EVTOL",
+      "NODE_EVID_VERTIPORT",
+      "NODE_EVID_TOURISM"
+    ],
+    "expected_company_types": [
+      "eVTOL整机制造企业",
+      "起降场建设运营企业",
+      "文旅运营企业"
+    ],
+    "required_evidence_ids": [
+      "EVD_004"
+    ],
+    "expected_direction": "positive",
+    "answer_points": [
+      "文成交发签订30架采购协议；另270架属于计划，不能合并计为确定订单。",
+      "实际交付、回款和收入确认须以后续披露为准。"
+    ],
+    "conditions": [
+      "实际交付、回款和收入确认须以后续披露为准。"
+    ],
+    "not_supported": [
+      "不能将270架计划当作已签订单或将30架协议额直接当作已确认收入。"
+    ],
+    "path_status": "hypothesis_pending_graph_validation"
+  },
+  {
+    "case_id": "CASE_005",
+    "question": "八达岭无人机配送开通后应关注哪些企业类型，这是否证明北京全域开放？",
+    "event_id": "EVT_005",
+    "expected_path": [
+      "NODE_EVID_UAV",
+      "NODE_EVID_VERTIPORT",
+      "NODE_EVID_LOGISTICS"
+    ],
+    "expected_company_types": [
+      "无人机整机企业",
+      "无人机起降设施企业",
+      "即时配送运营企业"
+    ],
+    "required_evidence_ids": [
+      "EVD_005"
+    ],
+    "expected_direction": "positive",
+    "answer_points": [
+      "运营方披露八达岭景区无人机配送航线已开通。",
+      "评估需考虑具体航线许可、订单密度、载荷和运行成本。"
+    ],
+    "conditions": [
+      "评估需考虑具体航线许可、订单密度、载荷和运行成本。"
+    ],
+    "not_supported": [
+      "单条航线不能证明全域空域开放或物流业务已盈利。"
+    ],
+    "path_status": "hypothesis_pending_graph_validation"
+  },
+  {
+    "case_id": "CASE_006",
+    "question": "上海支持eVTOL领军企业如何向电机和电控供应链传导？",
+    "event_id": "EVT_006",
+    "expected_path": [
+      "NODE_EVID_EVTOL",
+      "NODE_EVID_MOTOR",
+      "NODE_EVID_MOTOR_CONTROLLER"
+    ],
+    "expected_company_types": [
+      "eVTOL整机制造企业",
+      "电机企业",
+      "电机控制系统企业"
+    ],
+    "required_evidence_ids": [
+      "EVD_006"
+    ],
+    "expected_direction": "positive",
+    "answer_points": [
+      "方案明确以eVTOL领军企业培育带动电机、电控等配套发展。",
+      "路径为整机需求向上游配套传导，供应商需产品匹配及适航认证。"
+    ],
+    "conditions": [
+      "路径为整机需求向上游配套传导，供应商需产品匹配及适航认证。"
+    ],
+    "not_supported": [
+      "不能仅凭政策判断所有汽车电机企业都获得航空订单。"
+    ],
+    "path_status": "hypothesis_pending_graph_validation"
+  },
+  {
+    "case_id": "CASE_007",
+    "question": "EH216-S取得PC解决了哪类约束，是否可用企业4月公告日代替颁证日？",
+    "event_id": "EVT_007",
+    "expected_path": [
+      "NODE_EVID_AIRWORTHINESS",
+      "NODE_EVID_EVTOL",
+      "NODE_EVID_TOURISM"
+    ],
+    "expected_company_types": [
+      "eVTOL整机制造企业",
+      "适航及生产质量服务企业"
+    ],
+    "required_evidence_ids": [
+      "EVD_007"
+    ],
+    "expected_direction": "positive",
+    "answer_points": [
+      "监管机关确认EH216-S生产许可证颁发，证号PC0076A-ZN。",
+      "PC关注生产质量体系，具体交付及运营还需其他证照和需求。"
+    ],
+    "conditions": [
+      "PC关注生产质量体系，具体交付及运营还需其他证照和需求。"
+    ],
+    "not_supported": [
+      "不得把PC当作运营许可或将4月公告日期误记为监管颁证日期。"
+    ],
+    "path_status": "hypothesis_pending_graph_validation"
+  },
+  {
+    "case_id": "CASE_008",
+    "question": "2024年碳酸锂均价与2023年相比如何变化，为什么不能直接推导eVTOL售价下降？",
+    "event_id": "EVT_008",
+    "expected_path": [
+      "NODE_EVID_LITHIUM_SALT",
+      "NODE_EVID_BATTERY",
+      "NODE_EVID_CELL_PROPULSION",
+      "NODE_EVID_EVTOL"
+    ],
+    "expected_company_types": [
+      "锂盐生产企业",
+      "动力电池供应商",
+      "eVTOL整机制造企业"
+    ],
+    "required_evidence_ids": [
+      "EVD_003_BASE",
+      "EVD_008"
+    ],
+    "expected_direction": "uncertain",
+    "answer_points": [
+      "2024年电池级碳酸锂年度均价9.0万元每吨，可与2023年同口径25.8万元每吨对照。",
+      "年度同口径均价降幅约65.1%，传导需合同及航空电池成本结构支持。"
+    ],
+    "conditions": [
+      "年度同口径均价降幅约65.1%，传导需合同及航空电池成本结构支持。"
+    ],
+    "not_supported": [
+      "不得将锂盐年度均价、电芯售价和航空电池采购价混为同一指标。"
+    ],
+    "path_status": "hypothesis_pending_graph_validation"
+  },
+  {
+    "case_id": "CASE_009",
+    "question": "英搏尔与亿航的合作涉及哪些产品节点，能否视为量产供货收入？",
+    "event_id": "EVT_009",
+    "expected_path": [
+      "NODE_EVID_MOTOR",
+      "NODE_EVID_MOTOR_CONTROLLER",
+      "NODE_EVID_EVTOL"
+    ],
+    "expected_company_types": [
+      "航空电机企业",
+      "电机控制系统企业",
+      "eVTOL整机制造企业"
+    ],
+    "required_evidence_ids": [
+      "EVD_009"
+    ],
+    "expected_direction": "positive",
+    "answer_points": [
+      "双方披露联合开发eVTOL电机和电控的战略合作。",
+      "需技术开发、适航要求、定点及量产合同落地。"
+    ],
+    "conditions": [
+      "需技术开发、适航要求、定点及量产合同落地。"
+    ],
+    "not_supported": [
+      "战略合作不证明已量产供货或存在确定收入规模。"
+    ],
+    "path_status": "hypothesis_pending_graph_validation"
+  },
+  {
+    "case_id": "CASE_010",
+    "question": "文成载人首飞怎样关联文旅和起降场，首飞是否等于常态化收费运营？",
+    "event_id": "EVT_010",
+    "expected_path": [
+      "NODE_EVID_EVTOL",
+      "NODE_EVID_VERTIPORT",
+      "NODE_EVID_TOURISM"
+    ],
+    "expected_company_types": [
+      "eVTOL整机制造企业",
+      "文旅运营企业",
+      "起降场运营企业"
+    ],
+    "required_evidence_ids": [
+      "EVD_010"
+    ],
+    "expected_direction": "positive",
+    "answer_points": [
+      "6月22日在文成完成载人首飞，支持文旅示范事实；不证明收费常态运营。",
+      "示范飞行与常态收费运营分开评价，需运营许可证和客流成本数据。"
+    ],
+    "conditions": [
+      "示范飞行与常态收费运营分开评价，需运营许可证和客流成本数据。"
+    ],
+    "not_supported": [
+      "不得从首飞推定已取得OC、持续收费收入或盈利。"
+    ],
+    "path_status": "hypothesis_pending_graph_validation"
+  },
+  {
+    "case_id": "CASE_011",
+    "question": "四部门通用航空装备方案印发会怎样形成无人机应用研究路径？",
+    "event_id": "EVT_011",
+    "expected_path": [
+      "NODE_EVID_UAV",
+      "NODE_EVID_LOGISTICS"
+    ],
+    "expected_company_types": [
+      "无人机整机企业",
+      "通用航空装备企业",
+      "物流运营企业"
+    ],
+    "required_evidence_ids": [
+      "EVD_011"
+    ],
+    "expected_direction": "positive",
+    "answer_points": [
+      "四部门正式印发通用航空装备创新应用实施方案。",
+      "该通知仅证明方案印发；具体应用任务需进一步阅读附件与实施项目。"
+    ],
+    "conditions": [
+      "该通知仅证明方案印发；具体应用任务需进一步阅读附件与实施项目。"
+    ],
+    "not_supported": [
+      "不能从印发通知直接推导具体订单金额或已实现产业规模。"
+    ],
+    "path_status": "hypothesis_pending_graph_validation"
+  },
+  {
+    "case_id": "CASE_012",
+    "question": "安徽低空智联基础设施建设如何连接起降场、信息网与物流？",
+    "event_id": "EVT_012",
+    "expected_path": [
+      "NODE_EVID_VERTIPORT",
+      "NODE_EVID_LOW_ALTITUDE_NETWORK",
+      "NODE_EVID_LOGISTICS"
+    ],
+    "expected_company_types": [
+      "起降场建设企业",
+      "低空信息网企业",
+      "无人机物流运营企业"
+    ],
+    "required_evidence_ids": [
+      "EVD_012"
+    ],
+    "expected_direction": "positive",
+    "answer_points": [
+      "正式方案提出地面、信息及航路设施共建任务。",
+      "依据实际立项和建设进度筛选公司，不以政策标签筛选。"
+    ],
+    "conditions": [
+      "依据实际立项和建设进度筛选公司，不以政策标签筛选。"
+    ],
+    "not_supported": [
+      "目标机场与起降点数量不能当作已经建成。"
+    ],
+    "path_status": "hypothesis_pending_graph_validation"
+  },
+  {
+    "case_id": "CASE_013",
+    "question": "深圳条例的基础设施条款如何影响供应链，公布日和施行日是否相同？",
+    "event_id": "EVT_013",
+    "expected_path": [
+      "NODE_EVID_VERTIPORT",
+      "NODE_EVID_LOW_ALTITUDE_NETWORK",
+      "NODE_EVID_LOGISTICS"
+    ],
+    "expected_company_types": [
+      "起降场建设企业",
+      "低空通信导航企业",
+      "数字飞行服务企业"
+    ],
+    "required_evidence_ids": [
+      "EVD_013"
+    ],
+    "expected_direction": "positive",
+    "answer_points": [
+      "公布条例规定物理、信息及数字管理等基础设施统筹建设；2024年2月1日起施行。",
+      "按条款适用范围及项目实际落地分析，不以立法替代飞行审批。"
+    ],
+    "conditions": [
+      "按条款适用范围及项目实际落地分析，不以立法替代飞行审批。"
+    ],
+    "not_supported": [
+      "公布条例不代表全域空域已开放；公布日1月3日与施行日2月1日不同。"
+    ],
+    "path_status": "hypothesis_pending_graph_validation"
+  },
+  {
+    "case_id": "CASE_014",
+    "question": "江苏起降场与充电场布局如何服务低空物流，哪些落地条件应核验？",
+    "event_id": "EVT_014",
+    "expected_path": [
+      "NODE_EVID_LOW_ALTITUDE_NETWORK",
+      "NODE_EVID_VERTIPORT",
+      "NODE_EVID_LOGISTICS"
+    ],
+    "expected_company_types": [
+      "起降设施企业",
+      "充电设施企业",
+      "物流运营企业"
+    ],
+    "required_evidence_ids": [
+      "EVD_014"
+    ],
+    "expected_direction": "positive",
+    "answer_points": [
+      "实施意见部署起降及能源配套设施建设。",
+      "需空域释放、项目投资及运行需求同步具备。"
+    ],
+    "conditions": [
+      "需空域释放、项目投资及运行需求同步具备。"
+    ],
+    "not_supported": [
+      "不能把文件发布日期9月4日当作成文日8月12日。"
+    ],
+    "path_status": "hypothesis_pending_graph_validation"
+  },
+  {
+    "case_id": "CASE_015",
+    "question": "广州低空智联网部署如何与起降网络、城市无人机物流连接？",
+    "event_id": "EVT_015",
+    "expected_path": [
+      "NODE_EVID_LOW_ALTITUDE_NETWORK",
+      "NODE_EVID_VERTIPORT",
+      "NODE_EVID_LOGISTICS"
+    ],
+    "expected_company_types": [
+      "低空通信导航企业",
+      "起降场建设企业",
+      "无人机物流运营企业"
+    ],
+    "required_evidence_ids": [
+      "EVD_015"
+    ],
+    "expected_direction": "positive",
+    "answer_points": [
+      "方案部署低空智联网基础设施和地面起降网络建设。",
+      "须确认航线、设施和商业运营许可的实际进度。"
+    ],
+    "conditions": [
+      "须确认航线、设施和商业运营许可的实际进度。"
+    ],
+    "not_supported": [
+      "规划中的规模、机场和起降点不能计为已完成建设。"
+    ],
+    "path_status": "hypothesis_pending_graph_validation"
+  },
+  {
+    "case_id": "CASE_016",
+    "question": "四川财政支持怎样连接基础设施与应急服务，能否将2亿元计入某公司营收？",
+    "event_id": "EVT_016",
+    "expected_path": [
+      "NODE_EVID_VERTIPORT",
+      "NODE_EVID_UAV",
+      "NODE_EVID_EMERGENCY"
+    ],
+    "expected_company_types": [
+      "起降设施企业",
+      "无人机整机企业",
+      "航空应急服务企业"
+    ],
+    "required_evidence_ids": [
+      "EVD_016"
+    ],
+    "expected_direction": "positive",
+    "answer_points": [
+      "指导意见列明省级专项资金支持，支出及受益主体需后续核验。",
+      "需核对资金分配、预算执行、项目申报和采购合同。"
+    ],
+    "conditions": [
+      "需核对资金分配、预算执行、项目申报和采购合同。"
+    ],
+    "not_supported": [
+      "资金安排不证明已经全部拨付，也不直接构成某家上市公司收入。"
+    ],
+    "path_status": "hypothesis_pending_graph_validation"
+  },
+  {
+    "case_id": "CASE_017",
+    "question": "南航通航合作备忘录对eVTOL运营保障可能有什么影响？",
+    "event_id": "EVT_017",
+    "expected_path": [
+      "NODE_EVID_EVTOL",
+      "NODE_EVID_VERTIPORT",
+      "NODE_EVID_TOURISM"
+    ],
+    "expected_company_types": [
+      "eVTOL整机企业",
+      "通航运营企业",
+      "维保及起降设施企业"
+    ],
+    "required_evidence_ids": [
+      "EVD_017"
+    ],
+    "expected_direction": "positive",
+    "answer_points": [
+      "亿航公告与南航通航签订MoU，拟探索运营与保障合作。",
+      "MoU与实际运营项目、许可证及合同金额须区分。"
+    ],
+    "conditions": [
+      "MoU与实际运营项目、许可证及合同金额须区分。"
+    ],
+    "not_supported": [
+      "不能将计划中的珠海示范点写成已开通收费航线。"
+    ],
+    "path_status": "hypothesis_pending_graph_validation"
+  },
+  {
+    "case_id": "CASE_018",
+    "question": "KC Smart Mobility的30架采购计划如何影响eVTOL与文旅路径？",
+    "event_id": "EVT_018",
+    "expected_path": [
+      "NODE_EVID_EVTOL",
+      "NODE_EVID_VERTIPORT",
+      "NODE_EVID_TOURISM"
+    ],
+    "expected_company_types": [
+      "eVTOL整机企业",
+      "交通及旅游运营企业",
+      "起降设施企业"
+    ],
+    "required_evidence_ids": [
+      "EVD_018"
+    ],
+    "expected_direction": "positive",
+    "answer_points": [
+      "合作协议涉及30架采购计划与区域运营拓展。",
+      "需订单转化、交付及各区域独立监管批准。"
+    ],
+    "conditions": [
+      "需订单转化、交付及各区域独立监管批准。"
+    ],
+    "not_supported": [
+      "计划不能写作已交付订单，中国内地证照不证明港澳自动获准运营。"
+    ],
+    "path_status": "hypothesis_pending_graph_validation"
+  },
+  {
+    "case_id": "CASE_019",
+    "question": "祥源文旅合作中的50架与5架应怎样分别表述和核验？",
+    "event_id": "EVT_019",
+    "expected_path": [
+      "NODE_EVID_EVTOL",
+      "NODE_EVID_VERTIPORT",
+      "NODE_EVID_TOURISM"
+    ],
+    "expected_company_types": [
+      "文旅运营企业",
+      "eVTOL整机企业",
+      "起降设施企业"
+    ],
+    "required_evidence_ids": [
+      "EVD_019"
+    ],
+    "expected_direction": "positive",
+    "answer_points": [
+      "框架协议中的50架为计划，已披露首批5架订单。",
+      "采购计划按市场需求推进，实际交付和运营证照需确认。"
+    ],
+    "conditions": [
+      "采购计划按市场需求推进，实际交付和运营证照需确认。"
+    ],
+    "not_supported": [
+      "不能把50架计划全部写成已交付或已确认收入。"
+    ],
+    "path_status": "hypothesis_pending_graph_validation"
+  },
+  {
+    "case_id": "CASE_020",
+    "question": "长安与亿航合作为何可能带动电推进配套，是否证明合资公司已设立？",
+    "event_id": "EVT_020",
+    "expected_path": [
+      "NODE_EVID_EVTOL",
+      "NODE_EVID_MOTOR",
+      "NODE_EVID_CELL_PROPULSION"
+    ],
+    "expected_company_types": [
+      "汽车及航空装备制造企业",
+      "电推进配套企业"
+    ],
+    "required_evidence_ids": [
+      "EVD_020"
+    ],
+    "expected_direction": "positive",
+    "answer_points": [
+      "双方披露飞行汽车研发制造销售运营的战略合作。",
+      "整机需求向上游配套传导，合资、研发和量产均需独立后续证据。"
+    ],
+    "conditions": [
+      "整机需求向上游配套传导，合资、研发和量产均需独立后续证据。"
+    ],
+    "not_supported": [
+      "探索合资不等于合资已设立，战略计划不等于订单或利润。"
+    ],
+    "path_status": "hypothesis_pending_graph_validation"
+  },
+  {
+    "case_id": "CASE_021",
+    "question": "中交信科与亿航的数字及地面设施合作应怎样连接到运营场景？",
+    "event_id": "EVT_021",
+    "expected_path": [
+      "NODE_EVID_LOW_ALTITUDE_NETWORK",
+      "NODE_EVID_VERTIPORT",
+      "NODE_EVID_TOURISM"
+    ],
+    "expected_company_types": [
+      "数字基础设施企业",
+      "交通枢纽建设企业",
+      "低空运营企业"
+    ],
+    "required_evidence_ids": [
+      "EVD_021"
+    ],
+    "expected_direction": "positive",
+    "answer_points": [
+      "双方披露数字低空基础设施与交通枢纽合作；中交信科为集团下属企业。",
+      "集团、下属企业与上市主体须分别确认权益和合同；目标枢纽需后续进度。"
+    ],
+    "conditions": [
+      "集团、下属企业与上市主体须分别确认权益和合同；目标枢纽需后续进度。"
+    ],
+    "not_supported": [
+      "不能将规划100城市和100景区终端当成已经建成或全部计入中国交建收入。"
+    ],
+    "path_status": "hypothesis_pending_graph_validation"
+  },
+  {
+    "case_id": "CASE_022",
+    "question": "合肥eVTOL制造基地框架协议会影响什么供应链，能否视作投产事件？",
+    "event_id": "EVT_022",
+    "expected_path": [
+      "NODE_EVID_EVTOL",
+      "NODE_EVID_MOTOR",
+      "NODE_EVID_MOTOR_CONTROLLER"
+    ],
+    "expected_company_types": [
+      "eVTOL整机企业",
+      "汽车制造企业",
+      "电机电控配套企业"
+    ],
+    "required_evidence_ids": [
+      "EVD_022"
+    ],
+    "expected_direction": "positive",
+    "answer_points": [
+      "三方披露拟在合肥建设制造基地的框架合作，非基地建成公告。",
+      "需后续合资设立、投资决策、建设、投产及适航生产批准。"
+    ],
+    "conditions": [
+      "需后续合资设立、投资决策、建设、投产及适航生产批准。"
+    ],
+    "not_supported": [
+      "框架协议不证明基地已建成投产或形成确定产能。"
+    ],
+    "path_status": "hypothesis_pending_graph_validation"
+  },
+  {
+    "case_id": "CASE_023",
+    "question": "2023年8月型号审查进展应怎样表述，是否可以提前宣称已获TC？",
+    "event_id": "EVT_023",
+    "expected_path": [
+      "NODE_EVID_AIRWORTHINESS",
+      "NODE_EVID_EVTOL",
+      "NODE_EVID_TOURISM"
+    ],
+    "expected_company_types": [
+      "eVTOL整机企业",
+      "适航检测服务企业"
+    ],
+    "required_evidence_ids": [
+      "EVD_023"
+    ],
+    "expected_direction": "uncertain",
+    "answer_points": [
+      "监管机关披露符合性验证进展和后续审查事项，尚非TC颁发。",
+      "审定结论未作出时保留不确定性，需后续颁证原始证据。"
+    ],
+    "conditions": [
+      "审定结论未作出时保留不确定性，需后续颁证原始证据。"
+    ],
+    "not_supported": [
+      "不能把审查进展写成已完成全部审定或已获运营许可。"
+    ],
+    "path_status": "hypothesis_pending_graph_validation"
+  },
+  {
+    "case_id": "CASE_024",
+    "question": "两家EH216-S运营商取得OC后能否据此推定全国城市通勤已获批？",
+    "event_id": "EVT_024",
+    "expected_path": [
+      "NODE_EVID_AIRWORTHINESS",
+      "NODE_EVID_EVTOL",
+      "NODE_EVID_TOURISM"
+    ],
+    "expected_company_types": [
+      "低空文旅运营企业",
+      "eVTOL整机企业",
+      "运营保障企业"
+    ],
+    "required_evidence_ids": [
+      "EVD_024"
+    ],
+    "expected_direction": "positive",
+    "answer_points": [
+      "企业公告亿航通航及合翼航空收到首批OC。",
+      "按持证运营人、机型和经批准运营点核验服务范围。"
+    ],
+    "conditions": [
+      "按持证运营人、机型和经批准运营点核验服务范围。"
+    ],
+    "not_supported": [
+      "不能由OC推定全国不限区域运营、跨城通勤获批或利润兑现。"
+    ],
+    "path_status": "hypothesis_pending_graph_validation"
+  },
+  {
+    "case_id": "CASE_025",
+    "question": "光威一期碳纤维投产怎样影响复材供给，能否认定新增产能全部供给eVTOL？",
+    "event_id": "EVT_025",
+    "expected_path": [
+      "NODE_EVID_CARBON_FIBER",
+      "NODE_EVID_COMPOSITES",
+      "NODE_EVID_EVTOL"
+    ],
+    "expected_company_types": [
+      "碳纤维生产企业",
+      "复合材料企业",
+      "eVTOL整机企业"
+    ],
+    "required_evidence_ids": [
+      "EVD_025"
+    ],
+    "expected_direction": "uncertain",
+    "answer_points": [
+      "公司披露项目一期投产及设计年产能4000吨。",
+      "需实际产量、航空级产品认证、客户及价格证据；产能增加对各环节方向不同。"
+    ],
+    "conditions": [
+      "需实际产量、航空级产品认证、客户及价格证据；产能增加对各环节方向不同。"
+    ],
+    "not_supported": [
+      "设计产能不是实际产量，不能假定4000吨全部用于eVTOL或价格必然下跌。"
+    ],
+    "path_status": "hypothesis_pending_graph_validation"
+  },
+  {
+    "case_id": "CASE_026",
+    "question": "T300/T700价格回落对上游和整机可能分别产生什么影响，是否有统一降幅？",
+    "event_id": "EVT_026",
+    "expected_path": [
+      "NODE_EVID_CARBON_FIBER",
+      "NODE_EVID_COMPOSITES",
+      "NODE_EVID_EVTOL"
+    ],
+    "expected_company_types": [
+      "碳纤维生产企业",
+      "复合材料企业",
+      "eVTOL整机企业"
+    ],
+    "required_evidence_ids": [
+      "EVD_026"
+    ],
+    "expected_direction": "uncertain",
+    "answer_points": [
+      "公司在投资者交流中报告2023年国产T300/T700价格回落，未提供统一量化降幅。",
+      "以采购等级及合同价格核验下游降本，上游销售压力另评。"
+    ],
+    "conditions": [
+      "以采购等级及合同价格核验下游降本，上游销售压力另评。"
+    ],
+    "not_supported": [
+      "不能编造具体价格降幅或把工业材料价格直接当作航空认证材料报价。"
+    ],
+    "path_status": "hypothesis_pending_graph_validation"
+  },
+  {
+    "case_id": "CASE_027",
+    "question": "龙华无人机生态巡查如何连接整机、信息平台及巡检服务？",
+    "event_id": "EVT_027",
+    "expected_path": [
+      "NODE_EVID_UAV",
+      "NODE_EVID_LOW_ALTITUDE_NETWORK",
+      "NODE_EVID_INSPECTION"
+    ],
+    "expected_company_types": [
+      "工业无人机企业",
+      "巡检信息平台企业",
+      "生态监测服务企业"
+    ],
+    "required_evidence_ids": [
+      "EVD_027"
+    ],
+    "expected_direction": "positive",
+    "answer_points": [
+      "主管部门披露无人机生态执法已进行67家次工地巡查。",
+      "适用场景为生态执法，供应商合同与预算需另核验。"
+    ],
+    "conditions": [
+      "适用场景为生态执法，供应商合同与预算需另核验。"
+    ],
+    "not_supported": [
+      "应用次数不证明某上市公司获得订单或量化盈利。"
+    ],
+    "path_status": "hypothesis_pending_graph_validation"
+  },
+  {
+    "case_id": "CASE_028",
+    "question": "团洲垸决口处置的无人机应用可支持什么应急产业路径，是否证明某型号订单？",
+    "event_id": "EVT_028",
+    "expected_path": [
+      "NODE_EVID_UAV",
+      "NODE_EVID_COMMUNICATIONS",
+      "NODE_EVID_EMERGENCY"
+    ],
+    "expected_company_types": [
+      "应急无人机企业",
+      "通信保障企业",
+      "应急服务企业"
+    ],
+    "required_evidence_ids": [
+      "EVD_028"
+    ],
+    "expected_direction": "positive",
+    "answer_points": [
+      "应急部门报告无人机执行巡查、物资投送、侦察监测等决口处置任务。",
+      "任务周期为7月5日至8日，按合龙日记录；通信传导为待验证假设，非此次任务的型号认定。"
+    ],
+    "conditions": [
+      "任务周期为7月5日至8日，按合龙日记录；通信传导为待验证假设，非此次任务的型号认定。"
+    ],
+    "not_supported": [
+      "不能从多型号无人机应用认定某厂商、机型、订单额或毛利。"
+    ],
+    "path_status": "hypothesis_pending_graph_validation"
+  },
+  {
+    "case_id": "CASE_029",
+    "question": "骆岗UAM枢纽启用时是否已证明获得OC，基础设施怎样传导到文旅？",
+    "event_id": "EVT_029",
+    "expected_path": [
+      "NODE_EVID_VERTIPORT",
+      "NODE_EVID_EVTOL",
+      "NODE_EVID_TOURISM"
+    ],
+    "expected_company_types": [
+      "起降设施建设运营企业",
+      "eVTOL整机企业",
+      "文旅运营企业"
+    ],
+    "required_evidence_ids": [
+      "EVD_029"
+    ],
+    "expected_direction": "positive",
+    "answer_points": [
+      "公司披露枢纽启用，但向公众提供飞行服务仍以取得OC为前提。",
+      "设施启用与收费运营分开核验；2024年11月报道中OC仍为未来条件。"
+    ],
+    "conditions": [
+      "设施启用与收费运营分开核验；2024年11月报道中OC仍为未来条件。"
+    ],
+    "not_supported": [
+      "不能用2025年OC取得事实改写2024年设施启用时已获OC。"
+    ],
+    "path_status": "hypothesis_pending_graph_validation"
+  },
+  {
+    "case_id": "CASE_030",
+    "question": "罗湖自动升降起降场示范与文旅应用有什么关系，是否已证明常态收费运营？",
+    "event_id": "EVT_030",
+    "expected_path": [
+      "NODE_EVID_VERTIPORT",
+      "NODE_EVID_EVTOL",
+      "NODE_EVID_TOURISM"
+    ],
+    "expected_company_types": [
+      "起降场设备企业",
+      "eVTOL整机企业",
+      "文旅运营企业"
+    ],
+    "required_evidence_ids": [
+      "EVD_030"
+    ],
+    "expected_direction": "positive",
+    "answer_points": [
+      "运营设施1月21日启用，EH216-S完成中心首飞示范。",
+      "演示设施、首飞与后续商业运营和经济性须分别验证。"
+    ],
+    "conditions": [
+      "演示设施、首飞与后续商业运营和经济性须分别验证。"
+    ],
+    "not_supported": [
+      "首飞不能证明常态收费运营或全国推广收益。"
+    ],
+    "path_status": "hypothesis_pending_graph_validation"
+  }
+]

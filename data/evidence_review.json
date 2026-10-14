@@ -1,0 +1,483 @@
+{
+  "dataset_version": "event-evidence-v1-2026-10-12",
+  "generated_at": "2026-10-12",
+  "scope": "历史事件评测库，不是截至采集日的实时有效政策或投资推荐",
+  "first_batch_event_ids": [
+    "EVT_001",
+    "EVT_002",
+    "EVT_003",
+    "EVT_004",
+    "EVT_005",
+    "EVT_006",
+    "EVT_007",
+    "EVT_008",
+    "EVT_009",
+    "EVT_010"
+  ],
+  "sample_seed": 4,
+  "sampled_event_ids": [
+    "EVT_001",
+    "EVT_003",
+    "EVT_004",
+    "EVT_005",
+    "EVT_008",
+    "EVT_010",
+    "EVT_013",
+    "EVT_016",
+    "EVT_023",
+    "EVT_024"
+  ],
+  "records": [
+    {
+      "event_id": "EVT_001",
+      "evidence_ids": [
+        "EVD_001"
+      ],
+      "reviewed_at": "2026-10-12",
+      "reviewer": "Codex",
+      "method": "原始页面正文或PDF逐条阅读；自动检查不能代替人工复核",
+      "source_url": "https://www.gd.gov.cn/gkmlpt/content/4/4427/post_4427812.html",
+      "source_published_date": "2024-05-22",
+      "event_date_basis": "通知落款成文日期",
+      "verification_status": "verified",
+      "human_review_status": "pending",
+      "scope": "仅核验claim_supported中的历史事实；路径和财务影响不属于已核验事实"
+    },
+    {
+      "event_id": "EVT_002",
+      "evidence_ids": [
+        "EVD_002"
+      ],
+      "reviewed_at": "2026-10-12",
+      "reviewer": "Codex",
+      "method": "原始页面正文或PDF逐条阅读；自动检查不能代替人工复核",
+      "source_url": "https://www.ehang.com/cn/news/989.html",
+      "source_published_date": "2023-10-13",
+      "event_date_basis": "企业公告及颁证仪式日期；与监管后续回顾所述10月12日有差异，按公告事件记载",
+      "verification_status": "verified",
+      "human_review_status": "pending",
+      "scope": "仅核验claim_supported中的历史事实；路径和财务影响不属于已核验事实"
+    },
+    {
+      "event_id": "EVT_003",
+      "evidence_ids": [
+        "EVD_003",
+        "EVD_003_BASE"
+      ],
+      "reviewed_at": "2026-10-12",
+      "reviewer": "Codex",
+      "method": "原始页面正文或PDF逐条阅读；自动检查不能代替人工复核",
+      "source_url": "https://wap.miit.gov.cn/jgsj/dzs/gzdt/art/2024/art_876c25b352954361b270d35ebf0731fb.html",
+      "source_published_date": "2024-03-01",
+      "event_date_basis": "年度统计期末，非单日价格跳变",
+      "verification_status": "verified",
+      "human_review_status": "pending",
+      "scope": "仅核验claim_supported中的历史事实；路径和财务影响不属于已核验事实"
+    },
+    {
+      "event_id": "EVT_004",
+      "evidence_ids": [
+        "EVD_004"
+      ],
+      "reviewed_at": "2026-10-12",
+      "reviewer": "Codex",
+      "method": "原始页面正文或PDF逐条阅读；自动检查不能代替人工复核",
+      "source_url": "https://www.ehang.com/news/1099.html",
+      "source_published_date": "2024-06-21",
+      "event_date_basis": "企业公开披露日期，未独立确认签约日",
+      "verification_status": "verified",
+      "human_review_status": "pending",
+      "scope": "仅核验claim_supported中的历史事实；路径和财务影响不属于已核验事实"
+    },
+    {
+      "event_id": "EVT_005",
+      "evidence_ids": [
+        "EVD_005"
+      ],
+      "reviewed_at": "2026-10-12",
+      "reviewer": "Codex",
+      "method": "原始页面正文或PDF逐条阅读；自动检查不能代替人工复核",
+      "source_url": "https://www.meituan.com/news/NN24081904700952X",
+      "source_published_date": "2024-08-16",
+      "event_date_basis": "运营方报道日期；该报道未另列更早开通日",
+      "verification_status": "verified",
+      "human_review_status": "pending",
+      "scope": "仅核验claim_supported中的历史事实；路径和财务影响不属于已核验事实"
+    },
+    {
+      "event_id": "EVT_006",
+      "evidence_ids": [
+        "EVD_006"
+      ],
+      "reviewed_at": "2026-10-12",
+      "reviewer": "Codex",
+      "method": "原始页面正文或PDF逐条阅读；自动检查不能代替人工复核",
+      "source_url": "https://www.shanghai.gov.cn/nw12344/20240816/da714ee861614ef2abae9a2b7ca317b6.html",
+      "source_published_date": "2024-08-16",
+      "event_date_basis": "正文成文日2024-07-25；页面印发日2024-07-26，发布日2024-08-16，按成文日记录",
+      "verification_status": "verified",
+      "human_review_status": "pending",
+      "scope": "仅核验claim_supported中的历史事实；路径和财务影响不属于已核验事实"
+    },
+    {
+      "event_id": "EVT_007",
+      "evidence_ids": [
+        "EVD_007"
+      ],
+      "reviewed_at": "2026-10-12",
+      "reviewer": "Codex",
+      "method": "原始页面正文或PDF逐条阅读；自动检查不能代替人工复核",
+      "source_url": "https://www.caac.gov.cn/local/ZNGLJ/ZN_DQYW/202404/t20240416_223537.html",
+      "source_published_date": "2024-04-16",
+      "event_date_basis": "原文明确发生日期",
+      "verification_status": "verified",
+      "human_review_status": "pending",
+      "scope": "仅核验claim_supported中的历史事实；路径和财务影响不属于已核验事实"
+    },
+    {
+      "event_id": "EVT_008",
+      "evidence_ids": [
+        "EVD_008"
+      ],
+      "reviewed_at": "2026-10-12",
+      "reviewer": "Codex",
+      "method": "原始页面正文或PDF逐条阅读；自动检查不能代替人工复核",
+      "source_url": "https://www.miit.gov.cn/gyhxxhb/jgsj/dzxxs/dzjc/art/2025/art_b6fabc541b094897b3f27eea54981762.html",
+      "source_published_date": "2025-02-27",
+      "event_date_basis": "年度统计期末，非单日现货报价",
+      "verification_status": "verified",
+      "human_review_status": "pending",
+      "scope": "仅核验claim_supported中的历史事实；路径和财务影响不属于已核验事实"
+    },
+    {
+      "event_id": "EVT_009",
+      "evidence_ids": [
+        "EVD_009"
+      ],
+      "reviewed_at": "2026-10-12",
+      "reviewer": "Codex",
+      "method": "原始页面正文或PDF逐条阅读；自动检查不能代替人工复核",
+      "source_url": "https://www.ehang.com/news/1133.html",
+      "source_published_date": "2024-11-11",
+      "event_date_basis": "企业合作公告日期",
+      "verification_status": "verified",
+      "human_review_status": "pending",
+      "scope": "仅核验claim_supported中的历史事实；路径和财务影响不属于已核验事实"
+    },
+    {
+      "event_id": "EVT_010",
+      "evidence_ids": [
+        "EVD_010"
+      ],
+      "reviewed_at": "2026-10-12",
+      "reviewer": "Codex",
+      "method": "原始页面正文或PDF逐条阅读；自动检查不能代替人工复核",
+      "source_url": "https://www.ehang.com/news/1101.html",
+      "source_published_date": "2024-06-25",
+      "event_date_basis": "原文明确发生日期",
+      "verification_status": "verified",
+      "human_review_status": "pending",
+      "scope": "仅核验claim_supported中的历史事实；路径和财务影响不属于已核验事实"
+    },
+    {
+      "event_id": "EVT_011",
+      "evidence_ids": [
+        "EVD_011"
+      ],
+      "reviewed_at": "2026-10-12",
+      "reviewer": "Codex",
+      "method": "原始页面正文或PDF逐条阅读；自动检查不能代替人工复核",
+      "source_url": "https://www.miit.gov.cn/jgsj/zbes/wjfb/art/2024/art_eea7f1d8dd25444bb370faaaf26637d6.html",
+      "source_published_date": "2024-03-27",
+      "event_date_basis": "通知成文及发布同日",
+      "verification_status": "verified",
+      "human_review_status": "pending",
+      "scope": "仅核验claim_supported中的历史事实；路径和财务影响不属于已核验事实"
+    },
+    {
+      "event_id": "EVT_012",
+      "evidence_ids": [
+        "EVD_012"
+      ],
+      "reviewed_at": "2026-10-12",
+      "reviewer": "Codex",
+      "method": "原始页面正文或PDF逐条阅读；自动检查不能代替人工复核",
+      "source_url": "https://www.ahlx.gov.cn/OpennessContent/show/3385063.html",
+      "source_published_date": "2024-04-24",
+      "event_date_basis": "通知正文落款；转载页元数据成文日期与正文不同，以正文为准",
+      "verification_status": "verified",
+      "human_review_status": "pending",
+      "scope": "仅核验claim_supported中的历史事实；路径和财务影响不属于已核验事实"
+    },
+    {
+      "event_id": "EVT_013",
+      "evidence_ids": [
+        "EVD_013"
+      ],
+      "reviewed_at": "2026-10-12",
+      "reviewer": "Codex",
+      "method": "原始页面正文或PDF逐条阅读；自动检查不能代替人工复核",
+      "source_url": "https://www.szrd.gov.cn/v2/zx/szfg/content/post_1123253.html",
+      "source_published_date": "2024-01-03",
+      "event_date_basis": "人大公告落款与公布日期",
+      "verification_status": "verified",
+      "human_review_status": "pending",
+      "scope": "仅核验claim_supported中的历史事实；路径和财务影响不属于已核验事实"
+    },
+    {
+      "event_id": "EVT_014",
+      "evidence_ids": [
+        "EVD_014"
+      ],
+      "reviewed_at": "2026-10-12",
+      "reviewer": "Codex",
+      "method": "原始页面正文或PDF逐条阅读；自动检查不能代替人工复核",
+      "source_url": "https://www.js.gov.cn/art/2024/9/4/art_87051_11403265.html",
+      "source_published_date": "2024-09-04",
+      "event_date_basis": "文件正文落款成文日期",
+      "verification_status": "verified",
+      "human_review_status": "pending",
+      "scope": "仅核验claim_supported中的历史事实；路径和财务影响不属于已核验事实"
+    },
+    {
+      "event_id": "EVT_015",
+      "evidence_ids": [
+        "EVD_015"
+      ],
+      "reviewed_at": "2026-10-12",
+      "reviewer": "Codex",
+      "method": "原始页面正文或PDF逐条阅读；自动检查不能代替人工复核",
+      "source_url": "https://www.gz.gov.cn/gzzcwjk/gzdata/content/post_9681691.html",
+      "source_published_date": "2024-05-31",
+      "event_date_basis": "通知落款成文日期",
+      "verification_status": "verified",
+      "human_review_status": "pending",
+      "scope": "仅核验claim_supported中的历史事实；路径和财务影响不属于已核验事实"
+    },
+    {
+      "event_id": "EVT_016",
+      "evidence_ids": [
+        "EVD_016"
+      ],
+      "reviewed_at": "2026-10-12",
+      "reviewer": "Codex",
+      "method": "原始页面正文或PDF逐条阅读；自动检查不能代替人工复核",
+      "source_url": "https://ybsgxq.sczwfw.gov.cn/art/2024/6/24/art_63297_262202.html",
+      "source_published_date": "2024-06-24",
+      "event_date_basis": "原文件落款成文日期；所用来源为政府官方转载",
+      "verification_status": "verified",
+      "human_review_status": "pending",
+      "scope": "仅核验claim_supported中的历史事实；路径和财务影响不属于已核验事实"
+    },
+    {
+      "event_id": "EVT_017",
+      "evidence_ids": [
+        "EVD_017"
+      ],
+      "reviewed_at": "2026-10-12",
+      "reviewer": "Codex",
+      "method": "原始页面正文或PDF逐条阅读；自动检查不能代替人工复核",
+      "source_url": "https://www.ehang.com/news/1102.html",
+      "source_published_date": "2024-07-01",
+      "event_date_basis": "企业公开披露日期，未独立确认签约日",
+      "verification_status": "verified",
+      "human_review_status": "pending",
+      "scope": "仅核验claim_supported中的历史事实；路径和财务影响不属于已核验事实"
+    },
+    {
+      "event_id": "EVT_018",
+      "evidence_ids": [
+        "EVD_018"
+      ],
+      "reviewed_at": "2026-10-12",
+      "reviewer": "Codex",
+      "method": "原始页面正文或PDF逐条阅读；自动检查不能代替人工复核",
+      "source_url": "https://www.ehang.com/news/1108.html",
+      "source_published_date": "2024-07-19",
+      "event_date_basis": "企业合作公告日期",
+      "verification_status": "verified",
+      "human_review_status": "pending",
+      "scope": "仅核验claim_supported中的历史事实；路径和财务影响不属于已核验事实"
+    },
+    {
+      "event_id": "EVT_019",
+      "evidence_ids": [
+        "EVD_019"
+      ],
+      "reviewed_at": "2026-10-12",
+      "reviewer": "Codex",
+      "method": "原始页面正文或PDF逐条阅读；自动检查不能代替人工复核",
+      "source_url": "https://www.ehang.com/news/1140.html",
+      "source_published_date": "2024-11-15",
+      "event_date_basis": "企业合作公告日期",
+      "verification_status": "verified",
+      "human_review_status": "pending",
+      "scope": "仅核验claim_supported中的历史事实；路径和财务影响不属于已核验事实"
+    },
+    {
+      "event_id": "EVT_020",
+      "evidence_ids": [
+        "EVD_020"
+      ],
+      "reviewed_at": "2026-10-12",
+      "reviewer": "Codex",
+      "method": "原始页面正文或PDF逐条阅读；自动检查不能代替人工复核",
+      "source_url": "https://www.ehang.com/news/1162.html",
+      "source_published_date": "2024-12-21",
+      "event_date_basis": "企业合作公告日期",
+      "verification_status": "verified",
+      "human_review_status": "pending",
+      "scope": "仅核验claim_supported中的历史事实；路径和财务影响不属于已核验事实"
+    },
+    {
+      "event_id": "EVT_021",
+      "evidence_ids": [
+        "EVD_021"
+      ],
+      "reviewed_at": "2026-10-12",
+      "reviewer": "Codex",
+      "method": "原始页面正文或PDF逐条阅读；自动检查不能代替人工复核",
+      "source_url": "https://www.ehang.com/news/1168.html",
+      "source_published_date": "2024-12-27",
+      "event_date_basis": "企业合作公告日期",
+      "verification_status": "verified",
+      "human_review_status": "pending",
+      "scope": "仅核验claim_supported中的历史事实；路径和财务影响不属于已核验事实"
+    },
+    {
+      "event_id": "EVT_022",
+      "evidence_ids": [
+        "EVD_022"
+      ],
+      "reviewed_at": "2026-10-12",
+      "reviewer": "Codex",
+      "method": "原始页面正文或PDF逐条阅读；自动检查不能代替人工复核",
+      "source_url": "https://www.ehang.com/news/1187.html",
+      "source_published_date": "2025-02-25",
+      "event_date_basis": "企业框架合作披露日期",
+      "verification_status": "verified",
+      "human_review_status": "pending",
+      "scope": "仅核验claim_supported中的历史事实；路径和财务影响不属于已核验事实"
+    },
+    {
+      "event_id": "EVT_023",
+      "evidence_ids": [
+        "EVD_023"
+      ],
+      "reviewed_at": "2026-10-12",
+      "reviewer": "Codex",
+      "method": "原始页面正文或PDF逐条阅读；自动检查不能代替人工复核",
+      "source_url": "https://zn.caac.gov.cn/ZN_DQYW/202308/t20230831_221215.html",
+      "source_published_date": "2023-08-31",
+      "event_date_basis": "监管进展披露日期，非颁证日期",
+      "verification_status": "verified",
+      "human_review_status": "pending",
+      "scope": "仅核验claim_supported中的历史事实；路径和财务影响不属于已核验事实"
+    },
+    {
+      "event_id": "EVT_024",
+      "evidence_ids": [
+        "EVD_024"
+      ],
+      "reviewed_at": "2026-10-12",
+      "reviewer": "Codex",
+      "method": "原始页面正文或PDF逐条阅读；自动检查不能代替人工复核",
+      "source_url": "https://www.ehang.com/cn/news/1195.html",
+      "source_published_date": "2025-03-30",
+      "event_date_basis": "原文明确发生日期",
+      "verification_status": "verified",
+      "human_review_status": "pending",
+      "scope": "仅核验claim_supported中的历史事实；路径和财务影响不属于已核验事实"
+    },
+    {
+      "event_id": "EVT_025",
+      "evidence_ids": [
+        "EVD_025"
+      ],
+      "reviewed_at": "2026-10-12",
+      "reviewer": "Codex",
+      "method": "原始页面正文或PDF逐条阅读；自动检查不能代替人工复核",
+      "source_url": "https://gwcfc.com/news/show-237.aspx",
+      "source_published_date": "2024-06-07",
+      "event_date_basis": "原文明确发生日期",
+      "verification_status": "verified",
+      "human_review_status": "pending",
+      "scope": "仅核验claim_supported中的历史事实；路径和财务影响不属于已核验事实"
+    },
+    {
+      "event_id": "EVT_026",
+      "evidence_ids": [
+        "EVD_026"
+      ],
+      "reviewed_at": "2026-10-12",
+      "reviewer": "Codex",
+      "method": "原始页面正文或PDF逐条阅读；自动检查不能代替人工复核",
+      "source_url": "https://dataclouds.cninfo.com.cn/shgonggao/2023/2023-12-15/43bf3b0e9aec11eeb59dfa163e39923a.pdf",
+      "source_published_date": "2023-12-15",
+      "event_date_basis": "交流期2023-12-05至13，按期末记录；不是单日价格变化",
+      "verification_status": "verified",
+      "human_review_status": "pending",
+      "scope": "仅核验claim_supported中的历史事实；路径和财务影响不属于已核验事实"
+    },
+    {
+      "event_id": "EVT_027",
+      "evidence_ids": [
+        "EVD_027"
+      ],
+      "reviewed_at": "2026-10-12",
+      "reviewer": "Codex",
+      "method": "原始页面正文或PDF逐条阅读；自动检查不能代替人工复核",
+      "source_url": "https://meeb.sz.gov.cn/ztfw/ztzl/zfdlbzl/2024/szlb/content/post_11233613.html",
+      "source_published_date": "2024-04-08",
+      "event_date_basis": "主管部门进展披露日期；覆盖2024年以来累计活动",
+      "verification_status": "verified",
+      "human_review_status": "pending",
+      "scope": "仅核验claim_supported中的历史事实；路径和财务影响不属于已核验事实"
+    },
+    {
+      "event_id": "EVT_028",
+      "evidence_ids": [
+        "EVD_028"
+      ],
+      "reviewed_at": "2026-10-12",
+      "reviewer": "Codex",
+      "method": "原始页面正文或PDF逐条阅读；自动检查不能代替人工复核",
+      "source_url": "https://www.mem.gov.cn/xw/xwfbh/2024n07y12xwfbh_6136/wzsl_4260/202407/t20240712_494592.shtml",
+      "source_published_date": "2024-07-12",
+      "event_date_basis": "原文7月8日晚合龙；覆盖7月5日至8日处置期",
+      "verification_status": "verified",
+      "human_review_status": "pending",
+      "scope": "仅核验claim_supported中的历史事实；路径和财务影响不属于已核验事实"
+    },
+    {
+      "event_id": "EVT_029",
+      "evidence_ids": [
+        "EVD_029"
+      ],
+      "reviewed_at": "2026-10-12",
+      "reviewer": "Codex",
+      "method": "原始页面正文或PDF逐条阅读；自动检查不能代替人工复核",
+      "source_url": "https://www.ehang.com/news/1135.html",
+      "source_published_date": "2024-11-13",
+      "event_date_basis": "原文明确发生日期",
+      "verification_status": "verified",
+      "human_review_status": "pending",
+      "scope": "仅核验claim_supported中的历史事实；路径和财务影响不属于已核验事实"
+    },
+    {
+      "event_id": "EVT_030",
+      "evidence_ids": [
+        "EVD_030"
+      ],
+      "reviewed_at": "2026-10-12",
+      "reviewer": "Codex",
+      "method": "原始页面正文或PDF逐条阅读；自动检查不能代替人工复核",
+      "source_url": "https://www.ehang.com/news/1183.html",
+      "source_published_date": "2025-01-21",
+      "event_date_basis": "原文明确发生日期",
+      "verification_status": "verified",
+      "human_review_status": "pending",
+      "scope": "仅核验claim_supported中的历史事实；路径和财务影响不属于已核验事实"
+    }
+  ]
+}
