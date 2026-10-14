@@ -15,7 +15,9 @@ class EvidenceCorpusTests(unittest.TestCase):
     def assert_invalid(self, mutate, fragment):
         data = copy.deepcopy(self.corpus)
         mutate(data)
-        self.assertTrue(any(fragment in e for e in validate(*data)), fragment)
+        errors = validate(*data)
+        self.assertTrue(any(fragment in e for e in errors), fragment)
+        return errors
 
     def test_corpus_meets_quotas_and_references(self):
         self.assertEqual([], validate(*self.corpus))
@@ -31,6 +33,18 @@ class EvidenceCorpusTests(unittest.TestCase):
 
     def test_invalid_calendar_date_rejected(self):
         self.assert_invalid(lambda d: d[0][0].update(event_date='2024-02-30'), 'invalid event_date')
+
+    def test_future_dates_cannot_be_authorized_by_forged_generated_at(self):
+        def forge_future_dates(data):
+            data[4]['generated_at'] = '9999-12-31'
+            data[0][0]['event_date'] = '2099-01-01'
+            data[1][0]['published_date'] = '2099-01-01'
+            data[4]['records'][0]['reviewed_at'] = '2099-01-01'
+
+        errors = self.assert_invalid(forge_future_dates, 'invalid generated_at')
+        self.assertTrue(any('invalid event_date' in error for error in errors))
+        self.assertTrue(any('invalid published_date' in error for error in errors))
+        self.assertTrue(any('review lacks date/basis' in error for error in errors))
 
     def test_unknown_node_rejected(self):
         self.assert_invalid(lambda d: d[3][0]['expected_path'].append('NODE_UNKNOWN'), 'unknown/short expected path')

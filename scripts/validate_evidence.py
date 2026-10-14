@@ -37,6 +37,9 @@ def load(root=ROOT):
 
 def validate(events, evidence, nodes, cases, review):
     errors = []
+    # Dates in the review manifest are editable corpus data, so they cannot
+    # establish their own trusted upper bound. Use the validator's clock.
+    trusted_cutoff = date.today()
 
     def check(ok, message):
         if not ok:
@@ -50,8 +53,8 @@ def validate(events, evidence, nodes, cases, review):
 
     def valid_date(value):
         try:
-            return bool(re.fullmatch(r'\d{4}-\d{2}-\d{2}', value)) and date.fromisoformat(value) <= date.fromisoformat(review['generated_at'])
-        except (ValueError, TypeError, KeyError):
+            return bool(re.fullmatch(r'\d{4}-\d{2}-\d{2}', value)) and date.fromisoformat(value) <= trusted_cutoff
+        except (ValueError, TypeError):
             return False
 
     def valid_url(value):
@@ -63,6 +66,7 @@ def validate(events, evidence, nodes, cases, review):
     node_map = unique(nodes, 'node_id', 'NODE_')
     unique(cases, 'case_id', 'CASE_')
     check(len(events) >= 30 and len(evidence) >= 30 and len(cases) >= 30, 'minimum corpus size is 30')
+    check(valid_date(review.get('generated_at', '')), 'invalid generated_at')
     counts = Counter(e.get('event_type') for e in events)
     for kind, quota in QUOTAS.items():
         check(counts[kind] >= quota, f'{kind}: requires {quota} events')
