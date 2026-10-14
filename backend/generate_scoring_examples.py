@@ -30,7 +30,7 @@ def generate(directory=Path('data')):
         rows.append(dict(common,period_type='market',report_period='',market_cap=5000+100*i,pe_ttm=20+i,pb=2+i*.1,ps_ttm=3+i*.1,total_return_1y=-10+i,volatility_1y=25+i))
     fields=['stock_code','company_name','report_period','period_type',*ANNUAL_FIELDS,*MARKET_FIELDS,'as_of_date','currency_unit','missing_reason','source_url','source_title','published_date','verification_status']
     with (directory/'financials.example.csv').open('w',encoding='utf-8',newline='') as f:
-        writer=csv.DictWriter(f,fieldnames=fields); writer.writeheader()
+        writer=csv.DictWriter(f,fieldnames=fields,lineterminator='\n'); writer.writeheader()
         for r in rows: writer.writerow({k:r.get(k,'null' if k in ANNUAL_FIELDS+MARKET_FIELDS else '') for k in fields})
     for name,data in [('scoring_companies.example.json',companies),('company_universe.provisional.json',provisional)]:
         (directory/name).write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
