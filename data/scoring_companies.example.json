@@ -1,0 +1,182 @@
+[
+  {
+    "stock_code": "300699.SZ",
+    "company_name": "光威复材",
+    "chain_role": "materials_power",
+    "exposure_score": 40,
+    "verification_status": "mock",
+    "source_url": "https://example.invalid/synthetic-wind-v1",
+    "source_title": "Synthetic fixture; not issuer facts"
+  },
+  {
+    "stock_code": "688295.SH",
+    "company_name": "中复神鹰",
+    "chain_role": "materials_power",
+    "exposure_score": 45,
+    "verification_status": "mock",
+    "source_url": "https://example.invalid/synthetic-wind-v1",
+    "source_title": "Synthetic fixture; not issuer facts"
+  },
+  {
+    "stock_code": "001696.SZ",
+    "company_name": "宗申动力",
+    "chain_role": "materials_power",
+    "exposure_score": 50,
+    "verification_status": "mock",
+    "source_url": "https://example.invalid/synthetic-wind-v1",
+    "source_title": "Synthetic fixture; not issuer facts"
+  },
+  {
+    "stock_code": "600580.SH",
+    "company_name": "卧龙电驱",
+    "chain_role": "materials_power",
+    "exposure_score": 55,
+    "verification_status": "mock",
+    "source_url": "https://example.invalid/synthetic-wind-v1",
+    "source_title": "Synthetic fixture; not issuer facts"
+  },
+  {
+    "stock_code": "600372.SH",
+    "company_name": "中航机载",
+    "chain_role": "electronics_control",
+    "exposure_score": 40,
+    "verification_status": "mock",
+    "source_url": "https://example.invalid/synthetic-wind-v1",
+    "source_title": "Synthetic fixture; not issuer facts"
+  },
+  {
+    "stock_code": "002465.SZ",
+    "company_name": "海格通信",
+    "chain_role": "electronics_control",
+    "exposure_score": 45,
+    "verification_status": "mock",
+    "source_url": "https://example.invalid/synthetic-wind-v1",
+    "source_title": "Synthetic fixture; not issuer facts"
+  },
+  {
+    "stock_code": "002151.SZ",
+    "company_name": "北斗星通",
+    "chain_role": "electronics_control",
+    "exposure_score": 50,
+    "verification_status": "mock",
+    "source_url": "https://example.invalid/synthetic-wind-v1",
+    "source_title": "Synthetic fixture; not issuer facts"
+  },
+  {
+    "stock_code": "300627.SZ",
+    "company_name": "华测导航",
+    "chain_role": "electronics_control",
+    "exposure_score": 55,
+    "verification_status": "mock",
+    "source_url": "https://example.invalid/synthetic-wind-v1",
+    "source_title": "Synthetic fixture; not issuer facts"
+  },
+  {
+    "stock_code": "688070.SH",
+    "company_name": "纵横股份",
+    "chain_role": "aircraft",
+    "exposure_score": 40,
+    "verification_status": "mock",
+    "source_url": "https://example.invalid/synthetic-wind-v1",
+    "source_title": "Synthetic fixture; not issuer facts"
+  },
+  {
+    "stock_code": "002389.SZ",
+    "company_name": "航天彩虹",
+    "chain_role": "aircraft",
+    "exposure_score": 45,
+    "verification_status": "mock",
+    "source_url": "https://example.invalid/synthetic-wind-v1",
+    "source_title": "Synthetic fixture; not issuer facts"
+  },
+  {
+    "stock_code": "002085.SZ",
+    "company_name": "万丰奥威",
+    "chain_role": "aircraft",
+    "exposure_score": 50,
+    "verification_status": "mock",
+    "source_url": "https://example.invalid/synthetic-wind-v1",
+    "source_title": "Synthetic fixture; not issuer facts"
+  },
+  {
+    "stock_code": "600038.SH",
+    "company_name": "中直股份",
+    "chain_role": "aircraft",
+    "exposure_score": 55,
+    "verification_status": "mock",
+    "source_url": "https://example.invalid/synthetic-wind-v1",
+    "source_title": "Synthetic fixture; not issuer facts"
+  },
+  {
+    "stock_code": "688631.SH",
+    "company_name": "莱斯信息",
+    "chain_role": "infrastructure",
+    "exposure_score": 40,
+    "verification_status": "mock",
+    "source_url": "https://example.invalid/synthetic-wind-v1",
+    "source_title": "Synthetic fixture; not issuer facts"
+  },
+  {
+    "stock_code": "000801.SZ",
+    "company_name": "四川九洲",
+    "chain_role": "infrastructure",
+    "exposure_score": 45,
+    "verification_status": "mock",
+    "source_url": "https://example.invalid/synthetic-wind-v1",
+    "source_title": "Synthetic fixture; not issuer facts"
+  },
+  {
+    "stock_code": "301091.SZ",
+    "company_name": "深城交",
+    "chain_role": "infrastructure",
+    "exposure_score": 50,
+    "verification_status": "mock",
+    "source_url": "https://example.invalid/synthetic-wind-v1",
+    "source_title": "Synthetic fixture; not issuer facts"
+  },
+  {
+    "stock_code": "300284.SZ",
+    "company_name": "苏交科",
+    "chain_role": "infrastructure",
+    "exposure_score": 55,
+    "verification_status": "mock",
+    "source_url": "https://example.invalid/synthetic-wind-v1",
+    "source_title": "Synthetic fixture; not issuer facts"
+  },
+  {
+    "stock_code": "000099.SZ",
+    "company_name": "中信海直",
+    "chain_role": "operations",
+    "exposure_score": 40,
+    "verification_status": "mock",
+    "source_url": "https://example.invalid/synthetic-wind-v1",
+    "source_title": "Synthetic fixture; not issuer facts"
+  },
+  {
+    "stock_code": "002352.SZ",
+    "company_name": "顺丰控股",
+    "chain_role": "operations",
+    "exposure_score": 45,
+    "verification_status": "mock",
+    "source_url": "https://example.invalid/synthetic-wind-v1",
+    "source_title": "Synthetic fixture; not issuer facts"
+  },
+  {
+    "stock_code": "002023.SZ",
+    "company_name": "海特高新",
+    "chain_role": "operations",
+    "exposure_score": 50,
+    "verification_status": "mock",
+    "source_url": "https://example.invalid/synthetic-wind-v1",
+    "source_title": "Synthetic fixture; not issuer facts"
+  },
+  {
+    "stock_code": "688568.SH",
+    "company_name": "中科星图",
+    "chain_role": "operations",
+    "exposure_score": 55,
+    "verification_status": "mock",
+    "source_url": "https://example.invalid/synthetic-wind-v1",
+    "source_title": "Synthetic fixture; not issuer facts"
+  }
+]

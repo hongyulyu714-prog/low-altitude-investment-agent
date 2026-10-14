@@ -42,6 +42,17 @@ uvicorn backend.main:app --reload
 
 启动服务后可调用 `POST /api/v1/analyze`，请求体为 `{"event_id":"EVT_BATTERY_PRICE_DOWN_001"}`。接口字段与运行留痕说明见 [总控架构](docs/ARCHITECTURE.md)。
 
+## Wind评分 V1（Issue #3）
+
+20家公司临时研究名单已固定；正式映射尚未交付，全部示例财务、暴露度及排名均为mock，不代表公司事实。无需Wind账号可复现三类事件排序：
+
+```bash
+python -m backend.scoring --allow-mock --output data/private/company_impact.json
+python -m unittest discover -s tests -v
+```
+
+参见[字段字典](docs/WIND_DATA_DICTIONARY.md)、[评分方法与接入说明](docs/SCORING_METHOD.md)。真实映射和规则未核验时输出null及资料不足原因，不以0或mock冒充实际评分；Wind原始数据保持私有。
+
 ## 已接入的开源基础
 
 > [!TIP]

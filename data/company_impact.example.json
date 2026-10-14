@@ -1,0 +1,1688 @@
+{
+  "EVT_POLICY_SUPPORT": [
+    {
+      "stock_code": "300284.SZ",
+      "company_name": "苏交科",
+      "event_id": "EVT_POLICY_SUPPORT",
+      "exposure": 55.0,
+      "sensitivity": 90,
+      "financial_materiality": 41.975,
+      "impact_score": 20.78,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "positive",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 54.0,
+        "cashflow_pressure": 27.5,
+        "leverage": 43.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 1
+    },
+    {
+      "stock_code": "600038.SH",
+      "company_name": "中直股份",
+      "event_id": "EVT_POLICY_SUPPORT",
+      "exposure": 55.0,
+      "sensitivity": 85,
+      "financial_materiality": 41.975,
+      "impact_score": 19.62,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "positive",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 54.0,
+        "cashflow_pressure": 27.500000000000004,
+        "leverage": 43.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 2
+    },
+    {
+      "stock_code": "301091.SZ",
+      "company_name": "深城交",
+      "event_id": "EVT_POLICY_SUPPORT",
+      "exposure": 50.0,
+      "sensitivity": 90,
+      "financial_materiality": 43.4,
+      "impact_score": 19.53,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "positive",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 56.0,
+        "cashflow_pressure": 30.0,
+        "leverage": 42.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 3
+    },
+    {
+      "stock_code": "688568.SH",
+      "company_name": "中科星图",
+      "event_id": "EVT_POLICY_SUPPORT",
+      "exposure": 55.0,
+      "sensitivity": 80,
+      "financial_materiality": 41.975,
+      "impact_score": 18.47,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "positive",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 54.0,
+        "cashflow_pressure": 27.5,
+        "leverage": 43.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 4
+    },
+    {
+      "stock_code": "002085.SZ",
+      "company_name": "万丰奥威",
+      "event_id": "EVT_POLICY_SUPPORT",
+      "exposure": 50.0,
+      "sensitivity": 85,
+      "financial_materiality": 43.4,
+      "impact_score": 18.45,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "positive",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 56.0,
+        "cashflow_pressure": 30.0,
+        "leverage": 42.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 5
+    },
+    {
+      "stock_code": "000801.SZ",
+      "company_name": "四川九洲",
+      "event_id": "EVT_POLICY_SUPPORT",
+      "exposure": 45.0,
+      "sensitivity": 90,
+      "financial_materiality": 44.825,
+      "impact_score": 18.15,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "positive",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 58.0,
+        "cashflow_pressure": 32.5,
+        "leverage": 41.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 6
+    },
+    {
+      "stock_code": "002023.SZ",
+      "company_name": "海特高新",
+      "event_id": "EVT_POLICY_SUPPORT",
+      "exposure": 50.0,
+      "sensitivity": 80,
+      "financial_materiality": 43.4,
+      "impact_score": 17.36,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "positive",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 56.0,
+        "cashflow_pressure": 30.0,
+        "leverage": 42.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 7
+    },
+    {
+      "stock_code": "002389.SZ",
+      "company_name": "航天彩虹",
+      "event_id": "EVT_POLICY_SUPPORT",
+      "exposure": 45.0,
+      "sensitivity": 85,
+      "financial_materiality": 44.825,
+      "impact_score": 17.15,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "positive",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 58.0,
+        "cashflow_pressure": 32.5,
+        "leverage": 41.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 8
+    },
+    {
+      "stock_code": "688631.SH",
+      "company_name": "莱斯信息",
+      "event_id": "EVT_POLICY_SUPPORT",
+      "exposure": 40.0,
+      "sensitivity": 90,
+      "financial_materiality": 46.25,
+      "impact_score": 16.65,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "positive",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 60.0,
+        "cashflow_pressure": 35.0,
+        "leverage": 40.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 9
+    },
+    {
+      "stock_code": "002352.SZ",
+      "company_name": "顺丰控股",
+      "event_id": "EVT_POLICY_SUPPORT",
+      "exposure": 45.0,
+      "sensitivity": 80,
+      "financial_materiality": 44.825,
+      "impact_score": 16.14,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "positive",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 58.0,
+        "cashflow_pressure": 32.5,
+        "leverage": 41.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 10
+    },
+    {
+      "stock_code": "688070.SH",
+      "company_name": "纵横股份",
+      "event_id": "EVT_POLICY_SUPPORT",
+      "exposure": 40.0,
+      "sensitivity": 85,
+      "financial_materiality": 46.25,
+      "impact_score": 15.72,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "positive",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 60.0,
+        "cashflow_pressure": 35.0,
+        "leverage": 40.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 11
+    },
+    {
+      "stock_code": "000099.SZ",
+      "company_name": "中信海直",
+      "event_id": "EVT_POLICY_SUPPORT",
+      "exposure": 40.0,
+      "sensitivity": 80,
+      "financial_materiality": 46.25,
+      "impact_score": 14.8,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "positive",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 60.0,
+        "cashflow_pressure": 35.0,
+        "leverage": 40.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 12
+    },
+    {
+      "stock_code": "300627.SZ",
+      "company_name": "华测导航",
+      "event_id": "EVT_POLICY_SUPPORT",
+      "exposure": 55.0,
+      "sensitivity": 60,
+      "financial_materiality": 41.975,
+      "impact_score": 13.85,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "positive",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 54.0,
+        "cashflow_pressure": 27.5,
+        "leverage": 43.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 13
+    },
+    {
+      "stock_code": "002151.SZ",
+      "company_name": "北斗星通",
+      "event_id": "EVT_POLICY_SUPPORT",
+      "exposure": 50.0,
+      "sensitivity": 60,
+      "financial_materiality": 43.4,
+      "impact_score": 13.02,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "positive",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 56.0,
+        "cashflow_pressure": 30.0,
+        "leverage": 42.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 14
+    },
+    {
+      "stock_code": "600580.SH",
+      "company_name": "卧龙电驱",
+      "event_id": "EVT_POLICY_SUPPORT",
+      "exposure": 55.0,
+      "sensitivity": 55,
+      "financial_materiality": 41.975,
+      "impact_score": 12.7,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "positive",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 54.0,
+        "cashflow_pressure": 27.5,
+        "leverage": 43.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 15
+    },
+    {
+      "stock_code": "002465.SZ",
+      "company_name": "海格通信",
+      "event_id": "EVT_POLICY_SUPPORT",
+      "exposure": 45.0,
+      "sensitivity": 60,
+      "financial_materiality": 44.825,
+      "impact_score": 12.1,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "positive",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 58.0,
+        "cashflow_pressure": 32.5,
+        "leverage": 41.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 16
+    },
+    {
+      "stock_code": "001696.SZ",
+      "company_name": "宗申动力",
+      "event_id": "EVT_POLICY_SUPPORT",
+      "exposure": 50.0,
+      "sensitivity": 55,
+      "financial_materiality": 43.4,
+      "impact_score": 11.94,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "positive",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 56.0,
+        "cashflow_pressure": 30.0,
+        "leverage": 42.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 17
+    },
+    {
+      "stock_code": "600372.SH",
+      "company_name": "中航机载",
+      "event_id": "EVT_POLICY_SUPPORT",
+      "exposure": 40.0,
+      "sensitivity": 60,
+      "financial_materiality": 46.25,
+      "impact_score": 11.1,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "positive",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 60.0,
+        "cashflow_pressure": 35.0,
+        "leverage": 40.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 18
+    },
+    {
+      "stock_code": "688295.SH",
+      "company_name": "中复神鹰",
+      "event_id": "EVT_POLICY_SUPPORT",
+      "exposure": 45.0,
+      "sensitivity": 55,
+      "financial_materiality": 44.825,
+      "impact_score": 11.09,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "positive",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 58.0,
+        "cashflow_pressure": 32.5,
+        "leverage": 41.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 19
+    },
+    {
+      "stock_code": "300699.SZ",
+      "company_name": "光威复材",
+      "event_id": "EVT_POLICY_SUPPORT",
+      "exposure": 40.0,
+      "sensitivity": 55,
+      "financial_materiality": 46.25,
+      "impact_score": 10.18,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "positive",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 60.0,
+        "cashflow_pressure": 35.0,
+        "leverage": 40.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 20
+    }
+  ],
+  "EVT_INPUT_PRICE_UP": [
+    {
+      "stock_code": "600038.SH",
+      "company_name": "中直股份",
+      "event_id": "EVT_INPUT_PRICE_UP",
+      "exposure": 55.0,
+      "sensitivity": 90,
+      "financial_materiality": 41.975,
+      "impact_score": 20.78,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "negative",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 54.0,
+        "cashflow_pressure": 27.500000000000004,
+        "leverage": 43.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 1
+    },
+    {
+      "stock_code": "002085.SZ",
+      "company_name": "万丰奥威",
+      "event_id": "EVT_INPUT_PRICE_UP",
+      "exposure": 50.0,
+      "sensitivity": 90,
+      "financial_materiality": 43.4,
+      "impact_score": 19.53,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "negative",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 56.0,
+        "cashflow_pressure": 30.0,
+        "leverage": 42.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 2
+    },
+    {
+      "stock_code": "600580.SH",
+      "company_name": "卧龙电驱",
+      "event_id": "EVT_INPUT_PRICE_UP",
+      "exposure": 55.0,
+      "sensitivity": 80,
+      "financial_materiality": 41.975,
+      "impact_score": 18.47,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "uncertain",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 54.0,
+        "cashflow_pressure": 27.5,
+        "leverage": 43.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 3
+    },
+    {
+      "stock_code": "002389.SZ",
+      "company_name": "航天彩虹",
+      "event_id": "EVT_INPUT_PRICE_UP",
+      "exposure": 45.0,
+      "sensitivity": 90,
+      "financial_materiality": 44.825,
+      "impact_score": 18.15,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "negative",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 58.0,
+        "cashflow_pressure": 32.5,
+        "leverage": 41.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 4
+    },
+    {
+      "stock_code": "001696.SZ",
+      "company_name": "宗申动力",
+      "event_id": "EVT_INPUT_PRICE_UP",
+      "exposure": 50.0,
+      "sensitivity": 80,
+      "financial_materiality": 43.4,
+      "impact_score": 17.36,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "uncertain",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 56.0,
+        "cashflow_pressure": 30.0,
+        "leverage": 42.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 5
+    },
+    {
+      "stock_code": "688070.SH",
+      "company_name": "纵横股份",
+      "event_id": "EVT_INPUT_PRICE_UP",
+      "exposure": 40.0,
+      "sensitivity": 90,
+      "financial_materiality": 46.25,
+      "impact_score": 16.65,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "negative",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 60.0,
+        "cashflow_pressure": 35.0,
+        "leverage": 40.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 6
+    },
+    {
+      "stock_code": "688295.SH",
+      "company_name": "中复神鹰",
+      "event_id": "EVT_INPUT_PRICE_UP",
+      "exposure": 45.0,
+      "sensitivity": 80,
+      "financial_materiality": 44.825,
+      "impact_score": 16.14,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "uncertain",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 58.0,
+        "cashflow_pressure": 32.5,
+        "leverage": 41.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 7
+    },
+    {
+      "stock_code": "300699.SZ",
+      "company_name": "光威复材",
+      "event_id": "EVT_INPUT_PRICE_UP",
+      "exposure": 40.0,
+      "sensitivity": 80,
+      "financial_materiality": 46.25,
+      "impact_score": 14.8,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "uncertain",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 60.0,
+        "cashflow_pressure": 35.0,
+        "leverage": 40.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 8
+    },
+    {
+      "stock_code": "300627.SZ",
+      "company_name": "华测导航",
+      "event_id": "EVT_INPUT_PRICE_UP",
+      "exposure": 55.0,
+      "sensitivity": 35,
+      "financial_materiality": 41.975,
+      "impact_score": 8.08,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "negative",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 54.0,
+        "cashflow_pressure": 27.5,
+        "leverage": 43.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 9
+    },
+    {
+      "stock_code": "002151.SZ",
+      "company_name": "北斗星通",
+      "event_id": "EVT_INPUT_PRICE_UP",
+      "exposure": 50.0,
+      "sensitivity": 35,
+      "financial_materiality": 43.4,
+      "impact_score": 7.59,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "negative",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 56.0,
+        "cashflow_pressure": 30.0,
+        "leverage": 42.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 10
+    },
+    {
+      "stock_code": "002465.SZ",
+      "company_name": "海格通信",
+      "event_id": "EVT_INPUT_PRICE_UP",
+      "exposure": 45.0,
+      "sensitivity": 35,
+      "financial_materiality": 44.825,
+      "impact_score": 7.06,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "negative",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 58.0,
+        "cashflow_pressure": 32.5,
+        "leverage": 41.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 11
+    },
+    {
+      "stock_code": "688568.SH",
+      "company_name": "中科星图",
+      "event_id": "EVT_INPUT_PRICE_UP",
+      "exposure": 55.0,
+      "sensitivity": 30,
+      "financial_materiality": 41.975,
+      "impact_score": 6.93,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "negative",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 54.0,
+        "cashflow_pressure": 27.5,
+        "leverage": 43.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 12
+    },
+    {
+      "stock_code": "002023.SZ",
+      "company_name": "海特高新",
+      "event_id": "EVT_INPUT_PRICE_UP",
+      "exposure": 50.0,
+      "sensitivity": 30,
+      "financial_materiality": 43.4,
+      "impact_score": 6.51,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "negative",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 56.0,
+        "cashflow_pressure": 30.0,
+        "leverage": 42.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 13
+    },
+    {
+      "stock_code": "600372.SH",
+      "company_name": "中航机载",
+      "event_id": "EVT_INPUT_PRICE_UP",
+      "exposure": 40.0,
+      "sensitivity": 35,
+      "financial_materiality": 46.25,
+      "impact_score": 6.47,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "negative",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 60.0,
+        "cashflow_pressure": 35.0,
+        "leverage": 40.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 14
+    },
+    {
+      "stock_code": "002352.SZ",
+      "company_name": "顺丰控股",
+      "event_id": "EVT_INPUT_PRICE_UP",
+      "exposure": 45.0,
+      "sensitivity": 30,
+      "financial_materiality": 44.825,
+      "impact_score": 6.05,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "negative",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 58.0,
+        "cashflow_pressure": 32.5,
+        "leverage": 41.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 15
+    },
+    {
+      "stock_code": "000099.SZ",
+      "company_name": "中信海直",
+      "event_id": "EVT_INPUT_PRICE_UP",
+      "exposure": 40.0,
+      "sensitivity": 30,
+      "financial_materiality": 46.25,
+      "impact_score": 5.55,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "negative",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 60.0,
+        "cashflow_pressure": 35.0,
+        "leverage": 40.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 16
+    },
+    {
+      "stock_code": "300284.SZ",
+      "company_name": "苏交科",
+      "event_id": "EVT_INPUT_PRICE_UP",
+      "exposure": 55.0,
+      "sensitivity": 20,
+      "financial_materiality": 41.975,
+      "impact_score": 4.62,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "negative",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 54.0,
+        "cashflow_pressure": 27.5,
+        "leverage": 43.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 17
+    },
+    {
+      "stock_code": "301091.SZ",
+      "company_name": "深城交",
+      "event_id": "EVT_INPUT_PRICE_UP",
+      "exposure": 50.0,
+      "sensitivity": 20,
+      "financial_materiality": 43.4,
+      "impact_score": 4.34,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "negative",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 56.0,
+        "cashflow_pressure": 30.0,
+        "leverage": 42.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 18
+    },
+    {
+      "stock_code": "000801.SZ",
+      "company_name": "四川九洲",
+      "event_id": "EVT_INPUT_PRICE_UP",
+      "exposure": 45.0,
+      "sensitivity": 20,
+      "financial_materiality": 44.825,
+      "impact_score": 4.03,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "negative",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 58.0,
+        "cashflow_pressure": 32.5,
+        "leverage": 41.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 19
+    },
+    {
+      "stock_code": "688631.SH",
+      "company_name": "莱斯信息",
+      "event_id": "EVT_INPUT_PRICE_UP",
+      "exposure": 40.0,
+      "sensitivity": 20,
+      "financial_materiality": 46.25,
+      "impact_score": 3.7,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "negative",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 60.0,
+        "cashflow_pressure": 35.0,
+        "leverage": 40.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 20
+    }
+  ],
+  "EVT_AIRWORTHINESS": [
+    {
+      "stock_code": "600038.SH",
+      "company_name": "中直股份",
+      "event_id": "EVT_AIRWORTHINESS",
+      "exposure": 55.0,
+      "sensitivity": 95,
+      "financial_materiality": 41.975,
+      "impact_score": 21.93,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "positive",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 54.0,
+        "cashflow_pressure": 27.500000000000004,
+        "leverage": 43.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 1
+    },
+    {
+      "stock_code": "002085.SZ",
+      "company_name": "万丰奥威",
+      "event_id": "EVT_AIRWORTHINESS",
+      "exposure": 50.0,
+      "sensitivity": 95,
+      "financial_materiality": 43.4,
+      "impact_score": 20.61,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "positive",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 56.0,
+        "cashflow_pressure": 30.0,
+        "leverage": 42.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 2
+    },
+    {
+      "stock_code": "688568.SH",
+      "company_name": "中科星图",
+      "event_id": "EVT_AIRWORTHINESS",
+      "exposure": 55.0,
+      "sensitivity": 85,
+      "financial_materiality": 41.975,
+      "impact_score": 19.62,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "positive",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 54.0,
+        "cashflow_pressure": 27.5,
+        "leverage": 43.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 3
+    },
+    {
+      "stock_code": "002389.SZ",
+      "company_name": "航天彩虹",
+      "event_id": "EVT_AIRWORTHINESS",
+      "exposure": 45.0,
+      "sensitivity": 95,
+      "financial_materiality": 44.825,
+      "impact_score": 19.16,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "positive",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 58.0,
+        "cashflow_pressure": 32.5,
+        "leverage": 41.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 4
+    },
+    {
+      "stock_code": "002023.SZ",
+      "company_name": "海特高新",
+      "event_id": "EVT_AIRWORTHINESS",
+      "exposure": 50.0,
+      "sensitivity": 85,
+      "financial_materiality": 43.4,
+      "impact_score": 18.45,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "positive",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 56.0,
+        "cashflow_pressure": 30.0,
+        "leverage": 42.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 5
+    },
+    {
+      "stock_code": "688070.SH",
+      "company_name": "纵横股份",
+      "event_id": "EVT_AIRWORTHINESS",
+      "exposure": 40.0,
+      "sensitivity": 95,
+      "financial_materiality": 46.25,
+      "impact_score": 17.57,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "positive",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 60.0,
+        "cashflow_pressure": 35.0,
+        "leverage": 40.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 6
+    },
+    {
+      "stock_code": "002352.SZ",
+      "company_name": "顺丰控股",
+      "event_id": "EVT_AIRWORTHINESS",
+      "exposure": 45.0,
+      "sensitivity": 85,
+      "financial_materiality": 44.825,
+      "impact_score": 17.15,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "positive",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 58.0,
+        "cashflow_pressure": 32.5,
+        "leverage": 41.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 7
+    },
+    {
+      "stock_code": "000099.SZ",
+      "company_name": "中信海直",
+      "event_id": "EVT_AIRWORTHINESS",
+      "exposure": 40.0,
+      "sensitivity": 85,
+      "financial_materiality": 46.25,
+      "impact_score": 15.72,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "positive",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 60.0,
+        "cashflow_pressure": 35.0,
+        "leverage": 40.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 8
+    },
+    {
+      "stock_code": "300627.SZ",
+      "company_name": "华测导航",
+      "event_id": "EVT_AIRWORTHINESS",
+      "exposure": 55.0,
+      "sensitivity": 50,
+      "financial_materiality": 41.975,
+      "impact_score": 11.54,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "positive",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 54.0,
+        "cashflow_pressure": 27.5,
+        "leverage": 43.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 9
+    },
+    {
+      "stock_code": "002151.SZ",
+      "company_name": "北斗星通",
+      "event_id": "EVT_AIRWORTHINESS",
+      "exposure": 50.0,
+      "sensitivity": 50,
+      "financial_materiality": 43.4,
+      "impact_score": 10.85,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "positive",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 56.0,
+        "cashflow_pressure": 30.0,
+        "leverage": 42.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 10
+    },
+    {
+      "stock_code": "300284.SZ",
+      "company_name": "苏交科",
+      "event_id": "EVT_AIRWORTHINESS",
+      "exposure": 55.0,
+      "sensitivity": 45,
+      "financial_materiality": 41.975,
+      "impact_score": 10.39,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "positive",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 54.0,
+        "cashflow_pressure": 27.5,
+        "leverage": 43.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 11
+    },
+    {
+      "stock_code": "002465.SZ",
+      "company_name": "海格通信",
+      "event_id": "EVT_AIRWORTHINESS",
+      "exposure": 45.0,
+      "sensitivity": 50,
+      "financial_materiality": 44.825,
+      "impact_score": 10.09,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "positive",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 58.0,
+        "cashflow_pressure": 32.5,
+        "leverage": 41.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 12
+    },
+    {
+      "stock_code": "301091.SZ",
+      "company_name": "深城交",
+      "event_id": "EVT_AIRWORTHINESS",
+      "exposure": 50.0,
+      "sensitivity": 45,
+      "financial_materiality": 43.4,
+      "impact_score": 9.77,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "positive",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 56.0,
+        "cashflow_pressure": 30.0,
+        "leverage": 42.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 13
+    },
+    {
+      "stock_code": "600372.SH",
+      "company_name": "中航机载",
+      "event_id": "EVT_AIRWORTHINESS",
+      "exposure": 40.0,
+      "sensitivity": 50,
+      "financial_materiality": 46.25,
+      "impact_score": 9.25,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "positive",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 60.0,
+        "cashflow_pressure": 35.0,
+        "leverage": 40.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 14
+    },
+    {
+      "stock_code": "000801.SZ",
+      "company_name": "四川九洲",
+      "event_id": "EVT_AIRWORTHINESS",
+      "exposure": 45.0,
+      "sensitivity": 45,
+      "financial_materiality": 44.825,
+      "impact_score": 9.08,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "positive",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 58.0,
+        "cashflow_pressure": 32.5,
+        "leverage": 41.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 15
+    },
+    {
+      "stock_code": "688631.SH",
+      "company_name": "莱斯信息",
+      "event_id": "EVT_AIRWORTHINESS",
+      "exposure": 40.0,
+      "sensitivity": 45,
+      "financial_materiality": 46.25,
+      "impact_score": 8.32,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "positive",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 60.0,
+        "cashflow_pressure": 35.0,
+        "leverage": 40.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 16
+    },
+    {
+      "stock_code": "600580.SH",
+      "company_name": "卧龙电驱",
+      "event_id": "EVT_AIRWORTHINESS",
+      "exposure": 55.0,
+      "sensitivity": 35,
+      "financial_materiality": 41.975,
+      "impact_score": 8.08,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "positive",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 54.0,
+        "cashflow_pressure": 27.5,
+        "leverage": 43.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 17
+    },
+    {
+      "stock_code": "001696.SZ",
+      "company_name": "宗申动力",
+      "event_id": "EVT_AIRWORTHINESS",
+      "exposure": 50.0,
+      "sensitivity": 35,
+      "financial_materiality": 43.4,
+      "impact_score": 7.59,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "positive",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 56.0,
+        "cashflow_pressure": 30.0,
+        "leverage": 42.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 18
+    },
+    {
+      "stock_code": "688295.SH",
+      "company_name": "中复神鹰",
+      "event_id": "EVT_AIRWORTHINESS",
+      "exposure": 45.0,
+      "sensitivity": 35,
+      "financial_materiality": 44.825,
+      "impact_score": 7.06,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "positive",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 58.0,
+        "cashflow_pressure": 32.5,
+        "leverage": 41.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 19
+    },
+    {
+      "stock_code": "300699.SZ",
+      "company_name": "光威复材",
+      "event_id": "EVT_AIRWORTHINESS",
+      "exposure": 40.0,
+      "sensitivity": 35,
+      "financial_materiality": 46.25,
+      "impact_score": 6.47,
+      "formula_version": "impact-v1.0.0",
+      "risk_flags": [
+        "mock_data"
+      ],
+      "impact_direction": "positive",
+      "verification_status": "mock",
+      "missing_reason": [],
+      "components": {
+        "margin_pressure": 60.0,
+        "cashflow_pressure": 35.0,
+        "leverage": 40.0
+      },
+      "source_urls": [
+        "https://example.invalid/synthetic-wind-v1",
+        "https://example.invalid/synthetic-wind-v1"
+      ],
+      "report_period": "2025-12-31",
+      "as_of_date": "2026-10-13",
+      "rank": 20
+    }
+  ]
+}
