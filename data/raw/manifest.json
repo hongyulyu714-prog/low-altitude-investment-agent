@@ -1,0 +1,26 @@
+[
+  {
+    "file": "季度财务_2024Q3-2026Q2.xlsx",
+    "sha256": "e51bc3dd8d2fa167942a7eeeb81b3a2ff1048441348c272616d43980937105d0",
+    "source": "user-provided workbook",
+    "verification_status": "pending_verification"
+  },
+  {
+    "file": "市场估值_20261013.xlsx",
+    "sha256": "93507fcd75c648ef9eaa32f56053c55d2adbf7603108f618ff21a2b7d3466645",
+    "source": "user-provided workbook",
+    "verification_status": "pending_verification"
+  },
+  {
+    "file": "年度财务_2023-2025.xlsx",
+    "sha256": "e32bea3818428abdab89506cf7c3ba355595c502fa9831d37ad3f3cf695d8416",
+    "source": "user-provided workbook",
+    "verification_status": "pending_verification"
+  },
+  {
+    "file": "日行情底表_20251013-20261013.xlsx",
+    "sha256": "a3b982e22a22596185e902254eb65082258c963ac5c0a18921599bd1811f0941",
+    "source": "user-provided workbook",
+    "verification_status": "pending_verification"
+  }
+]
