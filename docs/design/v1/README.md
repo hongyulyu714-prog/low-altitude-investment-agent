@@ -55,3 +55,7 @@ Figma直接克隆A完整可编辑子树，沿用Cambridge节点/类别图标/曲
 4. 窄桌面布局、数据不足与核验状态的可阅读性。
 
 本版不把接口缺口画成事实；G01–G06和完整业务图谱验收仍待团队协作，不修改正式PRD/IA。
+
+## Review 修复后的实现状态
+
+PR #11 review 后默认前端图谱改为 Report.paths 业务 ID 路径，原 TEST 网络是独立演示入口。本文 Figma 对象与初版截图仍是原始视觉基准，未更新或覆盖。业务 ID 实现截图见 [review-business-1440.png](evidence/review-business-1440.png)，业务图谱不推断缺失名称、类别与公司映射。

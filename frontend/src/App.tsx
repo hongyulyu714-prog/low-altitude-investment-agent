@@ -28,6 +28,7 @@ import {
   type NodeKey,
 } from "./components/spatial/data";
 import { DrawerHost, type DrawerItem } from "./components/DrawerHost";
+import { BusinessGraph } from "./components/BusinessGraph";
 const missing = "数据不足";
 const value = (v: unknown): string =>
   v === null || v === undefined || v === "" ? missing : String(v);
@@ -78,6 +79,7 @@ export function App() {
       matchMedia("(prefers-reduced-motion: reduce)").matches,
     ),
     [paused, setPaused] = useState(false),
+    [graphMode, setGraphMode] = useState<"business" | "test">("business"),
     [businessPath, setBusinessPath] = useState<string | null>(null),
     [businessNode, setBusinessNode] = useState<string | null>(null);
   const shell = useRef<HTMLDivElement>(null),
@@ -106,6 +108,7 @@ export function App() {
     setBusinessNode(null);
     setAscending(false);
     setTab("business");
+    setGraphMode("business");
     checkpoint.current = null;
     research.current = null;
   };
@@ -137,6 +140,7 @@ export function App() {
     setExpanded(false);
     setAscending(false);
     setTab("business");
+    setGraphMode("business");
     setBusinessNode(null);
     setPhase("loading");
     setReport(null);
@@ -156,23 +160,29 @@ export function App() {
       }
     }
   };
-  const rememberResearch = (origin?: SpatialCheckpoint) => {
+  const rememberResearch = (
+    origin?: SpatialCheckpoint,
+    selection?: { path: string; node: string },
+  ) => {
     checkpoint.current = origin ?? graph.current?.captureContext() ?? null;
     research.current = {
       checkpoint: checkpoint.current,
       tab,
       ascending,
-      scroll: origin?.scroll ?? research.current?.scroll ?? 0,
-      businessPath,
-      businessNode,
+      scroll: selection
+        ? window.scrollY
+        : (origin?.scroll ?? research.current?.scroll ?? window.scrollY),
+      businessPath: selection?.path ?? businessPath,
+      businessNode: selection?.node ?? businessNode,
     };
   };
   const open = (
     item: DrawerItem,
     nested = false,
     origin?: SpatialCheckpoint,
+    selection?: { path: string; node: string },
   ) => {
-    if (!nested) rememberResearch(origin);
+    if (!nested) rememberResearch(origin, selection);
     setItems((s) => (nested ? [...s, item] : [item]));
   };
   const close = useCallback(() => setItems([]), []);
@@ -417,22 +427,62 @@ export function App() {
                   报告明确为空，没有路径、公司或证据；不表示零影响。
                 </div>
               )}
-              <SpatialGraph
-                key={`${mode}:${eventId}`}
-                ref={graph}
-                eventId={eventId}
-                reducedMotion={reduced}
-                paused={paused}
-                researchOpen={!!items.length}
-                testCompanyMode={tab === "test"}
-                onSelectionChange={setSelection}
-                onNodeResearch={(key, context) => {
-                  checkpoint.current = context;
-                  open({ type: "node", key, scope: "test" }, false, context);
-                }}
-                onCompanyCompare={goCompanies}
-                onExpandedChange={setExpanded}
-              />
+              {graphMode === "business" ? (
+                <BusinessGraph
+                  key={`${mode}:${eventId}`}
+                  paths={report.paths}
+                  pathId={businessPath}
+                  nodeId={businessNode}
+                  onSelect={(path, node) => {
+                    setBusinessPath(path);
+                    setBusinessNode(node);
+                  }}
+                  onResearch={(path, node) => {
+                    setBusinessPath(path);
+                    setBusinessNode(node);
+                    open(
+                      { type: "path", key: path, scope: "business" },
+                      false,
+                      undefined,
+                      { path, node },
+                    );
+                  }}
+                  onTest={() => setGraphMode("test")}
+                  onExpandedChange={setExpanded}
+                />
+              ) : (
+                <>
+                  <button
+                    className="outline"
+                    onClick={() => {
+                      setGraphMode("business");
+                      setExpanded(false);
+                    }}
+                  >
+                    返回业务 ID 图谱
+                  </button>
+                  <SpatialGraph
+                    key={`${mode}:${eventId}`}
+                    ref={graph}
+                    eventId={eventId}
+                    reducedMotion={reduced}
+                    paused={paused}
+                    researchOpen={!!items.length}
+                    testCompanyMode={tab === "test"}
+                    onSelectionChange={setSelection}
+                    onNodeResearch={(key, context) => {
+                      checkpoint.current = context;
+                      open(
+                        { type: "node", key, scope: "test" },
+                        false,
+                        context,
+                      );
+                    }}
+                    onCompanyCompare={goCompanies}
+                    onExpandedChange={setExpanded}
+                  />
+                </>
+              )}
               {!expanded && (
                 <>
                   <section
@@ -740,11 +790,16 @@ export function App() {
                                   onClick={() => {
                                     setBusinessPath(p.path_id);
                                     setBusinessNode(id);
-                                    open({
-                                      type: "path",
-                                      key: p.path_id,
-                                      scope: "business",
-                                    });
+                                    open(
+                                      {
+                                        type: "path",
+                                        key: p.path_id,
+                                        scope: "business",
+                                      },
+                                      false,
+                                      undefined,
+                                      { path: p.path_id, node: id },
+                                    );
                                   }}
                                 >
                                   {id}
@@ -752,7 +807,7 @@ export function App() {
                               )) ?? missing}
                             </div>
                             <small>
-                              节点名称、边端点、公司映射与规则正文尚未提供
+                              节点名称、公司映射与规则正文尚未提供；相邻端点依据契约
                             </small>
                             <button
                               className="path-details"
@@ -1060,8 +1115,9 @@ export function App() {
                   <h3>规则 ID</h3>
                   <p className="trace">{p?.rule_id ?? missing}</p>
                   <div className="missing">
-                    规则正文、边端点、节点名称与公司映射 · 数据不足。不能用 ID
-                    顺序生成业务连线。
+                    规则正文、节点名称与公司映射 · 数据不足。关系端点依据
+                    GraphPath 契约，按 node_ids 相邻节点与 relation_ids
+                    对应；不推断公司关联。
                   </div>
                   <h3>路径证据</h3>
                   {refs(p?.evidence_ids ?? null)}
@@ -1099,7 +1155,8 @@ export function App() {
               </p>
               <h3>业务能力缺口</h3>
               <div className="missing">
-                当前报告未提供节点名称、关系端点、规则正文、节点公司映射、三个评分分项与公式版本。文件模式可读取同版本评分分项，API
+                当前报告未提供节点名称、规则正文、节点公司映射、三个评分分项与公式版本。相邻关系端点依据已有
+                GraphPath 契约绘制。文件模式可读取同版本评分分项，API
                 模式保持缺项。
               </div>
               <h3>TEST 隔离边界</h3>

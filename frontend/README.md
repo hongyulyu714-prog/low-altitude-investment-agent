@@ -18,3 +18,5 @@ npm run dev
 `public/assets/figma` 来自用户提供的A设计导出。`public/assets/fonts` 包含Roboto/Noto及原许可文本。图谱未采用未经证实的真实公司映射；保留已有 react-force-graph-2d 依赖，本版采用SVG确定布局以保留已批准的曲线、外置标签和相机控制。
 
 构建产物及测试结果不提交。PR只交付必要代码、配置、测试、运行说明及本轮设计交付。
+
+默认业务 ID 图谱消费 Report.paths，依据 GraphPath 的相邻节点契约确定端点；缺失名称/类别不补造。原空间 TEST 网络通过“打开独立 TEST 图谱”进入，保持与业务公司隔离。

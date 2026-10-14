@@ -18,6 +18,9 @@ async function analyze(page: Page) {
   await page.getByLabel("已有事件").selectOption(EVT);
   await page.getByRole("button", { name: "查看分析", exact: true }).click();
   await expect(page.locator(".sg-card")).toBeVisible();
+  await page
+    .getByRole("button", { name: "打开独立 TEST 图谱", exact: true })
+    .click();
 }
 const camera = (page: Page) =>
   page
