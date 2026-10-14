@@ -10,6 +10,7 @@ from typing import Mapping
 
 from contracts import Company, Evidence, Event, FinancialScore, GraphPath, Report, RunRecord
 from contracts.models import CompanyImpact, Conclusion
+from .scoring import calculate_impact_score
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -20,11 +21,6 @@ DATA_VERSION = "mock-v1"
 
 class OrchestrationError(ValueError):
     """A readable error for a missing or incompatible module payload."""
-
-
-def calculate_impact_score(exposure: float, sensitivity: float, financial_materiality: float) -> float:
-    """The published v1 formula: three normalized factors scaled back to 0–100."""
-    return round(exposure * sensitivity * financial_materiality / 10_000, 2)
 
 
 def _load_json(directory: Path, name: str) -> object:
