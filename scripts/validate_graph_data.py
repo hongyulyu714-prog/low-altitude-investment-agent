@@ -5,7 +5,6 @@ from __future__ import annotations
 import csv
 import json
 import re
-import sys
 from collections import Counter
 from pathlib import Path
 from typing import Any
@@ -14,6 +13,7 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 GRAPH_DIR = ROOT / "data" / "graph"
 STATUSES = {"verified", "pending_verification"}
+DIRECTIONS = {"positive", "negative", "neutral", "uncertain"}
 STOCK_CODE = re.compile(r"^\d{6}\.(SZ|SH|BJ)$")
 
 NODE_HEADERS = [
@@ -58,6 +58,10 @@ def _require_headers(rows: list[dict[str, str]], expected: list[str], artifact: 
     actual = list(rows[0]) if rows else []
     if actual != expected:
         errors.append(f"{artifact}: unexpected headers")
+
+
+def _required_text(value: Any) -> bool:
+    return isinstance(value, str) and bool(value.strip())
 
 
 def _check_records(rows: list[dict[str, str]], id_key: str, artifact: str, errors: list[str]) -> None:
@@ -107,7 +111,13 @@ def validate(
         if relation.get("from_node_id") == relation.get("to_node_id"):
             errors.append("relations: self-loop is not a directional chain edge")
             break
-        if not relation.get("condition"):
+        if not _required_text(relation.get("relation_type")):
+            errors.append("relations: relation_type required")
+            break
+        if relation.get("effect_direction") not in DIRECTIONS:
+            errors.append("relations: invalid effect_direction")
+            break
+        if not _required_text(relation.get("condition")):
             errors.append("relations: every relation needs a condition")
             break
     relation_ids = {row.get("relation_id") for row in relations}
@@ -137,6 +147,15 @@ def validate(
     if not isinstance(rules, list) or len(rules) != 10:
         errors.append("event rules: requires exactly 10 rules")
         return errors
+    if any(not isinstance(rule, dict) for rule in rules):
+        errors.append("event rules: each rule must be an object")
+        return errors
+    for rule in rules:
+        for field in ("rule_id", "event_type", "trigger_node_id", "impact_direction", "exception", "source_title", "source_url", "verification_status"):
+            if not _required_text(rule.get(field)):
+                errors.append(f"event rules: {field} required")
+    if errors:
+        return errors
     rule_ids = [rule.get("rule_id") for rule in rules]
     if len(rule_ids) != len(set(rule_ids)) or any(not str(value).startswith("RULE_") for value in rule_ids):
         errors.append("event rules: duplicate or malformed rule IDs")
@@ -145,6 +164,9 @@ def validate(
     if missing_types:
         errors.append(f"event rules: missing mandatory event types: {sorted(missing_types)}")
     for rule in rules:
+        if rule.get("impact_direction") not in DIRECTIONS:
+            errors.append("event rules: invalid impact_direction")
+            break
         if rule.get("trigger_node_id") not in node_ids:
             errors.append("event rules: contains dangling trigger node")
             break
@@ -160,11 +182,16 @@ def validate(
             errors.append("event rules: invalid relation reference")
             break
         if any(
-            relation_by_id[edge_id]["from_node_id"] != path[index]
-            or relation_by_id[edge_id]["to_node_id"] != path[index + 1]
+            relation_by_id[edge_id].get("from_node_id") != path[index]
+            or relation_by_id[edge_id].get("to_node_id") != path[index + 1]
             for index, edge_id in enumerate(edge_ids)
         ):
             errors.append("event rules: relation does not connect its stated path")
+            break
+        if rule.get("verification_status") == "verified" and any(
+            relation_by_id[edge_id].get("verification_status") != "verified" for edge_id in edge_ids
+        ):
+            errors.append("event rules: verified rule depends on unverified relation")
             break
         if rule.get("verification_status") not in STATUSES or not str(rule.get("source_url", "")).startswith(("http://", "https://")):
             errors.append("event rules: source and verification status required")
