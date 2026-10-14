@@ -1,0 +1,111 @@
+.bg-paths {
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.bg-paths button {
+  text-align: left;
+  overflow-wrap: anywhere;
+  border-radius: 12px;
+  padding: 12px;
+  font-size: 12px;
+  color: #58687e;
+}
+.bg-paths button.active {
+  background: #ebf0fc;
+  color: #3569dd;
+}
+.bg-paths small {
+  display: block;
+  margin-top: 6px;
+}
+.bg-note {
+  font-size: 12px;
+  line-height: 20px;
+  color: #58687e;
+  padding: 8px;
+}
+.bg-canvas {
+  position: relative;
+  overflow: hidden;
+  touch-action: none;
+  background: linear-gradient(125deg, #f8faff, #edf3fc);
+  border-radius: 12px;
+}
+.bg-canvas svg {
+  width: 100%;
+  height: 388px;
+}
+.bg-relation {
+  font-size: 12px;
+  fill: #58687e;
+}
+.bg-node-label {
+  font-size: 14px;
+  fill: #19283f;
+}
+.bg-canvas [role="button"] {
+  cursor: pointer;
+  outline: none;
+}
+.bg-canvas [role="button"]:focus-visible circle {
+  stroke: #3569dd;
+  stroke-width: 3;
+}
+.bg-controls {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  border: 1px solid #dfe6f0;
+  border-radius: 12px;
+  padding: 6px;
+  font-size: 12px;
+}
+.bg-controls button {
+  padding: 5px;
+}
+.bg-popover {
+  position: absolute;
+  top: 260px;
+  right: 24px;
+  width: 245px;
+  border: 1px solid #dfe6f0;
+  border-radius: 12px;
+  background: #ffffffeb;
+  backdrop-filter: blur(12px);
+  padding: 12px;
+  font-size: 12px;
+}
+.bg-popover strong {
+  overflow-wrap: anywhere;
+}
+.bg-popover p {
+  margin: 6px 0;
+  color: #58687e;
+}
+.bg-footer {
+  font-size: 12px;
+  color: #58687e;
+  padding-top: 12px;
+}
+.bg-empty {
+  padding: 24px;
+  color: #58687e;
+}
+.business-graph .sg-tabs span {
+  font-size: 12px;
+  overflow-wrap: anywhere;
+  max-width: 70%;
+}
+
+.business-graph.sg-expanded .sg-layout {
+  height: calc(100% - 140px);
+}
+.business-graph.sg-expanded .bg-canvas svg {
+  height: 100%;
+}
