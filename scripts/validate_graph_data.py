@@ -6,6 +6,7 @@ import csv
 import json
 import re
 from collections import Counter
+from datetime import date
 from pathlib import Path
 from typing import Any
 
@@ -200,12 +201,83 @@ def validate(
 
 
 def main() -> int:
-    errors = validate(*load())
+    graph = load()
+    errors = validate(*graph)
+    errors.extend(validate_source_review(graph[0], graph[1], graph[3], load_source_review()))
     if errors:
         print("Graph data validation failed:", *[f"- {error}" for error in errors], sep="\n")
         return 1
     print("Graph data validation passed: 35 nodes, 50 relations, 25 company mappings, 10 event rules.")
     return 0
+
+
+def load_source_review() -> dict[str, Any]:
+    with (GRAPH_DIR / "source_review.json").open(encoding="utf-8") as handle:
+        return json.load(handle)
+
+
+def validate_source_review(
+    nodes: list[dict[str, str]],
+    relations: list[dict[str, str]],
+    rules: list[dict[str, Any]],
+    review: dict[str, Any],
+) -> list[str]:
+    """Keep the manual source audit aligned with the delivered graph.
+
+    This checks provenance metadata, not the truth of a web page. Source content
+    must be read and reviewed before a record is promoted to verified.
+    """
+    errors: list[str] = []
+    try:
+        reviewed_at = date.fromisoformat(review["reviewed_at"])
+    except (KeyError, TypeError, ValueError):
+        return ["source review: invalid reviewed_at"]
+    sources = {source["source_id"]: source for source in review["sources"]}
+    if len(sources) != len(review["sources"]):
+        errors.append("source review: duplicate source IDs")
+    expected = {}
+    for artifact, rows, id_key in (
+        ("nodes.csv", nodes, "node_id"),
+        ("relations.csv", relations, "relation_id"),
+        ("event_rules.json", rules, "rule_id"),
+    ):
+        expected.update({(artifact, row[id_key]): row for row in rows})
+    seen = set()
+    for record in review["records"]:
+        key = (record["artifact"], record["record_id"])
+        if key in seen:
+            errors.append("source review: duplicate record")
+        seen.add(key)
+        row = expected.get(key)
+        source = sources.get(record["source_id"])
+        if row is None or source is None:
+            errors.append("source review: dangling record/source reference")
+            continue
+        if any(row[field] != source[field] for field in ("source_title", "source_url")):
+            errors.append("source review: source metadata differs from graph")
+        if row["verification_status"] != record["verification_status"]:
+            errors.append("source review: verification status differs from graph")
+        if not all(_required_text(record.get(field)) for field in ("source_location", "reason", "verification_scope")):
+            errors.append("source review: location, reason and scope required")
+        if record.get("support_level") not in {"direct", "background", "inference"}:
+            errors.append("source review: invalid support level")
+        if row["verification_status"] == "verified":
+            if record.get("support_level") != "direct" or source.get("access_status") != "read":
+                errors.append("source review: verified record requires read direct support")
+            if source.get("source_level") not in {"A", "B"}:
+                errors.append("source review: verified record requires primary source")
+            try:
+                published = date.fromisoformat(source["published_date"])
+                if published > reviewed_at:
+                    raise ValueError("future source")
+            except (KeyError, TypeError, ValueError):
+                errors.append("source review: verified record requires valid source date")
+            if record.get("verification_scope") in {"planned_capability", "development_capability", "flight_test_connection"}:
+                if not row.get("condition", "").startswith("仅"):
+                    errors.append("source review: non-operational connection needs explicit condition")
+    if seen != set(expected):
+        errors.append("source review: incomplete record coverage")
+    return errors
 
 
 if __name__ == "__main__":
