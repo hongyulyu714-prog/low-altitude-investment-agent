@@ -1,0 +1,1260 @@
+{
+  "reviewed_at": "2026-10-15",
+  "scope": [
+    "nodes.csv",
+    "relations.csv",
+    "event_rules.json"
+  ],
+  "verification_policy": "verified仅核验节点定义或条件范围内的技术/应用连接；不核验证券受益、利润方向或因果幅度。规划和研发必须显式限定。",
+  "sources": [
+    {
+      "source_id": "TORAY",
+      "source_title": "Toray Advanced Composites and Joby Aviation Finalize a Long-Term Supply Agreement",
+      "source_url": "https://www.toraytac.com/newsroom/news-item/2020/12/8/Toray-Advanced-Composites-and-Joby-Aviation-Finalize-a-Long_Term-Supply-Agreement",
+      "published_date": "2020-12-08",
+      "date_basis": "page_publication",
+      "publisher": "Toray Advanced Composites",
+      "source_level": "B",
+      "access_status": "read",
+      "support_summary": "Joby采用东丽碳纤维复材；页面亦介绍其电动垂直起降机型及六台电机。"
+    },
+    {
+      "source_id": "HENKEL_STRUCT",
+      "source_title": "Why modern airplanes can’t take off without adhesives",
+      "source_url": "https://www.henkel.com/spotlight/innovation/2025-09-17-light-strong-sustainable-why-modern-aircraft-cant-take-off-without-adhesives-2087436",
+      "published_date": "2025-09-17",
+      "date_basis": "page_publication",
+      "publisher": "Henkel",
+      "source_level": "B",
+      "access_status": "read",
+      "support_summary": "说明航空结构胶与复合材料连接、结构粘接及复材维修用途。"
+    },
+    {
+      "source_id": "HENKEL_EVTOL",
+      "source_title": "Enabling the Future of Flight with Henkel Adhesive Technologies",
+      "source_url": "https://www.henkel.com/spotlight/2025-10-08-enabling-the-future-of-flight-with-henkel-adhesive-technologies-2090576",
+      "published_date": "2025-10-08",
+      "date_basis": "page_publication",
+      "publisher": "Henkel",
+      "source_level": "B",
+      "access_status": "read",
+      "support_summary": "提供eVTOL结构粘接、储能和电子系统胶粘解决方案；不是某机型装机或适航证明。"
+    },
+    {
+      "source_id": "TI",
+      "source_title": "TI technology extends flight time and battery life of quadcopters and industrial drones",
+      "source_url": "https://www.ti.com/about-ti/newsroom/news-releases/2017/2017-01-17-ti-technology-extends-flight-time-and-battery-life-of-quadcopters-and-industrial-drones.html",
+      "published_date": "2017-01-17",
+      "date_basis": "page_publication",
+      "publisher": "Texas Instruments",
+      "source_level": "B",
+      "access_status": "read",
+      "support_summary": "无人机电池包BMS参考设计及电机ESC控制方案。"
+    },
+    {
+      "source_id": "ST",
+      "source_title": "Build and Fly Your Own Drone with ST’s First Controller Unit",
+      "source_url": "https://blog.st.com/steval-fcu001v1-drone-flight-controller-unit/",
+      "published_date": "2017-11-30",
+      "date_basis": "page_publication",
+      "publisher": "STMicroelectronics",
+      "source_level": "B",
+      "access_status": "read",
+      "support_summary": "飞控开发板集成MCU和惯性、气压、磁传感器，可用于小型无人机。"
+    },
+    {
+      "source_id": "EH2019",
+      "source_title": "EHang Holdings Limited 2019 Annual Report (Form 20-F)",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1759783/000119312520112223/d863414d20f.htm",
+      "published_date": "2020-04-20",
+      "date_basis": "report_signature",
+      "publisher": "EHang / SEC",
+      "source_level": "A",
+      "access_status": "read",
+      "support_summary": "历史披露的材料构成、飞控传感器、无线通信、补能和应用案例；不代表当前所有型号配置。"
+    },
+    {
+      "source_id": "EH2025",
+      "source_title": "EHang Holdings Limited 2025 Annual Report (Form 20-F)",
+      "source_url": "https://ir.ehang.com/static-files/99f93ebc-2713-43e5-bf81-6e8be7a08c6b",
+      "published_date": "2026-05-15",
+      "date_basis": "report_signature",
+      "publisher": "EHang / SEC",
+      "source_level": "A",
+      "access_status": "read",
+      "support_summary": "列出电池包、电机、芯片及自制电机驱动、飞控、BMS等部件，说明供应风险。"
+    },
+    {
+      "source_id": "ZERO",
+      "source_title": "ZeroAvia Makes Aviation History, Flying World’s Largest Aircraft Powered with a Hydrogen-Electric Engine",
+      "source_url": "https://zeroavia.com/do228-first-flight/",
+      "published_date": "2023-01-19",
+      "date_basis": "page_publication",
+      "publisher": "ZeroAvia",
+      "source_level": "B",
+      "access_status": "read",
+      "support_summary": "氢电试飞报道也回顾Piper Malibu六座试验机；首飞不等于商业适航获证。"
+    },
+    {
+      "source_id": "SA70",
+      "source_title": "山河SA70U无人机成功首飞",
+      "source_url": "https://gxt.hunan.gov.cn/gxt/xxgk_71033/gzdt/qyzx/202107/t20210719_19948256.html",
+      "published_date": "2021-07-19",
+      "date_basis": "page_publication",
+      "publisher": "湖南省工业和信息化厅",
+      "source_level": "B",
+      "access_status": "read",
+      "support_summary": "固定翼无人机采用全复材基础机体，并列出物资运输、巡查等用途。"
+    },
+    {
+      "source_id": "INSPIRE",
+      "source_title": "Announcing the DJI Inspire 1 Drone",
+      "source_url": "https://www.dji.com/ch/newsroom/news/announcing-the-dji-inspire-1",
+      "published_date": "2014-11-13",
+      "date_basis": "page_publication",
+      "publisher": "DJI",
+      "source_level": "B",
+      "access_status": "read",
+      "support_summary": "碳纤维机臂、相机、光流定位、飞行系统和智能电池。"
+    },
+    {
+      "source_id": "M350",
+      "source_title": "Top 8 Features of the Matrice 350 RTK",
+      "source_url": "https://enterprise-insights.dji.com/blog/matrice-350-top-8-features",
+      "published_date": "2023-05-18",
+      "date_basis": "page_publication",
+      "publisher": "DJI Enterprise",
+      "source_level": "B",
+      "access_status": "read",
+      "support_summary": "行业无人机通信、定位、FPV相机、救援用途及热插拔电池系统。"
+    },
+    {
+      "source_id": "AGRAS",
+      "source_title": "DJI Agras T50 and T25 Expand Aerial Crop Protection Capabilities",
+      "source_url": "https://ag.dji.com/newsroom/agras-t50-and-t25-global-launch",
+      "published_date": "2024-04-26",
+      "date_basis": "page_publication",
+      "publisher": "DJI Agriculture",
+      "source_level": "B",
+      "access_status": "read",
+      "support_summary": "植保喷洒/播撒、视觉雷达感知、无线连接及换电配合快充；正文活动日期为4月25日。"
+    },
+    {
+      "source_id": "FAA",
+      "source_title": "FAA Releases Vertiport Design Standards to Support the Safe Integration of Advanced Air Mobility Aircraft",
+      "source_url": "https://www.faa.gov/newsroom/faa-releases-vertiport-design-standards-support-safe-integration-advanced-air-mobility",
+      "published_date": "2022-09-26",
+      "date_basis": "page_publication",
+      "publisher": "FAA",
+      "source_level": "A",
+      "access_status": "read",
+      "support_summary": "垂直起降场的起降区域、承载及电池充电保障；用于技术关系，不作为中国许可依据。"
+    },
+    {
+      "source_id": "SZ_PLAN",
+      "source_title": "深圳市低空基础设施高质量建设方案（2024—2026年）",
+      "source_url": "https://fgw.sz.gov.cn/gkmlpt/content/12/12305/mpost_12305044.html",
+      "published_date": "2025-07-31",
+      "date_basis": "page_publication",
+      "publisher": "深圳市发展和改革委员会",
+      "source_level": "B",
+      "access_status": "read",
+      "support_summary": "正式规划中列出起降、通信、导航、监视及SILAS功能；规划目标不等于已建成事实。"
+    },
+    {
+      "source_id": "LONGHUA",
+      "source_title": "深圳龙华机场，来了！",
+      "source_url": "https://www.szlhq.gov.cn/xxgk/xwzx/gzdt/content/post_12982043.html",
+      "published_date": "2026-09-15",
+      "date_basis": "page_publication",
+      "publisher": "深圳市龙华区人民政府",
+      "source_level": "A",
+      "access_status": "read",
+      "support_summary": "区内已布局物流起降点；数字孪生平台对接美团、丰翼数据并处理飞行任务。"
+    },
+    {
+      "source_id": "HN_LOG",
+      "source_title": "株洲：“无人机+北斗”低空综合服务中心启用",
+      "source_url": "https://jtt.hunan.gov.cn/jtt/xxgk/gzdt/szdt1/202408/t20240823_33437155.html",
+      "published_date": "2024-08-15",
+      "date_basis": "page_publication",
+      "publisher": "湖南省交通运输厅",
+      "source_level": "A",
+      "access_status": "read",
+      "support_summary": "列出物流、巡检与应急物资运输航线及综合服务中心；日期采用页面而非URL目录。"
+    },
+    {
+      "source_id": "CMA",
+      "source_title": "低空经济气象科技创新系列报道④高效观测助低空经济振翅而飞",
+      "source_url": "https://www.cma.gov.cn/2011xwzx/2011xqxxw/2011xqxyw/202502/t20250214_6852409.html",
+      "published_date": "2025-02-14",
+      "date_basis": "page_publication",
+      "publisher": "中国气象局",
+      "source_level": "A",
+      "access_status": "read",
+      "support_summary": "气象观测支撑低空运输、应急救援和飞行安全；文章部分内容是试点建设规划。"
+    },
+    {
+      "source_id": "TOUR",
+      "source_title": "黑龙江监管局对飞龙通航135部空中游览运行进行专项督查",
+      "source_url": "https://db.caac.gov.cn/DB_XXGK/DB_GZDT/202410/t20241016_225618.html",
+      "published_date": "2024-10-10",
+      "date_basis": "page_publication",
+      "publisher": "民航东北地区管理局",
+      "source_level": "A",
+      "access_status": "read",
+      "support_summary": "直升机景区空中游览、运行审定和气象放行条件。"
+    },
+    {
+      "source_id": "AC352",
+      "source_title": "Z15（AC352）获颁证！填补国产民用中型直升机领域空白",
+      "source_url": "https://app.caac.gov.cn/PHONE/XWZX/MHYW/202207/t20220726_214744.html",
+      "published_date": "2022-07-26",
+      "date_basis": "page_publication",
+      "publisher": "中国民航局",
+      "source_level": "A",
+      "access_status": "read",
+      "support_summary": "民用多用途直升机及搜索救援、医疗救护用途。"
+    },
+    {
+      "source_id": "JOUAV_GRID",
+      "source_title": "JOUAV Unveils Next-Gen VTOL Hangar for Automated Power Line Inspection",
+      "source_url": "https://www.jouav.com/news/next-gen-vtol-hangar-unveiled.html",
+      "published_date": "2024-04-25",
+      "date_basis": "page_publication",
+      "publisher": "JOUAV",
+      "source_level": "B",
+      "access_status": "read",
+      "support_summary": "CW-15V机库系统具备电力巡检、自动起降、充电及联网控制能力。"
+    },
+    {
+      "source_id": "TI_ALLOY",
+      "source_title": "Thermal coatings for titanium-aluminum alloys (NASA-TM-107760)",
+      "source_url": "https://ntrs.nasa.gov/citations/19930016859",
+      "published_date": "1993-04-01",
+      "date_basis": "page_publication",
+      "publisher": "NASA",
+      "source_level": "A",
+      "access_status": "read",
+      "support_summary": "钛合金航空结构材料研究；研究对象是高超声速结构，不能证明通航/eVTOL装机。"
+    },
+    {
+      "source_id": "CAAC_SURV",
+      "source_title": "民航局下发《民用航空低空空域监视技术应用指导意见》",
+      "source_url": "https://www.caac.gov.cn/XWZX/MHYW/201704/t20170421_43752.html",
+      "published_date": "2017-04-18",
+      "date_basis": "page_publication",
+      "publisher": "中国民航局",
+      "source_level": "A",
+      "access_status": "read",
+      "support_summary": "北斗定位与低空监视服务保障的政策框架；不说明具体机型或巡检任务。"
+    },
+    {
+      "source_id": "CAAC_MACRO",
+      "source_title": "中国民用航空局党组书记、局长宋志勇：高质量发展通用航空和低空经济",
+      "source_url": "https://www.caac.gov.cn/XWZX/MHYW/202501/t20250103_226313.html",
+      "published_date": "2025-01-03",
+      "date_basis": "page_publication",
+      "publisher": "中国民航局",
+      "source_level": "A",
+      "access_status": "read",
+      "support_summary": "产业与应用背景；不用于证明某个材料或具体技术连接。"
+    },
+    {
+      "source_id": "PX4_VISION",
+      "source_title": "Computer Vision (Optical Flow, MoCap, VIO, Avoidance) — PX4 v1.14",
+      "source_url": "https://docs.px4.io/v1.14/en/computer_vision/",
+      "published_date": null,
+      "date_basis": "not_available",
+      "publisher": "PX4",
+      "source_level": "B",
+      "access_status": "read",
+      "support_summary": "相机光流和视觉惯性里程计提供位置/速度估计；页面未给出发布日期。"
+    },
+    {
+      "source_id": "CAAC_TC",
+      "source_title": "亿航EH216-S型无人驾驶航空器系统专用条件",
+      "source_url": "https://www.caac.gov.cn/XXGK/XXGK/BZGF/ZYTJHHM/202202/t20220222_211914.html",
+      "published_date": "2022-02-09",
+      "date_basis": "page_publication",
+      "publisher": "中国民航局",
+      "source_level": "A",
+      "access_status": "read",
+      "support_summary": "型号适航要求；不等于特定商业运营和物流航线已经获批。"
+    }
+  ],
+  "records": [
+    {
+      "record_id": "NODE_CARBON_FIBER",
+      "artifact": "nodes.csv",
+      "source_id": "TORAY",
+      "source_location": "供应协议正文第1–5段",
+      "support_level": "direct",
+      "verification_scope": "node_definition",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "NODE_COMPOSITE",
+      "artifact": "nodes.csv",
+      "source_id": "TORAY",
+      "source_location": "供应协议正文第1–5段",
+      "support_level": "direct",
+      "verification_scope": "node_definition",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "NODE_ALUMINUM_ALLOY",
+      "artifact": "nodes.csv",
+      "source_id": "EH2019",
+      "source_location": "印刷页46：航空器材料构成",
+      "support_level": "direct",
+      "verification_scope": "node_definition",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "NODE_TITANIUM_ALLOY",
+      "artifact": "nodes.csv",
+      "source_id": "TI_ALLOY",
+      "source_location": "摘要：钛合金航空结构研究",
+      "support_level": "direct",
+      "verification_scope": "node_definition",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "NODE_AEROSPACE_ADHESIVE",
+      "artifact": "nodes.csv",
+      "source_id": "HENKEL_STRUCT",
+      "source_location": "From the largest wing to the smallest wire",
+      "support_level": "direct",
+      "verification_scope": "node_definition",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "NODE_POWER_BATTERY",
+      "artifact": "nodes.csv",
+      "source_id": "EH2025",
+      "source_location": "PDF第32页（印刷页28）：锂离子电池包",
+      "support_level": "direct",
+      "verification_scope": "node_definition",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "NODE_BMS",
+      "artifact": "nodes.csv",
+      "source_id": "TI",
+      "source_location": "Breakthrough battery management design",
+      "support_level": "direct",
+      "verification_scope": "node_definition",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "NODE_BATTERY_PACK",
+      "artifact": "nodes.csv",
+      "source_id": "TI",
+      "source_location": "Breakthrough battery management design",
+      "support_level": "direct",
+      "verification_scope": "node_definition",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "NODE_MOTOR",
+      "artifact": "nodes.csv",
+      "source_id": "TORAY",
+      "source_location": "The Joby Aviation eVTOL aircraft 图注",
+      "support_level": "direct",
+      "verification_scope": "node_definition",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "NODE_MOTOR_CONTROLLER",
+      "artifact": "nodes.csv",
+      "source_id": "TI",
+      "source_location": "High-speed performance for efficient motors",
+      "support_level": "direct",
+      "verification_scope": "node_definition",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "NODE_HYDROGEN_FUEL_CELL",
+      "artifact": "nodes.csv",
+      "source_id": "ZERO",
+      "source_location": "试验动力配置及Piper Malibu回顾段",
+      "support_level": "direct",
+      "verification_scope": "node_definition",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "NODE_CHIP",
+      "artifact": "nodes.csv",
+      "source_id": "ST",
+      "source_location": "How to Help Developers?",
+      "support_level": "direct",
+      "verification_scope": "node_definition",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "NODE_SENSOR",
+      "artifact": "nodes.csv",
+      "source_id": "ST",
+      "source_location": "Why Use ST MEMS to Fly a Drone?",
+      "support_level": "direct",
+      "verification_scope": "node_definition",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "NODE_LIDAR_RADAR",
+      "artifact": "nodes.csv",
+      "source_id": "EH2019",
+      "source_location": "印刷页48：飞控系统传感器（毫米波雷达）",
+      "support_level": "direct",
+      "verification_scope": "node_definition",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "NODE_OPTICAL_CAMERA",
+      "artifact": "nodes.csv",
+      "source_id": "INSPIRE",
+      "source_location": "Main Features / 4K Camera",
+      "support_level": "direct",
+      "verification_scope": "node_definition",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "NODE_FLIGHT_CONTROL",
+      "artifact": "nodes.csv",
+      "source_id": "ST",
+      "source_location": "开发板介绍与传感器章节",
+      "support_level": "direct",
+      "verification_scope": "node_definition",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "NODE_NAVIGATION",
+      "artifact": "nodes.csv",
+      "source_id": "EH2019",
+      "source_location": "印刷页48：飞控系统GNSS接收机",
+      "support_level": "direct",
+      "verification_scope": "node_definition",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "NODE_COMMUNICATION_MODULE",
+      "artifact": "nodes.csv",
+      "source_id": "EH2019",
+      "source_location": "印刷页48：通信系统LTE收发模块",
+      "support_level": "direct",
+      "verification_scope": "node_definition",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "NODE_CONSUMER_DRONE",
+      "artifact": "nodes.csv",
+      "source_id": "INSPIRE",
+      "source_location": "产品介绍与Main Features",
+      "support_level": "direct",
+      "verification_scope": "node_definition",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "NODE_INDUSTRIAL_DRONE",
+      "artifact": "nodes.csv",
+      "source_id": "M350",
+      "source_location": "产品介绍与功能1–8",
+      "support_level": "direct",
+      "verification_scope": "node_definition",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "NODE_FIXED_WING_DRONE",
+      "artifact": "nodes.csv",
+      "source_id": "SA70",
+      "source_location": "机型介绍第2–4段",
+      "support_level": "direct",
+      "verification_scope": "node_definition",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "NODE_EVTOL",
+      "artifact": "nodes.csv",
+      "source_id": "TORAY",
+      "source_location": "Joby eVTOL机型与六电机图注",
+      "support_level": "direct",
+      "verification_scope": "node_definition",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "NODE_GENERAL_AVIATION_AIRCRAFT",
+      "artifact": "nodes.csv",
+      "source_id": "AC352",
+      "source_location": "民用多用途直升机及用途段",
+      "support_level": "direct",
+      "verification_scope": "node_definition",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "NODE_VERTIPORT",
+      "artifact": "nodes.csv",
+      "source_id": "FAA",
+      "source_location": "设计要素：Safety-critical geometry",
+      "support_level": "direct",
+      "verification_scope": "node_definition",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "NODE_CHARGING_SWAP",
+      "artifact": "nodes.csv",
+      "source_id": "FAA",
+      "source_location": "Charging and electric infrastructure",
+      "support_level": "direct",
+      "verification_scope": "node_definition",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "NODE_LOW_ALTITUDE_NETWORK",
+      "artifact": "nodes.csv",
+      "source_id": "SZ_PLAN",
+      "source_location": "二（二）8：构建低空通信网络",
+      "support_level": "direct",
+      "verification_scope": "node_definition",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "NODE_LOW_ALTITUDE_SURVEILLANCE",
+      "artifact": "nodes.csv",
+      "source_id": "SZ_PLAN",
+      "source_location": "二（二）10：打造低空监视网（含雷达）",
+      "support_level": "direct",
+      "verification_scope": "node_definition",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "NODE_UTM_PLATFORM",
+      "artifact": "nodes.csv",
+      "source_id": "LONGHUA",
+      "source_location": "数字孪生平台与飞行计划闭环管理段",
+      "support_level": "direct",
+      "verification_scope": "node_definition",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "NODE_WEATHER_SERVICE",
+      "artifact": "nodes.csv",
+      "source_id": "CMA",
+      "source_location": "气象要素观测需求及服务保障试点段",
+      "support_level": "direct",
+      "verification_scope": "node_definition",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "NODE_DIGITAL_TWIN",
+      "artifact": "nodes.csv",
+      "source_id": "LONGHUA",
+      "source_location": "数字孪生平台对接运营主体数据段",
+      "support_level": "direct",
+      "verification_scope": "node_definition",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "NODE_LOW_ALTITUDE_LOGISTICS",
+      "artifact": "nodes.csv",
+      "source_id": "HN_LOG",
+      "source_location": "5条航线与无人机物资配送案例",
+      "support_level": "direct",
+      "verification_scope": "node_definition",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "NODE_AGRICULTURAL_PROTECTION",
+      "artifact": "nodes.csv",
+      "source_id": "AGRAS",
+      "source_location": "Better Growth with the Agras T50",
+      "support_level": "direct",
+      "verification_scope": "node_definition",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "NODE_POWER_INSPECTION",
+      "artifact": "nodes.csv",
+      "source_id": "JOUAV_GRID",
+      "source_location": "系统介绍与Fully Automated Power Line Inspection",
+      "support_level": "direct",
+      "verification_scope": "node_definition",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "NODE_EMERGENCY_RESCUE",
+      "artifact": "nodes.csv",
+      "source_id": "AC352",
+      "source_location": "搜索救援、医疗救护及应急救援用途段",
+      "support_level": "direct",
+      "verification_scope": "node_definition",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "NODE_AERIAL_TOURISM",
+      "artifact": "nodes.csv",
+      "source_id": "TOUR",
+      "source_location": "九龙口景区直升机空中游览检查段",
+      "support_level": "direct",
+      "verification_scope": "node_definition",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "REL_CARBON_COMPOSITE",
+      "artifact": "relations.csv",
+      "source_id": "TORAY",
+      "source_location": "供应协议正文：碳纤维复材体系",
+      "support_level": "direct",
+      "verification_scope": "technical_connection",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "REL_COMPOSITE_EVTOL",
+      "artifact": "relations.csv",
+      "source_id": "TORAY",
+      "source_location": "供应协议正文：Joby材料供应及机体用途",
+      "support_level": "direct",
+      "verification_scope": "technical_connection",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "REL_BATTERY_EVTOL",
+      "artifact": "relations.csv",
+      "source_id": "EH2025",
+      "source_location": "PDF第32页（印刷页28）：机载锂离子电池包",
+      "support_level": "direct",
+      "verification_scope": "technical_connection",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "REL_MOTOR_CONTROLLER",
+      "artifact": "relations.csv",
+      "source_id": "TI",
+      "source_location": "High-speed performance for efficient motors",
+      "support_level": "direct",
+      "verification_scope": "technical_connection",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "REL_CONTROLLER_EVTOL",
+      "artifact": "relations.csv",
+      "source_id": "EH2019",
+      "source_location": "印刷页51：自制电子调速器与航空器总装",
+      "support_level": "direct",
+      "verification_scope": "technical_connection",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "REL_CHIP_FLIGHT_CONTROL",
+      "artifact": "relations.csv",
+      "source_id": "ST",
+      "source_location": "How to Help Developers? / STM32F401CC",
+      "support_level": "direct",
+      "verification_scope": "technical_connection",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "REL_SENSOR_FLIGHT_CONTROL",
+      "artifact": "relations.csv",
+      "source_id": "ST",
+      "source_location": "Why Use ST MEMS to Fly a Drone?",
+      "support_level": "direct",
+      "verification_scope": "technical_connection",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "REL_RADAR_FLIGHT_CONTROL",
+      "artifact": "relations.csv",
+      "source_id": "EH2019",
+      "source_location": "印刷页48：毫米波雷达输入飞控",
+      "support_level": "direct",
+      "verification_scope": "technical_connection",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "REL_FLIGHT_CONTROL_INDUSTRIAL_DRONE",
+      "artifact": "relations.csv",
+      "source_id": "EH2019",
+      "source_location": "印刷页47–48：全机型飞控与自动驾驶",
+      "support_level": "direct",
+      "verification_scope": "technical_connection",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "REL_NAV_NETWORK",
+      "artifact": "relations.csv",
+      "source_id": "CAAC_SURV",
+      "source_location": "北斗定位与低空监视框架段",
+      "support_level": "background",
+      "verification_scope": "technical_connection",
+      "verification_status": "pending_verification",
+      "reason": "可支持导航/监视体系，但不能直接证明导航定位服务向纯低空通信网络供给的连接。"
+    },
+    {
+      "record_id": "REL_COMM_NETWORK",
+      "artifact": "relations.csv",
+      "source_id": "EH2019",
+      "source_location": "印刷页48：LTE模块与高速无线网络",
+      "support_level": "direct",
+      "verification_scope": "technical_connection",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "REL_VERTIPORT_LOGISTICS",
+      "artifact": "relations.csv",
+      "source_id": "LONGHUA",
+      "source_location": "47处物流起降点和物流集散中心段",
+      "support_level": "direct",
+      "verification_scope": "technical_connection",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "REL_DIGITAL_TWIN_LOGISTICS",
+      "artifact": "relations.csv",
+      "source_id": "LONGHUA",
+      "source_location": "数字孪生平台对接美团、丰翼运行数据段",
+      "support_level": "direct",
+      "verification_scope": "technical_connection",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "REL_INDUSTRIAL_DRONE_INSPECTION",
+      "artifact": "relations.csv",
+      "source_id": "JOUAV_GRID",
+      "source_location": "CW-15V无人机电力巡检系统段",
+      "support_level": "direct",
+      "verification_scope": "technical_connection",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "REL_INDUSTRIAL_DRONE_RESCUE",
+      "artifact": "relations.csv",
+      "source_id": "EH2019",
+      "source_location": "印刷页49：应急响应与救灾",
+      "support_level": "direct",
+      "verification_scope": "technical_connection",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "REL_CONSUMER_DRONE_TOURISM",
+      "artifact": "relations.csv",
+      "source_id": "CAAC_MACRO",
+      "source_location": "消费娱乐、影视航拍与空中游览应用段",
+      "support_level": "background",
+      "verification_scope": "technical_connection",
+      "verification_status": "pending_verification",
+      "reason": "分别列出航拍和游览，未直接证明消费级无人机提供此条文旅观光服务。"
+    },
+    {
+      "record_id": "REL_ALUMINUM_FIXED_WING",
+      "artifact": "relations.csv",
+      "source_id": "EH2019",
+      "source_location": "印刷页46：航空器材料构成",
+      "support_level": "background",
+      "verification_scope": "technical_connection",
+      "verification_status": "pending_verification",
+      "reason": "航空铝合金用于AAV机体，但未明确固定翼无人机机型；不能跨机型外推。"
+    },
+    {
+      "record_id": "REL_TITANIUM_GENERAL_AVIATION",
+      "artifact": "relations.csv",
+      "source_id": "TI_ALLOY",
+      "source_location": "摘要：航空钛合金结构研究",
+      "support_level": "background",
+      "verification_scope": "technical_connection",
+      "verification_status": "pending_verification",
+      "reason": "仅有航空材料背景，未定位通用航空具体机型或供应关系。"
+    },
+    {
+      "record_id": "REL_ADHESIVE_COMPOSITE",
+      "artifact": "relations.csv",
+      "source_id": "HENKEL_STRUCT",
+      "source_location": "From the largest wing to the smallest wire",
+      "support_level": "direct",
+      "verification_scope": "technical_connection",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "REL_CARBON_CONSUMER_DRONE",
+      "artifact": "relations.csv",
+      "source_id": "INSPIRE",
+      "source_location": "Main Features / Transforming Design",
+      "support_level": "direct",
+      "verification_scope": "technical_connection",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "REL_COMPOSITE_INDUSTRIAL_DRONE",
+      "artifact": "relations.csv",
+      "source_id": "SA70",
+      "source_location": "全复材基础机体与任务用途段",
+      "support_level": "direct",
+      "verification_scope": "technical_connection",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "REL_ALUMINUM_EVTOL",
+      "artifact": "relations.csv",
+      "source_id": "EH2019",
+      "source_location": "印刷页46：材料构成与载人电动机型",
+      "support_level": "direct",
+      "verification_scope": "technical_connection",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "REL_TITANIUM_EVTOL",
+      "artifact": "relations.csv",
+      "source_id": "TI_ALLOY",
+      "source_location": "摘要：航空钛合金结构研究",
+      "support_level": "background",
+      "verification_scope": "technical_connection",
+      "verification_status": "pending_verification",
+      "reason": "未定位eVTOL具体机型承力部件采用钛合金的直接原文。"
+    },
+    {
+      "record_id": "REL_ADHESIVE_EVTOL",
+      "artifact": "relations.csv",
+      "source_id": "HENKEL_EVTOL",
+      "source_location": "结构粘接解决方案与开发合作段",
+      "support_level": "direct",
+      "verification_scope": "development_capability",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "REL_BMS_BATTERY_PACK",
+      "artifact": "relations.csv",
+      "source_id": "TI",
+      "source_location": "Breakthrough battery management design",
+      "support_level": "direct",
+      "verification_scope": "technical_connection",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "REL_BATTERY_PACK_EVTOL",
+      "artifact": "relations.csv",
+      "source_id": "EH2025",
+      "source_location": "PDF第32页（印刷页28）：机载电池包",
+      "support_level": "direct",
+      "verification_scope": "technical_connection",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "REL_HYDROGEN_GENERAL_AVIATION",
+      "artifact": "relations.csv",
+      "source_id": "ZERO",
+      "source_location": "Piper Malibu六座氢电试验机回顾段",
+      "support_level": "direct",
+      "verification_scope": "flight_test_connection",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "REL_MOTOR_EVTOL",
+      "artifact": "relations.csv",
+      "source_id": "TORAY",
+      "source_location": "Joby eVTOL 六电机图注",
+      "support_level": "direct",
+      "verification_scope": "technical_connection",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "REL_CHIP_EVTOL",
+      "artifact": "relations.csv",
+      "source_id": "EH2025",
+      "source_location": "PDF第32页（印刷页28）：外购芯片用于航空器组装",
+      "support_level": "direct",
+      "verification_scope": "technical_connection",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "REL_OPTICAL_FLIGHT_CONTROL",
+      "artifact": "relations.csv",
+      "source_id": "EH2019",
+      "source_location": "印刷页48：视觉传感器数据用于飞控决策",
+      "support_level": "direct",
+      "verification_scope": "technical_connection",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "REL_FLIGHT_CONTROL_CONSUMER_DRONE",
+      "artifact": "relations.csv",
+      "source_id": "ST",
+      "source_location": "玩具无人机飞控开发板介绍",
+      "support_level": "direct",
+      "verification_scope": "technical_connection",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "REL_NAV_INDUSTRIAL_DRONE",
+      "artifact": "relations.csv",
+      "source_id": "EH2019",
+      "source_location": "印刷页48：GNSS及导航决策",
+      "support_level": "direct",
+      "verification_scope": "technical_connection",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "REL_COMM_INDUSTRIAL_DRONE",
+      "artifact": "relations.csv",
+      "source_id": "M350",
+      "source_location": "3. Transmission System",
+      "support_level": "direct",
+      "verification_scope": "technical_connection",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "REL_RADAR_EVTOL",
+      "artifact": "relations.csv",
+      "source_id": "EH2019",
+      "source_location": "印刷页48：毫米波雷达与避障决策",
+      "support_level": "direct",
+      "verification_scope": "technical_connection",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "REL_EVTOL_VERTIPORT",
+      "artifact": "relations.csv",
+      "source_id": "FAA",
+      "source_location": "起降场设计要素与AAM用途",
+      "support_level": "direct",
+      "verification_scope": "technical_connection",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "REL_EVTOL_CHARGING",
+      "artifact": "relations.csv",
+      "source_id": "EH2019",
+      "source_location": "印刷页48：载人航空器充电设备",
+      "support_level": "direct",
+      "verification_scope": "technical_connection",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "REL_INDUSTRIAL_NETWORK",
+      "artifact": "relations.csv",
+      "source_id": "EH2019",
+      "source_location": "印刷页48：机载LTE通信与地面网络",
+      "support_level": "direct",
+      "verification_scope": "technical_connection",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "REL_FIXED_WING_SURVEILLANCE",
+      "artifact": "relations.csv",
+      "source_id": "SZ_PLAN",
+      "source_location": "二（二）10：低空监视网规划",
+      "support_level": "background",
+      "verification_scope": "technical_connection",
+      "verification_status": "pending_verification",
+      "reason": "规划涵盖无人机监视，未定位固定翼机型及雷达实际监视案例。"
+    },
+    {
+      "record_id": "REL_GENERAL_UTM",
+      "artifact": "relations.csv",
+      "source_id": "SZ_PLAN",
+      "source_location": "二（二）7：低空飞行计划处理及协调",
+      "support_level": "direct",
+      "verification_scope": "planned_capability",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "REL_EVTOL_DIGITAL_TWIN",
+      "artifact": "relations.csv",
+      "source_id": "EH2019",
+      "source_location": "印刷页48：地面指挥控制系统",
+      "support_level": "background",
+      "verification_scope": "technical_connection",
+      "verification_status": "pending_verification",
+      "reason": "指挥控制数据链不自动等于数字孪生或城市智联网；缺少明确接入资料。"
+    },
+    {
+      "record_id": "REL_NETWORK_UTM",
+      "artifact": "relations.csv",
+      "source_id": "SZ_PLAN",
+      "source_location": "二（二）7–8：SILAS及通信网络服务保障",
+      "support_level": "direct",
+      "verification_scope": "planned_capability",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "REL_UTM_LOGISTICS",
+      "artifact": "relations.csv",
+      "source_id": "SZ_PLAN",
+      "source_location": "二（二）7：载货无人机数字化管理能力",
+      "support_level": "direct",
+      "verification_scope": "planned_capability",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "REL_WEATHER_EMERGENCY",
+      "artifact": "relations.csv",
+      "source_id": "CMA",
+      "source_location": "面向应急救援场景的气象保障试点段",
+      "support_level": "direct",
+      "verification_scope": "planned_capability",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "REL_SURVEILLANCE_INSPECTION",
+      "artifact": "relations.csv",
+      "source_id": "SZ_PLAN",
+      "source_location": "二（二）10：低空监视网规划",
+      "support_level": "background",
+      "verification_scope": "technical_connection",
+      "verification_status": "pending_verification",
+      "reason": "空域监视设施不同于机载巡检载荷，未证明该雷达对电力巡检任务的具体支持关系。"
+    },
+    {
+      "record_id": "REL_VERTIPORT_TOURISM",
+      "artifact": "relations.csv",
+      "source_id": "SZ_PLAN",
+      "source_location": "二（一）2：起降场满足观光旅游需求",
+      "support_level": "direct",
+      "verification_scope": "planned_capability",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "REL_CHARGING_AGRICULTURE",
+      "artifact": "relations.csv",
+      "source_id": "AGRAS",
+      "source_location": "9-Minute Fast Charging",
+      "support_level": "direct",
+      "verification_scope": "technical_connection",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "REL_INDUSTRIAL_AGRICULTURE",
+      "artifact": "relations.csv",
+      "source_id": "AGRAS",
+      "source_location": "喷洒/播撒与农业应用章节",
+      "support_level": "direct",
+      "verification_scope": "technical_connection",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "REL_FIXED_LOGISTICS",
+      "artifact": "relations.csv",
+      "source_id": "SA70",
+      "source_location": "独立储货空间与物资输送用途段",
+      "support_level": "direct",
+      "verification_scope": "technical_connection",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "REL_GENERAL_RESCUE",
+      "artifact": "relations.csv",
+      "source_id": "AC352",
+      "source_location": "搜索救援、医疗救护用途段",
+      "support_level": "direct",
+      "verification_scope": "technical_connection",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "REL_GENERAL_TOURISM",
+      "artifact": "relations.csv",
+      "source_id": "TOUR",
+      "source_location": "景区直升机空中游览运行检查段",
+      "support_level": "direct",
+      "verification_scope": "technical_connection",
+      "verification_status": "verified",
+      "reason": "原文直接支持节点或技术/应用连接，适用范围以具体案例和成立条件为限。"
+    },
+    {
+      "record_id": "RULE_CARBON_FIBER_PRICE_UP_V1",
+      "artifact": "event_rules.json",
+      "source_id": "EH2025",
+      "source_location": "PDF第32页（印刷页28）：供应及价格风险",
+      "support_level": "inference",
+      "verification_scope": "economic_transmission_hypothesis",
+      "verification_status": "pending_verification",
+      "reason": "原文支持一般原材料/部件价格风险，未证明碳纤维涨价沿该路径的实际幅度和负向结果。"
+    },
+    {
+      "record_id": "RULE_BATTERY_PRICE_DOWN_V1",
+      "artifact": "event_rules.json",
+      "source_id": "EH2025",
+      "source_location": "PDF第32页（印刷页28）：电池采购与供应风险",
+      "support_level": "inference",
+      "verification_scope": "economic_transmission_hypothesis",
+      "verification_status": "pending_verification",
+      "reason": "电池应用和价格风险有依据，但降价是否转化为物流需求/利润仍需实际采购价、成本和运营证据。"
+    },
+    {
+      "record_id": "RULE_AIRWORTHINESS_PROGRESS_V1",
+      "artifact": "event_rules.json",
+      "source_id": "CAAC_TC",
+      "source_location": "EH216-S型号专用条件及附件",
+      "support_level": "inference",
+      "verification_scope": "economic_transmission_hypothesis",
+      "verification_status": "pending_verification",
+      "reason": "支持型号适航要求，不证明型号进展使起降场和物流运营自动获批或受益。"
+    },
+    {
+      "record_id": "RULE_SUBSIDY_POLICY_V1",
+      "artifact": "event_rules.json",
+      "source_id": "SZ_PLAN",
+      "source_location": "二（一）2与二（二）7：起降设施及服务平台规划",
+      "support_level": "inference",
+      "verification_scope": "economic_transmission_hypothesis",
+      "verification_status": "pending_verification",
+      "reason": "这是建设规划，未规定本规则假设的eVTOL购置/运营及充电补贴，仍需具体补贴文件。"
+    },
+    {
+      "record_id": "RULE_AIRSPACE_OPENING_V1",
+      "artifact": "event_rules.json",
+      "source_id": "SZ_PLAN",
+      "source_location": "二（二）7：飞行计划协调与载货无人机管理",
+      "support_level": "inference",
+      "verification_scope": "economic_transmission_hypothesis",
+      "verification_status": "pending_verification",
+      "reason": "具备空域协调目标不等于航线开放或经营许可，尚需具体空域批复与物流运营数据。"
+    },
+    {
+      "record_id": "RULE_UAV_ORDER_V1",
+      "artifact": "event_rules.json",
+      "source_id": "JOUAV_GRID",
+      "source_location": "CW-15V电力巡检系统介绍",
+      "support_level": "inference",
+      "verification_scope": "economic_transmission_hypothesis",
+      "verification_status": "pending_verification",
+      "reason": "支持产品与场景匹配，不是已签订单、履约验收或新增收入证据。"
+    },
+    {
+      "record_id": "RULE_AGRICULTURAL_OPERATION_V1",
+      "artifact": "event_rules.json",
+      "source_id": "AGRAS",
+      "source_location": "植保用途、喷洒/播撒及续航保障章节",
+      "support_level": "inference",
+      "verification_scope": "economic_transmission_hypothesis",
+      "verification_status": "pending_verification",
+      "reason": "支持植保应用能力，不能量化季节性运营落地对需求和利润的作用。"
+    },
+    {
+      "record_id": "RULE_DIGITAL_TWIN_DEPLOYMENT_V1",
+      "artifact": "event_rules.json",
+      "source_id": "LONGHUA",
+      "source_location": "数字孪生平台接入物流运行主体数据段",
+      "support_level": "inference",
+      "verification_scope": "economic_transmission_hypothesis",
+      "verification_status": "pending_verification",
+      "reason": "支持具体平台接入案例；普遍的部署利好方向和财务效果仍属于分析假设。"
+    },
+    {
+      "record_id": "RULE_WEATHER_ALERT_V1",
+      "artifact": "event_rules.json",
+      "source_id": "CMA",
+      "source_location": "气象要素需求与应急救援服务保障段",
+      "support_level": "inference",
+      "verification_scope": "economic_transmission_hypothesis",
+      "verification_status": "pending_verification",
+      "reason": "说明气象保障需求，不足以判定一次极端天气对救援需求及可飞性的净影响。"
+    },
+    {
+      "record_id": "RULE_HYDROGEN_TECH_V1",
+      "artifact": "event_rules.json",
+      "source_id": "ZERO",
+      "source_location": "氢电试飞配置与Piper Malibu回顾段",
+      "support_level": "inference",
+      "verification_scope": "economic_transmission_hypothesis",
+      "verification_status": "pending_verification",
+      "reason": "支持技术试飞，不代表获证、应急场景落地或商业收入。"
+    }
+  ],
+  "additional_search_notes": [
+    {
+      "query": "eVTOL titanium landing gear supplier；固定翼无人机铝合金机体",
+      "result": "未找到足以证明现有机型范围的直接原文，相关边保留待核验。"
+    },
+    {
+      "query": "宝钛 航空钛合金 产品；国资委 中国移动5G-A低空智联网",
+      "candidate_urls": [
+        "https://www.baoti.com/Article/index.html?cid=3550&id=22646",
+        "https://wap.sasac.gov.cn/n2588025/n2588119/c32903257/content.html"
+      ],
+      "result": "检索命中，但正文访问未能稳定复核；未以这些候选链接恢复任何记录的核验状态。"
+    },
+    {
+      "query": "PX4光流与视觉惯性里程计",
+      "result": "找到直接技术文档，但未给出发布日期，主表采用有日期的亿航飞控传感器披露；此文档保留为补充阅读。"
+    },
+    {
+      "query": "低空扶持政策 补贴；订单合作 电力巡检；电池价格变动",
+      "result": "政策、产品与采购风险资料未证明现有完整经济传导规则，10条规则保持待核验。"
+    }
+  ]
+}

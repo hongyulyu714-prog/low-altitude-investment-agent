@@ -1,0 +1,284 @@
+"""Validate the public, source-backed knowledge-graph delivery for Issue #2."""
+
+from __future__ import annotations
+
+import csv
+import json
+import re
+from collections import Counter
+from datetime import date
+from pathlib import Path
+from typing import Any
+
+
+ROOT = Path(__file__).resolve().parents[1]
+GRAPH_DIR = ROOT / "data" / "graph"
+STATUSES = {"verified", "pending_verification"}
+DIRECTIONS = {"positive", "negative", "neutral", "uncertain"}
+STOCK_CODE = re.compile(r"^\d{6}\.(SZ|SH|BJ)$")
+
+NODE_HEADERS = [
+    "node_id", "node_name", "node_type", "aliases", "description",
+    "source_title", "source_url", "verification_status",
+]
+RELATION_HEADERS = [
+    "relation_id", "from_node_id", "relation_type", "to_node_id",
+    "effect_direction", "condition", "source_title", "source_url",
+    "verification_status",
+]
+COMPANY_HEADERS = [
+    "company_id", "stock_code", "company_name", "product", "product_node_id",
+    "chain_role", "exposure_score", "exposure_basis", "source_title",
+    "source_url", "source_location", "verification_status",
+]
+
+REQUIRED_NODE_NAMES = {
+    "碳纤维", "复合材料", "铝合金", "钛合金", "航空结构胶", "动力电池",
+    "电池管理系统 BMS", "电池包", "电机", "电控", "氢燃料电池", "芯片",
+    "传感器", "激光雷达/毫米波雷达", "光学相机", "飞控", "导航定位", "通信模块",
+    "消费级无人机", "工业无人机", "固定翼无人机", "eVTOL", "通航飞机", "起降场",
+    "充换电", "低空通信网络", "低空监视雷达", "低空交通管理平台", "气象服务",
+    "低空数字孪生/智联网", "低空物流", "农林植保", "电力巡检", "应急救援", "文旅观光",
+}
+REQUIRED_RULE_TYPES = {"原材料价格上涨", "政策补贴", "适航进展", "空域开放", "订单合作", "运营场景落地"}
+
+
+def _load_csv(name: str) -> list[dict[str, str]]:
+    with (GRAPH_DIR / name).open(encoding="utf-8", newline="") as handle:
+        return list(csv.DictReader(handle))
+
+
+def load() -> tuple[list[dict[str, str]], list[dict[str, str]], list[dict[str, str]], list[dict[str, Any]]]:
+    """Load the four graph artefacts without mutating their records."""
+    with (GRAPH_DIR / "event_rules.json").open(encoding="utf-8") as handle:
+        rules = json.load(handle)
+    return _load_csv("nodes.csv"), _load_csv("relations.csv"), _load_csv("company_mapping.csv"), rules
+
+
+def _require_headers(rows: list[dict[str, str]], expected: list[str], artifact: str, errors: list[str]) -> None:
+    actual = list(rows[0]) if rows else []
+    if actual != expected:
+        errors.append(f"{artifact}: unexpected headers")
+
+
+def _required_text(value: Any) -> bool:
+    return isinstance(value, str) and bool(value.strip())
+
+
+def _check_records(rows: list[dict[str, str]], id_key: str, artifact: str, errors: list[str]) -> None:
+    ids = [row.get(id_key, "") for row in rows]
+    if any(not value for value in ids):
+        errors.append(f"{artifact}: missing {id_key}")
+    if len(ids) != len(set(ids)):
+        errors.append(f"{artifact}: duplicate IDs")
+    for row in rows:
+        if not row.get("source_title") or not row.get("source_url", "").startswith(("http://", "https://")):
+            errors.append(f"{artifact}: every record needs a source title and URL")
+            break
+        if row.get("verification_status") not in STATUSES:
+            errors.append(f"{artifact}: invalid verification status")
+            break
+
+
+def validate(
+    nodes: list[dict[str, str]],
+    relations: list[dict[str, str]],
+    companies: list[dict[str, str]],
+    rules: list[dict[str, Any]],
+) -> list[str]:
+    """Return all deterministic contract and acceptance-check violations."""
+    errors: list[str] = []
+    _require_headers(nodes, NODE_HEADERS, "nodes", errors)
+    _require_headers(relations, RELATION_HEADERS, "relations", errors)
+    _require_headers(companies, COMPANY_HEADERS, "company mappings", errors)
+    _check_records(nodes, "node_id", "nodes", errors)
+    _check_records(relations, "relation_id", "relations", errors)
+    _check_records(companies, "company_id", "company mappings", errors)
+
+    if len(nodes) != 35:
+        errors.append("nodes: requires exactly 35 records")
+    names = {row.get("node_name") for row in nodes}
+    missing_names = REQUIRED_NODE_NAMES - names
+    if missing_names:
+        errors.append(f"nodes: missing required names: {sorted(missing_names)}")
+    node_ids = {row.get("node_id") for row in nodes}
+
+    if len(relations) != 50:
+        errors.append("relations: requires exactly 50 records")
+    for relation in relations:
+        if relation.get("from_node_id") not in node_ids or relation.get("to_node_id") not in node_ids:
+            errors.append("relations: contains dangling node reference")
+            break
+        if relation.get("from_node_id") == relation.get("to_node_id"):
+            errors.append("relations: self-loop is not a directional chain edge")
+            break
+        if not _required_text(relation.get("relation_type")):
+            errors.append("relations: relation_type required")
+            break
+        if relation.get("effect_direction") not in DIRECTIONS:
+            errors.append("relations: invalid effect_direction")
+            break
+        if not _required_text(relation.get("condition")):
+            errors.append("relations: every relation needs a condition")
+            break
+    relation_ids = {row.get("relation_id") for row in relations}
+    relation_by_id = {row["relation_id"]: row for row in relations if row.get("relation_id")}
+
+    if not 20 <= len(companies) <= 30:
+        errors.append("company mappings: requires 20–30 records")
+    roles = Counter(row.get("chain_role") for row in companies)
+    required_roles = {"材料/动力", "电子/控制", "无人机/eVTOL整机", "低空基础设施", "运营应用"}
+    if set(roles) != required_roles or any(roles[role] != 5 for role in required_roles):
+        errors.append("company mappings: requires five records in each of five required groups")
+    for company in companies:
+        if not STOCK_CODE.fullmatch(company.get("stock_code", "")):
+            errors.append("company mappings: invalid stock code")
+            break
+        if company.get("product_node_id") not in node_ids:
+            errors.append("company mappings: contains dangling product node")
+            break
+        try:
+            exposure = float(company.get("exposure_score", ""))
+        except ValueError:
+            exposure = -1
+        if not 0 <= exposure <= 100 or not company.get("exposure_basis"):
+            errors.append("company mappings: exposure must be 0–100 with a basis")
+            break
+
+    if not isinstance(rules, list) or len(rules) != 10:
+        errors.append("event rules: requires exactly 10 rules")
+        return errors
+    if any(not isinstance(rule, dict) for rule in rules):
+        errors.append("event rules: each rule must be an object")
+        return errors
+    for rule in rules:
+        for field in ("rule_id", "event_type", "trigger_node_id", "impact_direction", "exception", "source_title", "source_url", "verification_status"):
+            if not _required_text(rule.get(field)):
+                errors.append(f"event rules: {field} required")
+    if errors:
+        return errors
+    rule_ids = [rule.get("rule_id") for rule in rules]
+    if len(rule_ids) != len(set(rule_ids)) or any(not str(value).startswith("RULE_") for value in rule_ids):
+        errors.append("event rules: duplicate or malformed rule IDs")
+    types = {rule.get("event_type") for rule in rules}
+    missing_types = REQUIRED_RULE_TYPES - types
+    if missing_types:
+        errors.append(f"event rules: missing mandatory event types: {sorted(missing_types)}")
+    for rule in rules:
+        if rule.get("impact_direction") not in DIRECTIONS:
+            errors.append("event rules: invalid impact_direction")
+            break
+        if rule.get("trigger_node_id") not in node_ids:
+            errors.append("event rules: contains dangling trigger node")
+            break
+        path = rule.get("path")
+        edge_ids = rule.get("relation_ids")
+        if not isinstance(path, list) or not isinstance(edge_ids, list) or len(path) < 2 or len(edge_ids) != len(path) - 1:
+            errors.append("event rules: path/relation count mismatch")
+            break
+        if path[0] != rule.get("trigger_node_id") or any(node_id not in node_ids for node_id in path):
+            errors.append("event rules: invalid path node")
+            break
+        if any(edge_id not in relation_ids for edge_id in edge_ids):
+            errors.append("event rules: invalid relation reference")
+            break
+        if any(
+            relation_by_id[edge_id].get("from_node_id") != path[index]
+            or relation_by_id[edge_id].get("to_node_id") != path[index + 1]
+            for index, edge_id in enumerate(edge_ids)
+        ):
+            errors.append("event rules: relation does not connect its stated path")
+            break
+        if rule.get("verification_status") == "verified" and any(
+            relation_by_id[edge_id].get("verification_status") != "verified" for edge_id in edge_ids
+        ):
+            errors.append("event rules: verified rule depends on unverified relation")
+            break
+        if rule.get("verification_status") not in STATUSES or not str(rule.get("source_url", "")).startswith(("http://", "https://")):
+            errors.append("event rules: source and verification status required")
+            break
+    return errors
+
+
+def main() -> int:
+    graph = load()
+    errors = validate(*graph)
+    errors.extend(validate_source_review(graph[0], graph[1], graph[3], load_source_review()))
+    if errors:
+        print("Graph data validation failed:", *[f"- {error}" for error in errors], sep="\n")
+        return 1
+    print("Graph data validation passed: 35 nodes, 50 relations, 25 company mappings, 10 event rules.")
+    return 0
+
+
+def load_source_review() -> dict[str, Any]:
+    with (GRAPH_DIR / "source_review.json").open(encoding="utf-8") as handle:
+        return json.load(handle)
+
+
+def validate_source_review(
+    nodes: list[dict[str, str]],
+    relations: list[dict[str, str]],
+    rules: list[dict[str, Any]],
+    review: dict[str, Any],
+) -> list[str]:
+    """Keep the manual source audit aligned with the delivered graph.
+
+    This checks provenance metadata, not the truth of a web page. Source content
+    must be read and reviewed before a record is promoted to verified.
+    """
+    errors: list[str] = []
+    try:
+        reviewed_at = date.fromisoformat(review["reviewed_at"])
+    except (KeyError, TypeError, ValueError):
+        return ["source review: invalid reviewed_at"]
+    sources = {source["source_id"]: source for source in review["sources"]}
+    if len(sources) != len(review["sources"]):
+        errors.append("source review: duplicate source IDs")
+    expected = {}
+    for artifact, rows, id_key in (
+        ("nodes.csv", nodes, "node_id"),
+        ("relations.csv", relations, "relation_id"),
+        ("event_rules.json", rules, "rule_id"),
+    ):
+        expected.update({(artifact, row[id_key]): row for row in rows})
+    seen = set()
+    for record in review["records"]:
+        key = (record["artifact"], record["record_id"])
+        if key in seen:
+            errors.append("source review: duplicate record")
+        seen.add(key)
+        row = expected.get(key)
+        source = sources.get(record["source_id"])
+        if row is None or source is None:
+            errors.append("source review: dangling record/source reference")
+            continue
+        if any(row[field] != source[field] for field in ("source_title", "source_url")):
+            errors.append("source review: source metadata differs from graph")
+        if row["verification_status"] != record["verification_status"]:
+            errors.append("source review: verification status differs from graph")
+        if not all(_required_text(record.get(field)) for field in ("source_location", "reason", "verification_scope")):
+            errors.append("source review: location, reason and scope required")
+        if record.get("support_level") not in {"direct", "background", "inference"}:
+            errors.append("source review: invalid support level")
+        if row["verification_status"] == "verified":
+            if record.get("support_level") != "direct" or source.get("access_status") != "read":
+                errors.append("source review: verified record requires read direct support")
+            if source.get("source_level") not in {"A", "B"}:
+                errors.append("source review: verified record requires primary source")
+            try:
+                published = date.fromisoformat(source["published_date"])
+                if published > reviewed_at:
+                    raise ValueError("future source")
+            except (KeyError, TypeError, ValueError):
+                errors.append("source review: verified record requires valid source date")
+            if record.get("verification_scope") in {"planned_capability", "development_capability", "flight_test_connection"}:
+                if not row.get("condition", "").startswith("仅"):
+                    errors.append("source review: non-operational connection needs explicit condition")
+    if seen != set(expected):
+        errors.append("source review: incomplete record coverage")
+    return errors
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

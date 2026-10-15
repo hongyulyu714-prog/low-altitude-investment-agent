@@ -1,0 +1,122 @@
+[
+  {
+    "rule_id": "RULE_CARBON_FIBER_PRICE_UP_V1",
+    "event_type": "原材料价格上涨",
+    "trigger_node_id": "NODE_CARBON_FIBER",
+    "path": ["NODE_CARBON_FIBER", "NODE_COMPOSITE", "NODE_EVTOL"],
+    "relation_ids": ["REL_CARBON_COMPOSITE", "REL_COMPOSITE_EVTOL"],
+    "impact_direction": "negative",
+    "exception": "存在长期定价、库存缓冲或材料替代时，成本传导可能滞后或减弱。",
+    "source_title": "EHang Holdings Limited 2025 Annual Report (Form 20-F)",
+    "source_url": "https://ir.ehang.com/static-files/99f93ebc-2713-43e5-bf81-6e8be7a08c6b",
+    "verification_status": "pending_verification"
+  },
+  {
+    "rule_id": "RULE_BATTERY_PRICE_DOWN_V1",
+    "event_type": "关键零部件价格下降",
+    "trigger_node_id": "NODE_POWER_BATTERY",
+    "path": ["NODE_POWER_BATTERY", "NODE_EVTOL", "NODE_VERTIPORT", "NODE_LOW_ALTITUDE_LOGISTICS"],
+    "relation_ids": ["REL_BATTERY_EVTOL", "REL_EVTOL_VERTIPORT", "REL_VERTIPORT_LOGISTICS"],
+    "impact_direction": "positive",
+    "exception": "仅在电池成本可被整机制造商获得且需求或交付不受适航限制时成立。",
+    "source_title": "EHang Holdings Limited 2025 Annual Report (Form 20-F)",
+    "source_url": "https://ir.ehang.com/static-files/99f93ebc-2713-43e5-bf81-6e8be7a08c6b",
+    "verification_status": "pending_verification"
+  },
+  {
+    "rule_id": "RULE_AIRWORTHINESS_PROGRESS_V1",
+    "event_type": "适航进展",
+    "trigger_node_id": "NODE_EVTOL",
+    "path": ["NODE_EVTOL", "NODE_VERTIPORT", "NODE_LOW_ALTITUDE_LOGISTICS"],
+    "relation_ids": ["REL_EVTOL_VERTIPORT", "REL_VERTIPORT_LOGISTICS"],
+    "impact_direction": "positive",
+    "exception": "型号审定进展不等于商业运营许可；仍需运营、场地和空域条件。",
+    "source_title": "亿航EH216-S型无人驾驶航空器系统专用条件",
+    "source_url": "https://www.caac.gov.cn/XXGK/XXGK/BZGF/ZYTJHHM/202202/t20220222_211914.html",
+    "verification_status": "pending_verification"
+  },
+  {
+    "rule_id": "RULE_SUBSIDY_POLICY_V1",
+    "event_type": "政策补贴",
+    "trigger_node_id": "NODE_EVTOL",
+    "path": ["NODE_EVTOL", "NODE_CHARGING_SWAP"],
+    "relation_ids": ["REL_EVTOL_CHARGING"],
+    "impact_direction": "positive",
+    "exception": "仅适用于政策明确补贴 eVTOL 购置或运营、且明确覆盖适配航空充换电保障的情形；须核对受益主体、预算、拨付和实际新增补能需求。未明确覆盖时不推定设施受益，不延伸到农林植保等其他场景，也不推定收入或利润。",
+    "source_title": "深圳市低空基础设施高质量建设方案（2024—2026年）",
+    "source_url": "https://fgw.sz.gov.cn/gkmlpt/content/12/12305/mpost_12305044.html",
+    "verification_status": "pending_verification"
+  },
+  {
+    "rule_id": "RULE_AIRSPACE_OPENING_V1",
+    "event_type": "空域开放",
+    "trigger_node_id": "NODE_UTM_PLATFORM",
+    "path": ["NODE_UTM_PLATFORM", "NODE_LOW_ALTITUDE_LOGISTICS"],
+    "relation_ids": ["REL_UTM_LOGISTICS"],
+    "impact_direction": "positive",
+    "exception": "仅限获批空域、时段和运行主体；安全限制可随时收紧。",
+    "source_title": "深圳市低空基础设施高质量建设方案（2024—2026年）",
+    "source_url": "https://fgw.sz.gov.cn/gkmlpt/content/12/12305/mpost_12305044.html",
+    "verification_status": "pending_verification"
+  },
+  {
+    "rule_id": "RULE_UAV_ORDER_V1",
+    "event_type": "订单合作",
+    "trigger_node_id": "NODE_INDUSTRIAL_DRONE",
+    "path": ["NODE_INDUSTRIAL_DRONE", "NODE_POWER_INSPECTION"],
+    "relation_ids": ["REL_INDUSTRIAL_DRONE_INSPECTION"],
+    "impact_direction": "positive",
+    "exception": "框架协议、意向订单或未满足交付验收条件的订单不视为已实现收入。",
+    "source_title": "JOUAV Unveils Next-Gen VTOL Hangar for Automated Power Line Inspection",
+    "source_url": "https://www.jouav.com/news/next-gen-vtol-hangar-unveiled.html",
+    "verification_status": "pending_verification"
+  },
+  {
+    "rule_id": "RULE_AGRICULTURAL_OPERATION_V1",
+    "event_type": "运营场景落地",
+    "trigger_node_id": "NODE_INDUSTRIAL_DRONE",
+    "path": ["NODE_INDUSTRIAL_DRONE", "NODE_AGRICULTURAL_PROTECTION"],
+    "relation_ids": ["REL_INDUSTRIAL_AGRICULTURE"],
+    "impact_direction": "positive",
+    "exception": "受季节、作业资质、农药监管和气象条件影响，不能外推全年稳定需求。",
+    "source_title": "DJI Agras T50 and T25 Expand Aerial Crop Protection Capabilities",
+    "source_url": "https://ag.dji.com/newsroom/agras-t50-and-t25-global-launch",
+    "verification_status": "pending_verification"
+  },
+  {
+    "rule_id": "RULE_DIGITAL_TWIN_DEPLOYMENT_V1",
+    "event_type": "基础设施建设",
+    "trigger_node_id": "NODE_DIGITAL_TWIN",
+    "path": ["NODE_DIGITAL_TWIN", "NODE_LOW_ALTITUDE_LOGISTICS"],
+    "relation_ids": ["REL_DIGITAL_TWIN_LOGISTICS"],
+    "impact_direction": "positive",
+    "exception": "平台建设完成不等于取得运行授权，且数据接入范围会影响实际效用。",
+    "source_title": "深圳龙华机场，来了！",
+    "source_url": "https://www.szlhq.gov.cn/xxgk/xwzx/gzdt/content/post_12982043.html",
+    "verification_status": "pending_verification"
+  },
+  {
+    "rule_id": "RULE_WEATHER_ALERT_V1",
+    "event_type": "极端气象",
+    "trigger_node_id": "NODE_WEATHER_SERVICE",
+    "path": ["NODE_WEATHER_SERVICE", "NODE_EMERGENCY_RESCUE"],
+    "relation_ids": ["REL_WEATHER_EMERGENCY"],
+    "impact_direction": "uncertain",
+    "exception": "恶劣天气可能提高救援需求，也可能使航空器无法起飞；需以运行限制为准。",
+    "source_title": "低空经济气象科技创新系列报道④高效观测助低空经济振翅而飞",
+    "source_url": "https://www.cma.gov.cn/2011xwzx/2011xqxxw/2011xqxyw/202502/t20250214_6852409.html",
+    "verification_status": "pending_verification"
+  },
+  {
+    "rule_id": "RULE_HYDROGEN_TECH_V1",
+    "event_type": "动力技术突破",
+    "trigger_node_id": "NODE_HYDROGEN_FUEL_CELL",
+    "path": ["NODE_HYDROGEN_FUEL_CELL", "NODE_GENERAL_AVIATION_AIRCRAFT", "NODE_EMERGENCY_RESCUE"],
+    "relation_ids": ["REL_HYDROGEN_GENERAL_AVIATION", "REL_GENERAL_RESCUE"],
+    "impact_direction": "positive",
+    "exception": "技术验证、储氢安全、适航审定和补能基础设施尚未满足时，不应推断商业化。",
+    "source_title": "ZeroAvia Makes Aviation History, Flying World’s Largest Aircraft Powered with a Hydrogen-Electric Engine",
+    "source_url": "https://zeroavia.com/do228-first-flight/",
+    "verification_status": "pending_verification"
+  }
+]
