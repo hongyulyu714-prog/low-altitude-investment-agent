@@ -1,6 +1,6 @@
 # SkyNexus Frontend V1
 
-React19 + TypeScript + Vite7 的单一研究工作台。完整启动、API联调、数据边界、验收与3分钟脚本见 [docs/FRONTEND_DEMO.md](../docs/FRONTEND_DEMO.md)。
+React19 + TypeScript + Vite7 的单一研究工作台。全项目启动、完整页面图集与逐步操作说明见 [根目录 README](../README.md)。完整启动、API联调、数据边界、验收与3分钟脚本见 [docs/FRONTEND_DEMO.md](../docs/FRONTEND_DEMO.md)。
 
 ```bash
 npm ci
