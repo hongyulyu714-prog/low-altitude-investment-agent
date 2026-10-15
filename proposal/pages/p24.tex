@@ -1,0 +1,10 @@
+% !TEX root = ../main.tex
+\PlanPage{公司影响评分}{武桐宇}{24}
+\WritingGuide{解释三个分项、公式、参数和方向。}{手算例子、符号和参数依据。}{公式为E乘S乘F除以10000；财务分项是放大程度代理。}
+\begin{equation}
+I=\frac{E\times S\times F}{10000},\qquad E,S,F,I\in[0,100].
+\end{equation}
+其中，$E$ 为业务暴露度，$S$ 为事件传导敏感度，$F$ 为财务重要性分项，$I$ 为影响强度。方向单独记录。该式对应仓库当前评分代码，参数与适用条件由作者根据所用版本补齐。
+\SourceNote{\texttt{backend/scoring.py}；\texttt{docs/SCORING\_METHOD.md}，取材时记录提交版本。}
+
+% 按“一句话结论—证据—解释—适用条件”组织本页正文。
