@@ -33,7 +33,7 @@
 % !TEX root = ../main.tex
 \clearpage
 \section{项目概要}
-\subsection*{1.1 从事件信息到可审阅投资研究}\label{page:03}
+\subsection*{1.1 研究问题}\label{page:03}
 \noindent\textbf{低空经济投研的核心任务，是把政策、材料价格、企业公告等事件转化为能够逐层审阅的产业与公司研究。}低空产业横跨航空器制造、动力系统、复合材料、空域基础设施、运营服务等环节。同一事件进入不同环节后，会经由成本、供给、订单、合规与运营效率等机制形成不同的经济含义。高质量研究必须同时回答三个决定性问题：事件事实是否可靠，传导路径如何成立，公司结论由哪些可定位证据支撑。
 
 传统人工研究往往在公告、政策原文、行业报告和财务资料之间往返：先识别事件，再推断受影响环节，再寻找相关公司，最后补充财务解释。低空智研将这套经验性流程沉淀为统一记录，使事件、数据版本或公司映射更新后，研究者仍能沿同一结构逐段更新结论。通用问答系统擅长加速阅读；本项目进一步将事件识别、关系判断、财务解释和证据引用拆分为可组合对象，使来源、适用条件和计算口径始终随报告保留。
@@ -57,7 +57,7 @@
 
 % ===== merged source: pages/p04.tex =====
 % !TEX root = ../main.tex
-\subsection*{1.2 项目能力、研究对象与阶段成果}\label{page:04}
+\subsection*{1.2 项目基础}\label{page:04}
 \noindent\textbf{低空智研已经形成“结构化输入—确定性编排—可审阅报告”的完整研究闭环。}后端总控按注册版本读取事件、产业路径、公司映射、财务评分和证据五类输入；服务层将结果以稳定接口返回；前端以同一份报告呈现事件、路径、公司、分数、来源和运行信息。该设计使数据资产持续扩展，研究记录始终保持一致：Mock样例、审核后的行业数据库与模型辅助抽取的候选记录均通过同一份契约和核验规则进入主链\cite{lhy-architecture,lhy-orchestrator}。
 
 \begin{center}
@@ -134,7 +134,7 @@
 % !TEX root = ../main.tex
 \clearpage
 \section{产品设计与使用流程}
-\subsection*{3.1 以研究问题为中心的投研工作台}\label{page:09}
+\subsection*{3.1 研究工作台}\label{page:09}
 \noindent\textbf{低空智研以事件驱动研究工作台组织投研流程。}研究者从一个已登记事件出发，在同一研究现场依次阅读事件事实、产业传导路径、公司比较、评分构成、证据摘录和运行来源。界面将这些对象置于一份报告上下文中，使使用者能够沿结论反向检查：某家公司为何出现在研究队列中、该公司受到何种方向的影响、系统依据了哪条路径、引用来自何处。
 
 \begin{center}
@@ -163,7 +163,7 @@
 
 % ===== merged source: pages/p10.tex =====
 % !TEX root = ../main.tex
-\subsection*{3.2 事件入口：固定研究对象的第一步}\label{page:10}
+\subsection*{3.2 事件入口}\label{page:10}
 \noindent\textbf{事件入口在分析开始前将研究对象转化为具有时间、方向、来源和版本的结构化记录。}金融研究中的“事件”需要明确发生或披露的日期、影响对象、方向、材料来源与核验状态，才能在图谱、公司、财务和证据模块中保持同一语义。研究者选择已登记事件后，前端将事件ID与数据版本提交给总控，由总控调度后续研究任务。
 
 \begin{center}
@@ -191,7 +191,7 @@
 
 % ===== merged source: pages/p11.tex =====
 % !TEX root = ../main.tex
-\subsection*{3.3 产业路径研究：把传导机制展开为可验证命题}\label{page:11}
+\subsection*{3.3 产业路径}\label{page:11}
 \noindent\textbf{在事件驱动投研中，产业路径用于解释影响如何从一个环节传递至下一个环节。}低空智研将路径定义为有序节点ID和相邻关系ID组成的\texttt{GraphPath}：节点给出材料、部件、整机或运营环节；关系给出供应、配套、驱动或服务等方向；规则和证据说明关系的适用条件。接口要求一条路径的关系数量等于节点数量减一，使每条边均可对应其前后节点\cite{lhy-contracts}。
 
 \begin{center}
@@ -219,7 +219,7 @@
 
 % ===== merged source: pages/p12.tex =====
 % !TEX root = ../main.tex
-\subsection*{3.4 公司比较与财务解释：从概念关联到研究队列}\label{page:12}
+\subsection*{3.4 公司比较}\label{page:12}
 \noindent\textbf{公司比较模块将产业概念转化为可以逐项审阅的研究队列。}每个公司对象同时携带证券代码、产业角色、影响方向、影响强度、风险标记、证据ID与核验状态。公司通过证券主体、产品或业务角色与图谱节点和事件路径建立显式映射；在此基础上，系统进一步刻画该公司对事件的暴露、敏感性和财务重要性。
 
 \begin{center}
@@ -251,7 +251,7 @@
 
 % ===== merged source: pages/p13.tex =====
 % !TEX root = ../main.tex
-\subsection*{3.5 证据阅读与可追溯研究报告}\label{page:13}
+\subsection*{3.5 证据阅读}\label{page:13}
 \noindent\textbf{证据模块为每一份研究报告提供“从结论返回原始材料”的通道。}系统将一段可定位的文本摘录作为最小证据单元，记录\texttt{evidence\_id}、事件ID、来源标题、发布日期、URL、原文定位、短摘录、显式证券代码、可信度等级与核验状态。路径、公司、评分和报告结论通过证据ID获得共同的事实基础\cite{lhy-contracts,lhy-evidence}。
 
 \begin{center}
@@ -279,7 +279,7 @@ Mock演示记录 & Mock标题、示例URL、Mock可信度和Mock核验状态 & �
 % ===== merged source: pages/p14.tex =====
 % !TEX root = ../main.tex
 \section{技术架构与智能体设计}
-\subsection*{4.1 总体架构：以契约约束多源研究输出}\label{page:14}
+\subsection*{4.1 系统架构}\label{page:14}
 \noindent\textbf{系统采用“研究数据模块、确定性总控、标准服务接口和研究工作台”四层架构。}事件识别、产业关系、公司映射、财务解释和证据检索具有不同的数据来源、更新频率和专业责任；项目让每一类模块先输出结构化记录，再由总控完成版本选择、字段校验、路径检查、评分复算、证据绑定和运行留痕，最终生成供API和前端消费的\texttt{Report}\cite{lhy-architecture,lhy-orchestrator}。
 
 从数据流看，事件模块回答“本次研究什么”，图谱模块回答“影响如何传导”，公司与评分模块回答“哪些主体进入研究队列以及为什么”，证据模块回答“每项事实从何而来”。总控负责在一份报告中组织这些专业事实，确保它们使用同一事件和数据版本，并满足接口契约。模型型Agent由此进入可核对的研究结构：模型辅助抽取实体、发现候选关系和组织报告语言，输出再转写为可验证字段并接受统一检查。
@@ -319,7 +319,7 @@ Mock演示记录 & Mock标题、示例URL、Mock可信度和Mock核验状态 & �
 
 % ===== merged source: pages/p15.tex =====
 % !TEX root = ../main.tex
-\subsection*{4.2 事件分析设计：从原始材料到规范化研究对象}\label{page:15}
+\subsection*{4.2 事件分析}\label{page:15}
 \noindent\textbf{事件分析将可追溯材料转化为能够触发产业研究的规范化对象。}这一任务包含四个连续步骤：识别材料中的时间、主体、对象和变化方向；匹配预定义的研究范围；绑定来源、日期和核验状态；生成可由图谱、公司、评分与证据模块共同读取的事件记录。系统已经实现已登记事件的调用与分析，自然语言事件解析将以相同记录为输出，持续拓展事件发现能力\cite{lhy-contracts,lhy-architecture}。
 
 事件结构化首先解决“同一事实被不同模块如何理解”的问题。例如，一条涉及电池价格变化的材料，至少需要区分价格对象、变化幅度、时间、地区、可能受影响的电池或动力系统节点，以及来源的可信度。若这些信息只被写在段落中，图谱查询、公司筛选和证据复核将分别产生不同的语义边界。相反，登记事件将事实主张、研究范围和证据入口绑定到一个\texttt{event\_id}，使后续模块围绕同一对象工作。
@@ -344,7 +344,7 @@ Mock演示记录 & Mock标题、示例URL、Mock可信度和Mock核验状态 & �
 
 % ===== merged source: pages/p16.tex =====
 % !TEX root = ../main.tex
-\subsection*{4.3 图谱查询与传导分析：从关联网络到经济解释}\label{page:16}
+\subsection*{4.3 图谱分析}\label{page:16}
 \noindent\textbf{产业图谱承担“传导假设的结构化表达”功能。}给定一个事件，系统先定位事件触发的产业节点，再检索符合方向和条件的有向路径；路径中的每个关系均与相邻节点相连，并附带规则与证据入口；具有明确产品或节点映射的公司进入研究队列。图谱查询由此将行业关联展开为可逐步审阅的事实、关系、条件和经济含义\cite{lhy-contracts,lhy-graph}。
 
 \begin{center}
@@ -372,7 +372,7 @@ Mock演示记录 & Mock标题、示例URL、Mock可信度和Mock核验状态 & �
 
 % ===== merged source: pages/p17.tex =====
 % !TEX root = ../main.tex
-\subsection*{4.4 证据检索与受约束报告生成}\label{page:17}
+\subsection*{4.4 证据检索}\label{page:17}
 \noindent\textbf{证据检索模块以可定位事实集合为起点，再组织可读的研究表达。}低空智研将事件ID、时间、地区、来源等级、证券代码和核验状态作为检索与表达的约束条件：证据先被筛选和定位，路径与公司再引用其\texttt{evidence\_ids}，报告语言据此概括事实、关系与公司影响\cite{lhy-evidence,lhy-contracts}。
 
 证据最小单元由来源标题、发布日期、URL、原文定位、可引用短摘录、事件ID、显式证券代码、可信度与核验状态组成。研究者可以在界面中确认具体哪一句材料支持哪个事实，并将事件事实、公司主体和路径关系分别绑定到相应依据，形成颗粒度清晰的研究证据链。
@@ -397,7 +397,7 @@ Mock演示记录 & Mock标题、示例URL、Mock可信度和Mock核验状态 & �
 
 % ===== merged source: pages/p18.tex =====
 % !TEX root = ../main.tex
-\subsection*{4.5 总控编排：将多模块输出组织为同一份报告}\label{page:18}
+\subsection*{4.5 总控编排}\label{page:18}
 \noindent\textbf{总控Agent以编排和核验将多源研究输出汇聚为一份统一报告。}一次分析从创建\texttt{run\_id}开始：总控根据请求选择已登记的数据版本，读取五类结构化输入，检查字段、引用和路径结构，复算影响强度，生成带报告ID、时间和状态的结果，并将处理结果写入运行记录。这个过程把事件、图谱、公司、财务和证据从并列文件组织为具有内部一致性的研究报告\cite{lhy-orchestrator,lhy-architecture}。
 
 \begin{center}\small 表18-1\quad 单次编排运行的步骤、检查对象与研究意义\par\vspace{1mm}
@@ -423,7 +423,7 @@ Mock演示记录 & Mock标题、示例URL、Mock可信度和Mock核验状态 & �
 
 % ===== merged source: pages/p19.tex =====
 % !TEX root = ../main.tex
-\subsection*{4.6 一致性检查与研究可靠性}\label{page:19}
+\subsection*{4.6 一致性检查}\label{page:19}
 \noindent\textbf{系统可靠性建立在贯穿输入、关系、计算和引用的可执行校验之上。}低空智研将跨模块约束写为规则，覆盖数据版本、事件、路径结构、证券主体、影响分、证据引用和运行状态。每次分析均将这些结构条件写入运行记录，使研究质量控制嵌入报告生成过程，并可由同一规则持续复核\cite{lhy-contracts,lhy-orchestrator}。
 
 \begin{center}\small 表19-1\quad 已实现质量闸门及其对研究报告的作用\par\vspace{1mm}
@@ -446,7 +446,7 @@ Mock演示记录 & Mock标题、示例URL、Mock可信度和Mock核验状态 & �
 
 % ===== merged source: pages/p20.tex =====
 % !TEX root = ../main.tex
-\subsection*{4.7 工程实现与可复现运行环境}\label{page:20}
+\subsection*{4.7 工程实现}\label{page:20}
 \noindent\textbf{项目以可复现的本地研究演示为工程起点，前后端通过稳定HTTP接口解耦。}后端使用Python、FastAPI、Pydantic与Uvicorn，承担事件分析、总控编排、契约校验与运行记录；前端使用React、TypeScript与Vite，承担研究发起、路径阅读、公司比较与证据回溯。默认开发环境中，后端服务监听本地\texttt{8000}端口，前端开发服务监听\texttt{5173}端口，并将\texttt{/api}和\texttt{/health}请求代理给后端\cite{lhy-repository,lhy-frontend}。
 
 工程解耦让研究界面与数据资产能够同步演进。前端以结构化报告和状态字段组织阅读；后端以注册数据版本读取输入；图谱、证据、财务数据和模型输出在契约内持续升级。接口兼容性由测试和版本门禁维护，使研究界面、报告阅读与数据治理形成稳定协同。
@@ -532,7 +532,7 @@ I=\frac{E\times S\times F}{10000},\qquad E,S,F,I\in[0,100].
 % !TEX root = ../main.tex
 \clearpage
 \section{应用案例与效果验证}
-\subsection*{6.1 评测问题：把工程闭环转化为研究证据}\label{page:26}
+\subsection*{6.1 评测框架}\label{page:26}
 \noindent\textbf{金融人工智能系统的评价由工程可运行性、产业路径正确性、证据可追溯性、公司研究队列质量和研究效率共同构成。}五类任务分别回答系统运行、传导解释、结论来源、主体与分数审阅、研究效率等关键问题。所有任务在执行前冻结代码提交、数据版本、事件清单、评分公式版本、任务说明与复核规则，使不同方法在共同条件下获得可比较的结果。
 
 \begin{center}\small 表26-1\quad 面向事件驱动投研的分层评测协议\par\vspace{1mm}
@@ -555,7 +555,7 @@ I=\frac{E\times S\times F}{10000},\qquad E,S,F,I\in[0,100].
 
 % ===== merged source: pages/p27.tex =====
 % !TEX root = ../main.tex
-\subsection*{6.2 完整流程演示：一份报告如何被研究者逐层审阅}\label{page:27}
+\subsection*{6.2 流程演示}\label{page:27}
 \noindent\textbf{完整流程演示以固定事件和固定数据版本呈现一份事件研究报告如何形成。}演示使用\texttt{EVT\_BATTERY\_PRICE\_DOWN\_001}与\texttt{mock-v1}：研究者在“后端API·Mock”模式下选择“动力电池价格下降15\%”，发起一次分析请求，获得包含运行信息的结构化报告。该报告包含4个路径环节、3家分析返回公司和3条证据记录，完整呈现事件、路径、公司与证据如何汇入同一研究现场\cite{lhy-frontend,lhy-architecture}。
 
 \begin{center}
@@ -611,7 +611,7 @@ I=\frac{E\times S\times F}{10000},\qquad E,S,F,I\in[0,100].
 
 % ===== merged source: pages/p31.tex =====
 % !TEX root = ../main.tex
-\subsection*{6.3 对照与消融：识别每个结构化模块的贡献}\label{page:31}
+\subsection*{6.3 对照实验}\label{page:31}
 \noindent\textbf{完整工作流的价值由同一任务、同一材料和同一复核标准构成的对照体系检验。}项目将人工原始材料检索、通用摘要/问答、文档检索、结构化完整流程及两个关键模块变体纳入预注册对照。比较聚焦路径准确性、证据可定位性、主体一致性和任务完成效率；每项指标均对应明确的判定对象、复核规则和原始记录。
 
 \begin{center}\small 表31-1\quad 对照与消融设置的研究问题设计\par\vspace{1mm}
@@ -635,7 +635,7 @@ I=\frac{E\times S\times F}{10000},\qquad E,S,F,I\in[0,100].
 
 % ===== merged source: pages/p32.tex =====
 % !TEX root = ../main.tex
-\subsection*{6.4 现有验证结果与研究使用验证的衔接}\label{page:32}
+\subsection*{6.4 验证设计}\label{page:32}
 \noindent\textbf{可复现验证已经表明，系统工程主链具备稳定的接口、交互和状态处理能力；事件级研究评测将以这条主链为基础展开。}仓库在前端实现提交\texttt{86a440a}的验证记录中报告：31项前端单元测试、20个Linux Chrome端到端场景和37项后端测试通过，同时完成类型检查、Lint、生产构建与三平台CI。它们共同检验事件选择、服务联调、路径与节点交互、公司显示、证据抽屉、状态处理以及构建过程是否在规定环境下稳定执行\cite{lhy-repository,lhy-frontend}。
 
 \begin{center}\small 表32-1\quad 已有系统验证及其在研究评价中的位置\par\vspace{1mm}
@@ -726,7 +726,7 @@ I=\frac{E\times S\times F}{10000},\qquad E,S,F,I\in[0,100].
 % !TEX root = ../main.tex
 \clearpage
 \section{实施计划与成果管理}
-\subsection*{8.1 从模块资产走向统一研究主链}\label{page:39}
+\subsection*{8.1 集成计划}\label{page:39}
 \noindent\textbf{项目下一阶段将既有研究资产汇入同一条可审阅主链。}总控、API、研究工作台和Mock端到端流程已经构成可运行骨架；产业图谱、公司映射、证据库、评测题和评分样例提供了可扩展的独立资产。实施工作围绕统一事件和数据版本展开：一个事件同时解析为路径、公司、评分和证据，每项输出均由报告ID和运行记录串联，形成从数据资产到研究报告的连续交付。
 
 \begin{center}\small 表39-1\quad 当前资产、集成目标与验收证据\par\vspace{1mm}
@@ -752,7 +752,7 @@ React研究工作台 & 使不同数据源下的状态、来源和核验语义保
 
 % ===== merged source: pages/p40.tex =====
 % !TEX root = ../main.tex
-\subsection*{8.2 分阶段实施路线与可验收成果}\label{page:40}
+\subsection*{8.2 实施路线}\label{page:40}
 \noindent\textbf{实施路线由可复核产物和研究问题共同推进。}每一阶段均对应一个明确问题：研究材料是否一致、数据能否进入同一主链、产业传导与证据如何接受评测、研究者如何在受控任务下使用系统，以及系统如何形成更大范围试用所需的治理条件。阶段转换由验收材料触发，使数据和模型的扩展持续沿用既有报告的可追溯结构。
 
 \begin{center}\small 表40-1\quad 分阶段路线、交付物与验收门槛\par\vspace{1mm}
@@ -775,7 +775,7 @@ React研究工作台 & 使不同数据源下的状态、来源和核验语义保
 
 % ===== merged source: pages/p41.tex =====
 % !TEX root = ../main.tex
-\subsection*{8.3 协作维护、版本治理与研究归档}\label{page:41}
+\subsection*{8.3 协作与归档}\label{page:41}
 \noindent\textbf{项目协作以“改动了什么、依据是什么、影响了哪份研究报告”为核心记录单元。}团队以Issue拆分可验收任务，以分支和拉取请求承载代码、数据与文档变更，以统一JSON契约连接模块，以运行记录和证据账本追溯结果。计划书由吕洪宇与武桐宇负责撰写，研发模块的贡献按团队文档中的实际分工保留；两类责任共同服务于可复核的研究交付\cite{lhy-team,lhy-data-standard}。
 
 \begin{center}\small 表41-1\quad 代码、数据与计划书的共同归档规则\par\vspace{1mm}
@@ -798,7 +798,7 @@ React研究工作台 & 使不同数据源下的状态、来源和核验语义保
 % ===== merged source: pages/p42.tex =====
 % !TEX root = ../main.tex
 \section{团队与组织保障}
-\subsection*{9.1 团队成员、模块责任与集成机制}\label{page:42}
+\subsection*{9.1 团队分工}\label{page:42}
 \noindent\textbf{项目研发由五名成员围绕统一契约并行推进，比赛计划书由吕洪宇和武桐宇两人共同完成。}技术分工与比赛写作通过相同的版本、证据与审阅规则衔接。团队将事件与证据、产业图谱、财务评分、前端交互和系统集成组织为可通过标准字段汇合的专业模块，从而形成一份端到端研究报告\cite{lhy-team}。
 
 \begin{center}\small 表42-1\quad 研发团队的专业责任与接口交付\par\vspace{1mm}
@@ -821,7 +821,7 @@ React研究工作台 & 使不同数据源下的状态、来源和核验语义保
 
 % ===== merged source: pages/p43.tex =====
 % !TEX root = ../main.tex
-\subsection*{9.2 组织保障：将研究要求落实为发布门禁}\label{page:43}
+\subsection*{9.2 组织保障}\label{page:43}
 \noindent\textbf{组织保障的核心，是让每一项进入比赛展示和研究报告的内容都经过明确责任、来源检查与版本复核。}项目已具备统一契约、版本控制、自动化测试、公开来源采集规范、Mock演示环境和模块化团队分工。围绕这些基础设施，团队将数据录入、接口变更、路径与公司结论、前端展示和比赛材料发布设置为连续的质量节点，使项目从源材料到最终PDF保持可追溯的一致性\cite{lhy-data-standard,lhy-team}。
 
 \begin{center}\small 表43-1\quad 研究结果进入演示与计划书前的责任链\par\vspace{1mm}
