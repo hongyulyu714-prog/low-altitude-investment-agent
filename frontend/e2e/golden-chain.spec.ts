@@ -5,9 +5,6 @@ test("prototype-v1 uses live API, linked evidence, pending paths and synthetic f
   page,
 }) => {
   await page.goto("/");
-  await page
-    .getByLabel("数据版本", { exact: true })
-    .selectOption("prototype-v1");
   await page.getByLabel("已有事件").selectOption("EVT_002");
   const responsePromise = page.waitForResponse((r) =>
     r.url().endsWith("/api/v1/analyze"),
@@ -57,12 +54,12 @@ test("prototype-v1 uses live API, linked evidence, pending paths and synthetic f
   await expect(dialog).toContainText("impact-v1.0.0");
   await expect(dialog).toContainText("非实际");
   await page.keyboard.press("Escape");
-  await page.getByLabel("数据版本", { exact: true }).selectOption("mock-v1");
+  await page.getByLabel("已有事件").selectOption("");
   await expect(page.locator(".business-graph")).toHaveCount(0);
   await expect(page.getByLabel("已有事件")).toHaveValue("");
 });
 
-test("changing version discards a late previous report", async ({ page }) => {
+test("changing event discards a late previous report", async ({ page }) => {
   let release!: () => void;
   const gate = new Promise<void>((resolve) => {
     release = resolve;
@@ -73,17 +70,48 @@ test("changing version discards a late previous report", async ({ page }) => {
     await route.fulfill({ response }).catch(() => {});
   });
   await page.goto("/");
-  await page.getByLabel("已有事件").selectOption("EVT_BATTERY_PRICE_DOWN_001");
+  await page.getByLabel("已有事件").selectOption("EVT_002");
   const sent = page.waitForRequest("**/api/v1/analyze");
   await page.getByRole("button", { name: "查看分析", exact: true }).click();
   await sent;
-  await page
-    .getByLabel("数据版本", { exact: true })
-    .selectOption("prototype-v1");
+  await page.getByLabel("已有事件").selectOption("");
   release();
   await page.getByLabel("已有事件").selectOption("EVT_002");
   await expect(page.locator(".business-graph")).toHaveCount(0);
   await expect(
     page.getByRole("button", { name: "查看分析", exact: true }),
   ).toBeEnabled();
+});
+
+test("production entry exposes only the historical version and keeps missing financials explicit", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(
+    page.getByRole("button", { name: "文件 Mock", exact: true }),
+  ).toHaveCount(0);
+  await expect(page.getByLabel("已有事件").locator("option")).toHaveCount(2);
+  await expect(
+    page.getByText("prototype-v1 · 历史公告", { exact: true }),
+  ).toBeVisible();
+  await page.getByLabel("已有事件").selectOption("EVT_002");
+  await page.getByRole("button", { name: "查看分析", exact: true }).click();
+  await expect(
+    page.getByRole("button", { name: "打开独立 TEST 图谱", exact: true }),
+  ).toHaveCount(0);
+  await expect(
+    page.getByRole("button", { name: "TEST 联动", exact: true }),
+  ).toHaveCount(0);
+  const missingRow = page.getByRole("row").filter({ hasText: "威海广泰" });
+  await expect(missingRow.locator(".score")).toHaveText("数据不足");
+  await expect(page.locator("#companies")).toContainText("非实际受益");
+  await expect(page.locator("main")).not.toContainText(/mock|模拟|TEST/i);
+  await page.setViewportSize({ width: 1024, height: 900 });
+  await expect(
+    page.getByRole("button", { name: "查看分析", exact: true }),
+  ).toBeVisible();
+  await page.screenshot({
+    path: "../docs/issue14/evidence/prototype-report-narrow.png",
+    fullPage: true,
+  });
 });

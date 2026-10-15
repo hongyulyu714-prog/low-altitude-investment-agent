@@ -1,4 +1,6 @@
 import { test, expect, type Page } from "@playwright/test";
+import { useLegacyReportFixture } from "./fixtures";
+test.beforeEach(async ({ page }) => useLegacyReportFixture(page));
 const EVT = "EVT_BATTERY_PRICE_DOWN_001";
 const fixture = {
   event: {
@@ -6,7 +8,7 @@ const fixture = {
     event_name: "TEST · 受控报告边界",
     direction: "下降",
   },
-  data_version: "mock-v1",
+  data_version: "prototype-v1",
   paths: [],
   companies: [],
   evidence: [],
@@ -18,164 +20,7 @@ async function analyze(page: Page) {
   await page.getByLabel("已有事件").selectOption(EVT);
   await page.getByRole("button", { name: "查看分析", exact: true }).click();
   await expect(page.locator(".sg-card")).toBeVisible();
-  await page
-    .getByRole("button", { name: "打开独立 TEST 图谱", exact: true })
-    .click();
 }
-const camera = (page: Page) =>
-  page
-    .locator(".sg-card")
-    .getAttribute("data-camera")
-    .then((s) => JSON.parse(s!));
-async function pan(page: Page, dx = 60) {
-  const b = (await page.locator(".sg-canvas").boundingBox())!;
-  await page.mouse.move(b.x + b.width * 0.68, b.y + b.height * 0.52);
-  await page.mouse.down();
-  await page.mouse.move(b.x + b.width * 0.68 + dx, b.y + b.height * 0.52 + 20, {
-    steps: 5,
-  });
-  await page.mouse.up();
-  await expect(page.locator(".sg-card")).toHaveAttribute(
-    "data-view-mode",
-    "held",
-  );
-}
-test("real API report, geometry, original source and factors boundary", async ({
-  page,
-  request,
-}) => {
-  expect((await request.get("http://127.0.0.1:8000/health")).ok()).toBeTruthy();
-  await page.goto("/");
-  await expect(
-    page.getByRole("button", { name: "查看分析", exact: true }),
-  ).toBeDisabled();
-  await expect(page.locator(".metrics")).toHaveCount(0);
-  const response = page.waitForResponse(
-    (r) =>
-      r.url().endsWith("/api/v1/analyze") && r.request().method() === "POST",
-  );
-  await page.getByLabel("已有事件").selectOption(EVT);
-  await page.getByRole("button", { name: "查看分析", exact: true }).click();
-  expect((await response).status()).toBe(200);
-  await expect(page.locator(".score").first()).toHaveText("40.80");
-  await expect(page.locator("td.part")).toHaveText(Array(9).fill("数据不足"));
-  const bounds = await page.evaluate(() => ({
-    graph: document.querySelector(".sg-card")!.getBoundingClientRect().height,
-    canvas: document.querySelector(".sg-canvas")!.getBoundingClientRect()
-      .height,
-    company: document.querySelector("#companies")!.getBoundingClientRect().top,
-  }));
-  expect(bounds).toEqual({ graph: 540, canvas: 388, company: 860 });
-  await page
-    .getByRole("button", { name: "示例 eVTOL 整机公司", exact: true })
-    .click();
-  await expect(page.getByRole("dialog")).toContainText("需求弹性未知");
-  await page
-    .getByRole("dialog")
-    .getByRole("button", { name: "模拟证据：电池价格输入" })
-    .click();
-  await expect(page.getByRole("dialog")).toContainText("来源可信度");
-  await expect(
-    page.getByRole("link", { name: "查看原始来源（新窗口）" }),
-  ).toHaveAttribute("href", "https://example.com/mock/evidence/battery-price");
-  await page.keyboard.press("Escape");
-  await expect(page.getByRole("dialog")).toHaveCount(0);
-  await expect(
-    page.getByRole("button", { name: "示例 eVTOL 整机公司", exact: true }),
-  ).toBeFocused();
-});
-test("file Mock preserves three factors and no forged server metadata", async ({
-  page,
-}) => {
-  await page.goto("/");
-  await page.getByRole("button", { name: "文件 Mock", exact: true }).click();
-  await page.getByLabel("已有事件").selectOption(EVT);
-  await page.getByRole("button", { name: "查看分析", exact: true }).click();
-  await expect(page.locator("td.part").first()).toHaveText("69");
-  await expect(page.locator("td.part").nth(1)).toHaveText("81");
-  await page.getByRole("button", { name: "数据来源", exact: true }).click();
-  await expect(page.getByRole("dialog")).toContainText(
-    "文件模式不伪造服务运行 ID 或生成时间",
-  );
-});
-test("manual hold, path choice, focus zoom, reversible history and animation interrupt", async ({
-  page,
-}) => {
-  await analyze(page);
-  await pan(page);
-  const c = await camera(page);
-  await page.locator('[data-node="B"]').press("Enter");
-  await expect(page.locator(".sg-card")).toHaveAttribute("data-selected", "B");
-  await page.getByRole("button", { name: "正向传导 A → B → D → G" }).click();
-  await page.waitForTimeout(100);
-  expect(await camera(page)).toEqual(c);
-  await page.getByRole("button", { name: "聚焦节点", exact: true }).click();
-  await page.waitForTimeout(1100);
-  expect((await camera(page)).z).toBeCloseTo(c.z, 5);
-  await pan(page, -25);
-  const interrupted = await camera(page);
-  await page.waitForTimeout(600);
-  expect(await camera(page)).toEqual(interrupted);
-  await page.getByRole("button", { name: "全局概览", exact: true }).click();
-  await page.waitForTimeout(1100);
-  await page.getByRole("button", { name: "返回上一视角", exact: true }).click();
-  await page.waitForTimeout(1100);
-  expect((await camera(page)).x).toBeCloseTo(interrupted.x, 1);
-  await expect(
-    page.getByRole("button", { name: "前进", exact: true }),
-  ).toBeEnabled();
-});
-test("TEST mapping gated, nested reading scroll, graph return and expanded restoration", async ({
-  page,
-}) => {
-  await analyze(page);
-  await pan(page);
-  await page.locator('[data-node="B"]').press("Enter");
-  const captured = await camera(page);
-  await expect(
-    page.getByRole("button", { name: "业务节点公司映射 · 数据不足" }),
-  ).toBeDisabled();
-  await page.getByRole("button", { name: "公司比较", exact: true }).click();
-  await page.getByRole("button", { name: "TEST 联动", exact: true }).click();
-  await page.getByRole("button", { name: "筛选关联 TEST 公司" }).click();
-  await expect(page.locator(".test-table tbody tr")).toHaveCount(2);
-  await page
-    .getByRole("button", { name: "TEST 公司 Alpha", exact: true })
-    .click();
-  await page.locator(".drawer-body").evaluate((el) => (el.scrollTop = 100));
-  const reading = await page
-    .locator(".drawer-body")
-    .evaluate((el) => el.scrollTop);
-  await page
-    .getByRole("dialog")
-    .getByRole("button", { name: "TEST · Alpha 映射测试记录" })
-    .click();
-  await expect(page.getByRole("dialog")).toContainText("来源链接不可用");
-  await page
-    .getByRole("dialog")
-    .getByRole("button", { name: "返回", exact: true })
-    .click();
-  expect(
-    await page.locator(".drawer-body").evaluate((el) => el.scrollTop),
-  ).toBe(reading);
-  await page
-    .getByRole("dialog")
-    .getByRole("button", { name: "返回图谱现场" })
-    .click();
-  await expect(page.getByRole("dialog")).toHaveCount(0);
-  await expect(page.locator(".sg-card")).toHaveAttribute("data-selected", "B");
-  await expect.poll(() => camera(page)).toEqual(captured);
-  expect(await page.evaluate(() => scrollY)).toBe(0);
-  await page.getByRole("button", { name: "展开图谱" }).click();
-  await expect(page.locator("#companies")).toHaveCount(0);
-  await expect(
-    page.getByRole("button", { name: "公司比较", exact: true }),
-  ).toBeDisabled();
-  await pan(page, 20);
-  await page.getByRole("button", { name: "收起图谱" }).click();
-  await expect(page.locator("#companies")).toBeVisible();
-  await expect.poll(() => camera(page)).toEqual(captured);
-});
 test("HTTP422, unreadable and network errors never fall back", async ({
   page,
 }) => {
@@ -241,7 +86,11 @@ test("explicit empty differs missing, scores0, pending status, invalidrefs and u
   );
   await analyze(page);
   await expect(page.locator(".score")).toHaveText("0.00");
-  await expect(page.getByText("路径集合 · 数据不足")).toBeVisible();
+  await expect(
+    page
+      .getByRole("region", { name: "业务 ID 图谱", exact: true })
+      .getByText("路径集合 · 数据不足"),
+  ).toBeVisible();
   await page
     .getByRole("button", { name: "TEST · 零评分", exact: true })
     .click();
@@ -279,35 +128,6 @@ test("event switch discards delayed response and clears current selections", asy
     page.getByRole("button", { name: "查看分析", exact: true }),
   ).toBeDisabled();
 });
-test("Reduced Motion, pause, narrow desktop and graph anchor", async ({
-  page,
-}) => {
-  await page.emulateMedia({ reducedMotion: "reduce" });
-  await analyze(page);
-  await expect(page.getByLabel("减少动态效果")).toBeChecked();
-  await page.locator('[data-node="B"]').press("Enter");
-  const t = await page.locator('[data-node="B"]').getAttribute("transform");
-  await page.waitForTimeout(200);
-  expect(await page.locator('[data-node="B"]').getAttribute("transform")).toBe(
-    t,
-  );
-  for (const width of [1280, 800]) {
-    await page.setViewportSize({ width, height: 1024 });
-    expect(
-      await page.evaluate(() => document.documentElement.scrollWidth),
-    ).toBeLessThanOrEqual(width);
-    await expect(page.getByLabel("已有事件")).toBeVisible();
-  }
-  await page.setViewportSize({ width: 1440, height: 1024 });
-  await page.getByRole("link", { name: "公司与证据" }).click();
-  await page.getByRole("link", { name: "产业路径" }).click();
-  expect(
-    await page.evaluate(
-      () => document.querySelector("#graph")!.getBoundingClientRect().top,
-    ),
-  ).toBeGreaterThanOrEqual(90);
-});
-
 test("event list empty and read failure remain distinct", async ({ page }) => {
   const url = (u: URL) => u.pathname === "/api/v1/events";
   await page.route(url, (r) => r.fulfill({ json: [] }));
@@ -397,94 +217,4 @@ test("nested drawer restores genuinely scrolled reading and traps focus", async 
   await expect(
     page.getByRole("dialog").getByRole("button", { name: "返回图谱现场" }),
   ).toBeFocused();
-});
-
-test("live idle stays within2 CSS pixels, selected stable, and pause freezes motion", async ({
-  page,
-}) => {
-  await analyze(page);
-  await page.getByRole("button", { name: "保持视角", exact: true }).click();
-  await page.locator('[data-node="B"]').press("Enter");
-  const sample = await page.evaluate(async () => {
-    const a = document.querySelector<SVGGElement>('[data-node="A"]')!,
-      b = document.querySelector<SVGGElement>('[data-node="B"]')!;
-    const startB = b.getAttribute("transform");
-    let max = 0,
-      changes = 0,
-      previous = "";
-    for (let i = 0; i < 40; i++) {
-      const m = a.transform.baseVal.consolidate()!.matrix;
-      const z = JSON.parse(
-        document.querySelector<HTMLElement>(".sg-card")!.dataset.camera!,
-      ).z;
-      max = Math.max(max, Math.hypot(m.e - 80, m.f - 201) * z);
-      const next = a.getAttribute("transform")!;
-      if (previous && previous !== next) changes++;
-      previous = next;
-      await new Promise((r) => setTimeout(r, 225));
-    }
-    return {
-      max,
-      changes,
-      selectedStable: startB === b.getAttribute("transform"),
-    };
-  });
-  expect(sample.max).toBeLessThanOrEqual(2.001);
-  expect(sample.changes).toBeGreaterThan(5);
-  expect(sample.selectedStable).toBeTruthy();
-  await page.getByLabel("暂停非必要运动").check();
-  const before = await page
-    .locator('[data-node="A"]')
-    .getAttribute("transform");
-  await page.waitForTimeout(400);
-  expect(await page.locator('[data-node="A"]').getAttribute("transform")).toBe(
-    before,
-  );
-});
-
-test("hover preview bridges popup without camera takeover or company selection", async ({
-  page,
-}) => {
-  await analyze(page);
-  await page.getByRole("button", { name: "保持视角", exact: true }).click();
-  await page.locator('[data-node="B"]').press("Enter");
-  const c = await camera(page);
-  const nodeBox = (await page.locator('[data-node="D"]').boundingBox())!;
-  await page.mouse.move(nodeBox.x + nodeBox.width / 2, nodeBox.y + 27);
-  await expect(page.locator(".sg-card")).toHaveAttribute("data-preview", "D");
-  await expect(page.locator(".sg-card")).toHaveAttribute("data-selected", "B");
-  expect(await camera(page)).toEqual(c);
-  await page.locator(".sg-popover").hover();
-  await page.waitForTimeout(300);
-  await expect(page.locator(".sg-card")).toHaveAttribute("data-preview", "D");
-  await page.locator(".sg-popover button").click();
-  await expect(page.getByRole("dialog")).toContainText("TEST_NODE_D");
-  await page
-    .getByRole("dialog")
-    .getByRole("button", { name: "返回图谱现场" })
-    .click();
-  await expect(page.locator(".sg-card")).toHaveAttribute("data-selected", "D");
-  expect(await camera(page)).toEqual(c);
-});
-
-test("fresh node research replaces prior graph departure scroll", async ({
-  page,
-}) => {
-  await analyze(page);
-  await page.getByRole("button", { name: "保持视角", exact: true }).click();
-  await page.locator('[data-node="B"]').press("Enter");
-  await page.evaluate(() => scrollTo(0, 400));
-  await page.getByRole("button", { name: "公司比较", exact: true }).click();
-  await page
-    .locator(".company-tabs")
-    .getByRole("button", { name: "返回图谱现场" })
-    .click();
-  expect(await page.evaluate(() => scrollY)).toBe(400);
-  await page.evaluate(() => scrollTo(0, 550));
-  await page.getByRole("button", { name: "研究当前节点", exact: true }).click();
-  await page
-    .getByRole("dialog")
-    .getByRole("button", { name: "返回图谱现场" })
-    .click();
-  await expect.poll(() => page.evaluate(() => scrollY)).toBe(550);
 });

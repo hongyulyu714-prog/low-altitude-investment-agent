@@ -1,11 +1,16 @@
 import { test, expect } from "@playwright/test";
+import { useLegacyReportFixture } from "./fixtures";
+test.beforeEach(async ({ page }) => useLegacyReportFixture(page));
 const eventId = "EVT_BATTERY_PRICE_DOWN_001";
 test("business nodes survive return to research, including a different path", async ({
   page,
 }) => {
   await page.route("**/api/v1/analyze", async (route) => {
-    const response = await route.fetch();
+    const response = await route.fetch({
+      postData: { ...route.request().postDataJSON(), data_version: "mock-v1" },
+    });
     const report = await response.json();
+    report.data_version = "prototype-v1";
     report.paths.push({
       ...report.paths[0],
       path_id: "PATH_TEST_SECOND",
@@ -101,8 +106,11 @@ test("each business path retains direction and invalid adjacency never fabricate
   page,
 }) => {
   await page.route("**/api/v1/analyze", async (route) => {
-    const response = await route.fetch();
+    const response = await route.fetch({
+      postData: { ...route.request().postDataJSON(), data_version: "mock-v1" },
+    });
     const report = await response.json();
+    report.data_version = "prototype-v1";
     report.paths = ["positive", "negative", "neutral", "uncertain"].map(
       (impact_direction, i) => ({
         ...report.paths[0],
@@ -163,56 +171,15 @@ test("business graph expansion restores camera and chosen node", async ({
   await expect(graph).toHaveAttribute("data-selected", "NODE_EVTOL");
   await expect(graph).toHaveAttribute("data-camera", camera!);
 });
-test("TEST round trip preserves business camera, hold and undo history", async ({
-  page,
-}) => {
-  await page.goto("/");
-  await page.getByLabel("已有事件").selectOption(eventId);
-  await page.getByRole("button", { name: "查看分析", exact: true }).click();
-  const graph = page.locator(".business-graph");
-  await graph
-    .getByRole("button", { name: "业务节点 NODE_EVTOL", exact: true })
-    .click();
-  const focused = await graph.getAttribute("data-camera");
-  await graph.getByRole("button", { name: "＋", exact: true }).click();
-  const held = await graph.getAttribute("data-camera");
-  for (let i = 0; i < 2; i++) {
-    await page
-      .getByRole("button", { name: "打开独立 TEST 图谱", exact: true })
-      .click();
-    await page
-      .getByRole("button", { name: "返回业务 ID 图谱", exact: true })
-      .click();
-    await expect(graph).toHaveAttribute("data-camera", held!);
-    await expect(graph).toHaveAttribute("data-view-mode", "held");
-    await expect(graph).toHaveAttribute("data-selected", "NODE_EVTOL");
-    await expect(
-      graph.getByRole("button", { name: "视角返回", exact: true }),
-    ).toBeEnabled();
-  }
-  await graph.getByRole("button", { name: "视角返回", exact: true }).click();
-  await expect(graph).toHaveAttribute("data-camera", focused!);
-  await graph.getByRole("button", { name: "视角返回", exact: true }).click();
-  await expect(graph).toHaveAttribute(
-    "data-camera",
-    JSON.stringify({ x: 0, y: 0, z: 1 }),
-  );
-  await expect(
-    graph.getByRole("button", { name: "视角返回", exact: true }),
-  ).toBeDisabled();
-  await page.getByRole("button", { name: "查看分析", exact: true }).click();
-  await expect(graph).toHaveAttribute("data-view-mode", "auto");
-  await expect(graph).toHaveAttribute("data-selected", "");
-});
-test("source and event changes clear saved business views", async ({
-  page,
-}) => {
+test("event changes clear saved business views", async ({ page }) => {
   await page.route(
     (url) =>
       url.pathname === "/api/v1/events" ||
       (url.pathname.endsWith("/events.json") && !url.search),
     async (route) => {
-      const response = await route.fetch();
+      const url = new URL(route.request().url());
+      url.searchParams.set("data_version", "mock-v1");
+      const response = await route.fetch({ url: url.toString() });
       const events = await response.json();
       await route.fulfill({
         json: [
@@ -231,7 +198,7 @@ test("source and event changes clear saved business views", async ({
   await page.getByRole("button", { name: "查看分析", exact: true }).click();
   const graph = page.locator(".business-graph");
   await graph.getByRole("button", { name: "＋", exact: true }).click();
-  await page.getByRole("button", { name: "文件 Mock", exact: true }).click();
+  await page.getByLabel("已有事件").selectOption("");
   await page.getByLabel("已有事件").selectOption(eventId);
   await page.getByRole("button", { name: "查看分析", exact: true }).click();
   await expect(graph).toHaveAttribute(
