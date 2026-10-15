@@ -1,1 +1,12 @@
 claim_id,page,claim,source_title,source_url,source_date,source_location,data_status,verification,notes
+W18-001,05,四部门于2024-03-27印发通用航空装备创新应用实施方案（2024-2030年）,工业和信息化部等关于印发实施方案的通知,https://www.miit.gov.cn/jgsj/zbes/wjfb/art/2024/art_eea7f1d8dd25444bb370faaaf26637d6.html,2024-03-27,页面第2-23行,public_primary,已阅读原始网页,用于国家政策背景；不推导企业收入
+W18-002,05|28,广东行动方案成文于2024-05-21并于2024-05-22发布，覆盖基础设施、低空智联网与应用场景,广东省推动低空经济高质量发展行动方案（2024—2026年）,https://www.gd.gov.cn/gkmlpt/content/4/4427/post_4427812.html,2024-05-22,页面索引号及第66-138行,public_primary,已阅读原始网页,政策方向不等于项目进度或订单
+W18-003,21|22,图谱包含35节点50关系25公司映射10规则且部分关系/规则待核验,产业图谱说明,https://github.com/hongyulyu714-prog/low-altitude-investment-agent/tree/main/data/graph,2026-10-15,data/graph/README.md,internal_repository,已阅读仓库文件,图谱独立于当前API；仅按文件现状陈述
+W18-004,21|23|24,当前默认数据集mock-v1仅用于演示，财务字段需记录口径与状态,数据字典与评分方法,https://github.com/hongyulyu714-prog/low-altitude-investment-agent/blob/main/docs/WIND_DATA_DICTIONARY.md,2026-10-15,docs/WIND_DATA_DICTIONARY.md,internal_repository,已阅读仓库文件,不把样例数据作为真实投研证据
+W18-005,24|25,影响强度公式为I=E*S*F/10000且方向单独记录,评分方法与实现,https://github.com/hongyulyu714-prog/low-altitude-investment-agent/blob/main/docs/SCORING_METHOD.md,2026-10-15,docs/SCORING_METHOD.md与backend/scoring.py,internal_repository,已阅读仓库文件,财务重要性代理不是健康度或收益预测
+W18-006,29,"2024年电池级碳酸锂年均价9.0万元/吨、2023年同口径25.8万元/吨，按同口径约下降65.1%",2024年全国锂离子电池行业运行情况,https://www.miit.gov.cn/gyhxxhb/jgsj/dzxxs/dzjc/art/2025/art_b6fabc541b094897b3f27eea54981762.html,2025-02-27,原文及仓库事件EVT_008记录,public_primary,已阅读原始网页与事件记录,行业电池级价格不等于航空级报价或公司成本
+W18-007,30,EH216-S于2023-10取得型号合格证TC,EH216-S成功取得中国民航局颁发的型号合格证,https://www.ehang.com/cn/news/989.html,2023-10-13,公告标题与正文,company_primary,已阅读原始公告,TC不等于生产许可或运营许可
+W18-008,30,民航中南局公告EH216-S于2024-03-28获得生产许可证PC,中南局颁发全国首张载人无人机的生产许可证,https://www.caac.gov.cn/local/ZNGLJ/ZN_DQYW/202404/t20240416_223537.html,2024-04-16,公告正文,regulator_primary,已阅读原始网页,PC不等于OC或运营收入
+W18-009,30,亿航公告涉及30架订单及额外270架采购计划,"EHang Partners with Wencheng County, Securing Order for 30 Units of EH216-S and Purchase Plan for Additional 270 Units",https://www.ehang.com/cn/news/1099.html,2024-06-21,公告标题与正文,company_primary,已阅读原始公告,订单与采购计划分开表述；不代表交付或确认收入
+W18-010,37|44|45,席位500元/月专题5000元及12周12000元预算为内部验证假设,项目内部商业验证口径,https://github.com/hongyulyu714-prog/low-altitude-investment-agent/issues/18,2026-10-15,本计划书第37/44/45页,planning_assumption,作者明确标注,非报价非订单非历史成本非收入预测
+W18-011,48,低空研究生态图为AI生成的概念插图,ImageGen生成记录,local:proposal/assets/Eazin-stefan3199/low-altitude-research-ecosystem.jpg,2026-10-15,第48页图48-1,generated_concept,作者检查内容,不表示真实部署客户或经营结果

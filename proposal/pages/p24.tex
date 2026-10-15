@@ -1,10 +1,26 @@
 % !TEX root = ../main.tex
 \PlanPage{公司影响评分}{武桐宇}{24}
-\WritingGuide{解释三个分项、公式、参数和方向。}{手算例子、符号和参数依据。}{公式为E乘S乘F除以10000；财务分项是放大程度代理。}
+\textbf{本页结论：}影响分是给定事件、给定映射和给定财务输入后的强度排序工具；它把“影响有多强”与“方向向上或向下”分开记录，不能预测股价、收益率或财务健康度。
 \begin{equation}
-I=\frac{E\times S\times F}{10000},\qquad E,S,F,I\in[0,100].
+I=\frac{E\times S\times F}{10000},\qquad E,S,F,I\in[0,100].\label{eq:wty-impact}
 \end{equation}
-其中，$E$ 为业务暴露度，$S$ 为事件传导敏感度，$F$ 为财务重要性分项，$I$ 为影响强度。方向单独记录。该式对应仓库当前评分代码，参数与适用条件由作者根据所用版本补齐。
-\SourceNote{\texttt{backend/scoring.py}；\texttt{docs/SCORING\_METHOD.md}，取材时记录提交版本。}
+其中，$E$ 为业务暴露度，来自已核验的公司—节点映射；$S$ 为事件传导敏感度，来自事件规则；$F$ 为财务重要性代理；$I$ 为影响强度。方向不由公式推出，而由事件规则单独给出。当前代码将 $F$ 写为毛利率压力、经营现金流压力和资产负债率的加权代理，权重为 $0.40,0.35,0.25$\cite{wty-repo-scoring}；它表示外部冲击的可能放大程度，不是“公司好坏”评分。
 
-% 按“一句话结论—证据—解释—适用条件”组织本页正文。
+\begin{table}[htbp]
+\centering
+\caption{评分分项、证据入口与手算示例}
+\label{tab:wty-impact-score}
+\small
+\begin{tabularx}{\linewidth}{p{0.16\linewidth}X p{0.23\linewidth}}
+\toprule
+分项 & 取值依据 & 例：$E=80,S=50,F=40$ \\
+\midrule
+$E$ 暴露度 & 公司与产业节点的已核验连接及其规则口径 & 80 \\
+$S$ 敏感度 & 某类事件对该节点的规则；需附来源状态 & 50 \\
+$F$ 财务重要性代理 & 以统一口径清洗后的财务字段计算；样例数据不可作真实判断 & 40 \\
+$I$ 强度 & 按式 \ref{eq:wty-impact} 计算，方向另存 & $80\times50\times40/10000=16$ \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+当映射、规则或财务输入任一项缺失时，不应以默认满分补齐；输出应显示缺失原因。正式输入需要真实、授权且可追溯的字段，当前 \texttt{mock-v1} 仅用于界面和公式演示。

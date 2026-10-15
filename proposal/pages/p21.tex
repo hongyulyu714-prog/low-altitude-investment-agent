@@ -3,8 +3,26 @@
 \section{数据体系与金融评分}
 \subsection*{数据来源与版本管理}\label{page:21}
 \ifdraftversion{\noindent\small\color{gray}写作页位 21\quad 负责人 武桐宇\par}\fi
-\WritingGuide{说明公开证据、图谱和授权财务的来源与更新。}{数据来源与更新表。}{时间、单位、授权及数据状态可追溯。}
-\NeedEvidence{替换本页写作指引，补入正文、真实材料与可定位出处。}
-\FigureSlot{数据来源与版本管理所需图表}{数据来源与更新表。}
 
-% 按“一句话结论—证据—解释—适用条件”组织本页正文。
+\textbf{本页结论：}数据体系以来源、版本和状态为最小管理单元：公开事件提供事实入口，图谱提供关系假设，财务字段提供放大程度代理，三者不能互相替代。
+
+仓库当前已提供事件、图谱、评分规则和样例财务字段四类材料。它们的成熟度不同：事件有来源账本；图谱中部分关系与经济传导规则仍待核验；默认财务数据为演示样例。后续接入授权数据时，应保留字段口径、覆盖期间、币种、复权与授权说明，而不是以“已接入数据”笼统描述。
+
+\begin{table}[htbp]
+\centering
+\caption{本项目的数据来源、版本与使用边界}
+\label{tab:wty-data-version}
+\small
+\begin{tabularx}{\linewidth}{p{0.19\linewidth}p{0.21\linewidth}X p{0.18\linewidth}}
+\toprule
+数据层 & 当前材料 & 可用于什么 & 当前状态 \\
+\midrule
+公开事件 & \texttt{data/events.csv} 与证据规范 & 定位政策、价格、适航等原始来源与日期 & 已纳入来源字段；逐条核验 \\
+产业图谱 & \texttt{data/graph/} 节点、关系、映射与规则 & 说明可能的产业传导路径 & 独立数据包，未接入当前 API \\
+评分规则 & \texttt{backend/scoring.py}、方法说明 & 用固定公式重算影响强度与方向标签 & 可运行的确定性规则 \\
+财务字段 & 数据字典与样例财务记录 & 计算财务重要性代理的输入结构 & \texttt{mock-v1}，非真实投研证据 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+每次输出应同时给出数据包版本、规则版本和生成日期。若来源失效、关系缺证或字段不可授权，则相应结果降级为“待核验”或停止输出，而不是沿用旧分值。
