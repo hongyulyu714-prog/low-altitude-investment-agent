@@ -1,0 +1,36 @@
+% Shared layout: coordinate changes in the template PR; authors write pages only.
+\usepackage[margin=23mm,headheight=18pt,footskip=13mm]{geometry}
+\usepackage{amsmath,amssymb,booktabs,tabularx,array,graphicx,xcolor}
+\usepackage{enumitem,fancyhdr,caption,hyperref}
+\hypersetup{unicode=true,hidelinks,pdftitle={低空智研项目计划书},pdfauthor={SkyNexus}}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0.35em}
+\linespread{1.25}
+\setlist{nosep,leftmargin=2em}
+\ctexset{section={format=\Large\bfseries},subsection={format=\large\bfseries}}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small 低空智研\quad SkyNexus}
+\fancyhead[R]{\small 金融人工智能大赛项目计划书}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\captionsetup{font=small,labelfont=bf}
+\newif\ifdraftversion
+\draftversiontrue % Switch to \draftversionfalse only for final release.
+\newcommand{\PlanPage}[3]{%
+  \clearpage\subsection*{#1}\label{page:#3}%
+  \ifdraftversion{\noindent\small\color{gray}写作页位 #3\quad 负责人 #2\par}\fi}
+\newcommand{\WritingGuide}[3]{\ifdraftversion
+  \begin{quote}\small\color{gray}
+  \textbf{本页任务}\quad #1\par
+  \textbf{所需材料}\quad #2\par
+  \textbf{核对重点}\quad #3
+  \end{quote}\fi}
+\newcommand{\NeedEvidence}[1]{\textcolor{red!65!black}{【待补证据：#1】}}
+\newcommand{\SourceNote}[1]{\par{\footnotesize 来源与口径：#1\par}}
+\newcommand{\FigureSlot}[2]{\ifdraftversion
+  \begin{center}\fbox{\parbox[c][28mm][c]{0.90\linewidth}{\centering #1\\[2mm]\small #2}}\end{center}\fi}
+% Example table: caption above; booktabs; no vertical rules.
+% \begin{table}[htbp]\centering\caption{指标与条件}\label{tab:lhy-example}
+% \begin{tabular}{lrr}\toprule 方法 & 指标（单位） & 样本量\\\midrule
+% 待测 & --- & ---\\\bottomrule\end{tabular}\end{table}
