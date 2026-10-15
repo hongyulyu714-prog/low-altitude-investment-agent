@@ -4,9 +4,8 @@ on:
     paths:
       - 'frontend/**'
       - 'contracts/**'
-      - 'backend/main.py'
-      - 'backend/orchestrator.py'
-      - 'data/mock/**'
+      - 'backend/**'
+      - 'data/**'
       - '.github/workflows/frontend.yml'
   push:
     branches: ['feat/frontend-*']

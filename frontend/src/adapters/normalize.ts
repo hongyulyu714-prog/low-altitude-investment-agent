@@ -112,6 +112,13 @@ export function normalizeReport(
         return true;
       })
       .map((x) => ({
+        node_names: Object.fromEntries(
+          Object.entries(object(x.node_names)).filter(
+            (entry): entry is [string, string] => typeof entry[1] === "string",
+          ),
+        ),
+        rule_text: str(x.rule_text),
+        verification_status: str(x.verification_status),
         path_id: x.path_id as string,
         event_id: expectedEventId,
         node_ids: strings(x.node_ids),
@@ -153,16 +160,17 @@ export function normalizeReport(
       })
       .map((x) => ({
         stock_code: x.stock_code as string,
-        company_id: mode === "file-mock" ? str(x.company_id) : null,
+        company_id: str(x.company_id),
+        node_ids: strings(x.node_ids),
+        score_basis: str(x.score_basis),
         company_name: str(x.company_name),
         chain_role: str(x.chain_role),
         impact_direction: str(x.impact_direction),
         impact_score: score(x.impact_score),
-        exposure: mode === "file-mock" ? score(x.exposure) : null,
-        sensitivity: mode === "file-mock" ? score(x.sensitivity) : null,
-        financial_materiality:
-          mode === "file-mock" ? score(x.financial_materiality) : null,
-        formula_version: mode === "file-mock" ? str(x.formula_version) : null,
+        exposure: score(x.exposure),
+        sensitivity: score(x.sensitivity),
+        financial_materiality: score(x.financial_materiality),
+        formula_version: str(x.formula_version),
         risk_flags: strings(x.risk_flags),
         evidence_ids: strings(x.evidence_ids),
         verification_status: str(x.verification_status),

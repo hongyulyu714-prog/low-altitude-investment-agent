@@ -110,7 +110,7 @@ describe("report fidelity", () => {
     expect(result.counts.returned_companies).toBeNull();
     expect(result.empty).toBe(false);
   });
-  it("keeps zero scores, unknown risks, raw enums and never supplements API subscores", () => {
+  it("keeps zero scores, unknown risks, raw enums and preserves supplied API subscores", () => {
     const result = normalizeReport(
       {
         ...report,
@@ -129,7 +129,7 @@ describe("report fidelity", () => {
     );
     expect(result.companies?.[0]).toMatchObject({
       impact_score: 0,
-      exposure: null,
+      exposure: 88,
       risk_flags: ["unknown"],
       verification_status: "mock",
       impact_direction: "neutral",
@@ -317,5 +317,78 @@ describe("request behavior", () => {
           .mockRejectedValue(new DOMException("aborted", "AbortError")),
       }).analyze("EVT_A"),
     ).rejects.toMatchObject({ name: "AbortError" });
+  });
+});
+
+describe("versioned API", () => {
+  it("loads version-specific events from API and never bundled files", async () => {
+    const fetcher = vi.fn(async () => new Response(JSON.stringify([event])));
+    await createAnalysisAdapter("api", { fetch: fetcher }).listEvents(
+      undefined,
+      "prototype-v1",
+    );
+    expect(fetcher).toHaveBeenCalledWith(
+      "/api/v1/events?data_version=prototype-v1",
+      expect.anything(),
+    );
+    expect(fetcher).toHaveBeenCalledTimes(1);
+  });
+  it("rejects mismatched versions", async () => {
+    const fetcher = vi.fn(
+      async () =>
+        new Response(JSON.stringify({ ...report, data_version: "mock-v1" })),
+    );
+    await expect(
+      createAnalysisAdapter("api", { fetch: fetcher }).analyze(
+        "EVT_A",
+        undefined,
+        "prototype-v1",
+      ),
+    ).rejects.toMatchObject({ kind: "contract" });
+  });
+  it("keeps API factors, mapping, pending rule and missing score", () => {
+    const r = normalizeReport(
+      {
+        ...report,
+        paths: [
+          {
+            path_id: "PATH_A",
+            event_id: "EVT_A",
+            node_ids: ["NODE_A", "NODE_B"],
+            node_names: { NODE_A: "原始名称" },
+            rule_text: "原始条件",
+            verification_status: "pending_verification",
+          },
+        ],
+        companies: [
+          {
+            stock_code: "A",
+            node_ids: ["NODE_A"],
+            exposure: 45,
+            sensitivity: 80,
+            financial_materiality: 50,
+            impact_score: 18,
+            formula_version: "impact-v1.0.0",
+            score_basis: "synthetic",
+            risk_flags: ["mock_data"],
+          },
+          { stock_code: "B", impact_score: null },
+        ],
+      },
+      "EVT_A",
+    );
+    expect(r.companies?.[0]).toMatchObject({
+      exposure: 45,
+      sensitivity: 80,
+      financial_materiality: 50,
+      node_ids: ["NODE_A"],
+      is_mock: true,
+    });
+    expect(r.companies?.[1].impact_score).toBeNull();
+    expect(r.paths?.[0]).toMatchObject({
+      node_names: { NODE_A: "原始名称" },
+      rule_text: "原始条件",
+      verification_status: "pending_verification",
+    });
   });
 });

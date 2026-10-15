@@ -90,3 +90,9 @@ python -m unittest discover -s tests -v
 > **不要直接向 `main` 推送，也不要上传 Wind 原始导出、账号、密钥或受限研报全文。**
 
 每人从第一天起在独立分支完成可运行模块；所有模块必须符合 `contracts/` 中的接口；每项结论应保留 **数据来源、时间、规则与计算过程**。
+
+## 版本化黄金链路 V1（Issue #14）
+
+后端现支持 `prototype-v1`：`POST /api/v1/analyze` 传入 `{"event_id":"EVT_002","data_version":"prototype-v1"}`，读取 SHA-256 固定的历史事件、图谱、公司映射、证据和合成财务输入。`GET /api/v1/events?data_version=prototype-v1` 返回该版本可选事件；不支持的版本或事件返回 422。
+
+前端 API 模式可选择该版本，展示路径、公司映射、评分分项、待核验结论及证据来源。历史公告与合成评分分层标注；缺少输入的公司评分保持 `null`。本案例不包含 Wind 原始导出，评分不是实际公司受益。启动步骤、输入清单、数据缺口、测试与 3 分钟脚本见 [黄金链路 V1](docs/GOLDEN_CHAIN_V1.md)。

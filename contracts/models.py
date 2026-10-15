@@ -40,6 +40,9 @@ class GraphPath(ContractModel):
     rule_id: str = Field(min_length=1)
     impact_direction: ImpactDirection
     evidence_ids: list[str] = Field(default_factory=list)
+    verification_status: VerificationStatus = "pending_verification"
+    node_names: dict[str, str] = Field(default_factory=dict)
+    rule_text: str | None = None
 
     @model_validator(mode="after")
     def relation_count_must_connect_all_nodes(self) -> "GraphPath":
@@ -96,7 +99,14 @@ class CompanyImpact(ContractModel):
     company_name: str
     chain_role: str
     impact_direction: ImpactDirection
-    impact_score: float = Field(ge=0, le=100)
+    impact_score: float | None = Field(default=None, ge=0, le=100)
+    company_id: str | None = None
+    node_ids: list[str] = Field(default_factory=list)
+    exposure: float | None = Field(default=None, ge=0, le=100)
+    sensitivity: float | None = Field(default=None, ge=0, le=100)
+    financial_materiality: float | None = Field(default=None, ge=0, le=100)
+    formula_version: str | None = None
+    score_basis: str | None = None
     risk_flags: list[str] = Field(default_factory=list)
     evidence_ids: list[str] = Field(default_factory=list)
     verification_status: VerificationStatus

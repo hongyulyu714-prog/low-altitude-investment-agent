@@ -2,7 +2,7 @@
 
 from fastapi import FastAPI, HTTPException
 
-from contracts import AnalysisRequest, Report
+from contracts import AnalysisRequest, Event, Report
 from .orchestrator import DATA_VERSION, InvestmentOrchestrator, OrchestrationError
 
 app = FastAPI(title="低空智研总控 Agent", version="0.1.0")
@@ -18,4 +18,12 @@ def analyze(request: AnalysisRequest) -> Report:
     try:
         return InvestmentOrchestrator().analyze(request.event_id, request.data_version)
     except OrchestrationError as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from exc
+
+
+@app.get("/api/v1/events", response_model=list[Event])
+def events(data_version: str = DATA_VERSION) -> list[Event]:
+    try:
+        return InvestmentOrchestrator().list_events(data_version)
+    except (OrchestrationError, ValueError) as exc:
         raise HTTPException(status_code=422, detail=str(exc)) from exc

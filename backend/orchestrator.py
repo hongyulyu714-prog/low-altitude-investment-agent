@@ -66,7 +66,7 @@ class InvestmentOrchestrator:
         self.data_sources = (
             {version: Path(directory) for version, directory in data_sources.items()}
             if data_sources is not None
-            else {DATA_VERSION: Path(mock_dir)}
+            else {DATA_VERSION: Path(mock_dir), "prototype-v1": ROOT / "data/versions/prototype-v1"}
         )
         self.run_dir = Path(run_dir)
 
@@ -101,6 +101,9 @@ class InvestmentOrchestrator:
 
     def _build_report(self, run_id: str, event_id: str, data_version: str) -> Report:
         data_directory = self._data_source_for(data_version)
+        if data_version == "prototype-v1":
+            from .versioned_data import build_report
+            return build_report(data_directory, run_id, event_id, data_version)
         events = _validate_many(Event, _load_json(data_directory, "events.json"))
         paths = _validate_many(GraphPath, _load_json(data_directory, "graph_paths.json"))
         companies = _validate_many(Company, _load_json(data_directory, "companies.json"))
@@ -180,6 +183,14 @@ class InvestmentOrchestrator:
             verification_status="mock",
             generated_at=datetime.now(timezone.utc),
         )
+
+    def list_events(self, data_version: str) -> list[Event]:
+        directory = self._data_source_for(data_version)
+        if data_version == "prototype-v1":
+            from .versioned_data import load_inputs, selected_event
+            manifest, inputs = load_inputs(directory, data_version)
+            return [selected_event(manifest, inputs)]
+        return _validate_many(Event, _load_json(directory, "events.json"))
 
     def _data_source_for(self, data_version: str) -> Path:
         data_directory = self.data_sources.get(data_version)
