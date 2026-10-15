@@ -1,7 +1,23 @@
 % !TEX root = ../main.tex
-\PlanPage{完整流程演示}{吕洪宇}{27}
-\WritingGuide{用已有电池价格Mock事件贯穿产品流程。}{事件到报告的完整演示。}{截图与运行记录来自同一版本。}
-\NeedEvidence{替换本页写作指引，补入正文、真实材料与可定位出处。}
-\FigureSlot{完整流程演示所需图表}{事件到报告的完整演示。}
+\PlanPage{完整流程演示：一份报告如何被研究者逐层审阅}{吕洪宇}{27}
+\noindent\textbf{完整流程演示以固定事件和固定数据版本呈现系统如何组织研究，而非以示例数据替代真实市场结论。}演示使用\texttt{EVT\_BATTERY\_PRICE\_DOWN\_001}与\texttt{mock-v1}：研究者在“后端API·Mock”模式下选择“动力电池价格下降15\%”，发起一次分析请求，获得包含运行信息的结构化报告。当前示例报告包含4个路径环节、3家分析返回公司和3条证据记录，用于完整呈现事件、路径、公司与证据如何进入同一研究现场\cite{lhy-frontend,lhy-architecture}。
 
-% 按“一句话结论—证据—解释—适用条件”组织本页正文。
+\begin{center}
+\includegraphics[width=0.92\linewidth,height=0.41\textheight,keepaspectratio]{assets/hongyulyu714-prog/fig-report-source.png}
+\PlanFigureCaption{图27-1}{报告来源与运行信息界面。页面展示数据版本、运行信息和来源入口；截图来源于\texttt{docs/screenshots/10-sources.png}。这些字段使一份可视化报告同时保留可追溯的生成条件。}
+\end{center}
+
+\begin{center}\small 表27-1\quad 三分钟演示的研究阅读顺序与检查要点\par\vspace{1mm}
+\begin{tabularx}{\linewidth}{p{0.15\linewidth}p{0.35\linewidth}X}
+\toprule
+时段 & 演示动作 & 评审者可直接检查的研究对象\\
+\midrule
+0:00--0:30 & 选择事件，确认“后端API·Mock”模式与数据版本，发起分析 & 事件名称、\texttt{event\_id}、\texttt{mock-v1}、\texttt{run\_id}、生成时间与状态。\\
+0:30--1:10 & 阅读业务ID路径，切换节点、路径与视角 & 每条连线的相邻节点、关系ID、路径方向、规则和证据阅读入口。\\
+1:10--1:45 & 打开公司影响列表及单家公司详情 & 证券主体、产业角色、影响方向、影响强度、风险标记、评分构成与证据ID。\\
+1:45--2:20 & 打开电池价格输入的证据，检查标题、日期、摘录与来源入口 & Mock状态、可信度、核验标签与该证据支持的事实范围。\\
+2:20--3:00 & 打开报告来源与运行信息，回到研究现场复核 & 报告数据版本、运行记录、来源信息、路径与证据之间的对应关系。\\
+\bottomrule
+\end{tabularx}\end{center}
+
+该演示的关键不在于给出一个孤立分数，而在于使评审能够沿反向路径检查系统：从公司卡片回到产业路径，从路径回到事件和规则，从结论回到证据与运行记录。示例中eVTOL公司显示的40.80为Mock影响强度，它的作用是让观众检查参数、方向、报告字段和证据绑定方式；正式数据接入后，同一阅读顺序和报告结构仍然适用。由此，系统将“可解释”落实为具体可操作的审阅过程。

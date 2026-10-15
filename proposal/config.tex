@@ -1,4 +1,8 @@
 % Shared layout: coordinate changes in the template PR; authors write pages only.
+% Songti SC is a macOS system font and is embedded by XeTeX/Tectonic for PDF preview compatibility.
+\setCJKmainfont{Songti SC}
+\setCJKsansfont{PingFang SC}
+\setCJKmonofont{Songti SC}
 \usepackage[margin=23mm,headheight=18pt,footskip=13mm]{geometry}
 \usepackage{amsmath,amssymb,booktabs,tabularx,array,graphicx,xcolor}
 \usepackage{enumitem,fancyhdr,caption,hyperref}
@@ -28,6 +32,7 @@
   \end{quote}\fi}
 \newcommand{\NeedEvidence}[1]{\textcolor{red!65!black}{【待补证据：#1】}}
 \newcommand{\SourceNote}[1]{\par{\footnotesize 来源与口径：#1\par}}
+\newcommand{\PlanFigureCaption}[2]{\par\noindent{\small\textbf{#1}\quad #2\par}}
 \newcommand{\FigureSlot}[2]{\ifdraftversion
   \begin{center}\fbox{\parbox[c][28mm][c]{0.90\linewidth}{\centering #1\\[2mm]\small #2}}\end{center}\fi}
 % Example table: caption above; booktabs; no vertical rules.
