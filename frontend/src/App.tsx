@@ -11,7 +11,6 @@ import {
   LatestRequestGuard,
   sortCompanies,
   safeSourceUrl,
-  type DataMode,
   type ReportView,
   type EventView,
 } from "./adapters";
@@ -42,7 +41,7 @@ const direction = (v: string | null) =>
     uncertain: "不确定",
   })[v ?? ""] ?? (v ? `未知方向 · ${v}` : "方向数据不足");
 const verification = (v: string | null) =>
-  ({ verified: "已核验", pending_verification: "待核验", mock: "Mock · 模拟" })[
+  ({ verified: "已核验", pending_verification: "待核验", mock: "样例输入" })[
     v ?? ""
   ] ?? (v ? `未知状态 · ${v}` : "核验状态数据不足");
 const risk = (r: string) =>
@@ -64,9 +63,9 @@ function Badge({
   return <span className={`badge ${kind}`}>{children}</span>;
 }
 export function App() {
-  const [version, setVersion] = useState("mock-v1");
-  const [mode, setMode] = useState<DataMode>("api"),
-    [events, setEvents] = useState<EventView[]>([]),
+  const version = "prototype-v1";
+  const mode = "api";
+  const [events, setEvents] = useState<EventView[]>([]),
     [eventError, setEventError] = useState(""),
     [eventId, setEventId] = useState(""),
     [phase, setPhase] = useState<"entry" | "loading" | "ready" | "error">(
@@ -292,29 +291,7 @@ export function App() {
             <strong>SkyNexus</strong>
             <span>低空智研</span>
           </a>
-          <div className="data-switch" aria-label="数据来源">
-            <button
-              className={mode === "api" ? "active" : ""}
-              onClick={() => {
-                reset();
-                setMode("api");
-                setEventId("");
-              }}
-            >
-              后端 API
-            </button>
-            <button
-              className={mode === "file-mock" ? "active" : ""}
-              onClick={() => {
-                reset();
-                setMode("file-mock");
-                setVersion("mock-v1");
-                setEventId("");
-              }}
-            >
-              文件 Mock
-            </button>
-          </div>
+          <span className="data-switch">后端 API</span>
           <nav>
             <a href="#graph">产业路径</a>
             <a href="#companies">公司与证据</a>
@@ -381,25 +358,9 @@ export function App() {
                 )}
               </small>
             </div>
-            {mode === "api" && (
-              <label className="version-selector">
-                数据版本{" "}
-                <select
-                  aria-label="数据版本"
-                  value={version}
-                  onChange={(e) => {
-                    reset();
-                    setEventId("");
-                    setVersion(e.target.value);
-                  }}
-                >
-                  <option value="mock-v1">mock-v1 · 模拟链路</option>
-                  <option value="prototype-v1">
-                    prototype-v1 · 历史公告与合成评分
-                  </option>
-                </select>
-              </label>
-            )}
+            <div className="version-selector">
+              数据版本 <span>prototype-v1 · 历史公告</span>
+            </div>
             <button
               className="outline analyze"
               disabled={!eventId || phase === "loading"}
@@ -492,7 +453,6 @@ export function App() {
                       { path, node },
                     );
                   }}
-                  onTest={() => setGraphMode("test")}
                   onExpandedChange={setExpanded}
                 />
               ) : (
@@ -564,12 +524,6 @@ export function App() {
                           onClick={() => setTab("business")}
                         >
                           分析返回公司 {value(report.counts.returned_companies)}
-                        </button>
-                        <button
-                          className={tab === "test" ? "active" : ""}
-                          onClick={() => setTab("test")}
-                        >
-                          TEST 联动
                         </button>
                       </div>
                       <small>
@@ -807,9 +761,7 @@ export function App() {
                   >
                     <div className="section-heading">
                       <h2>业务路径与原始证据</h2>
-                      <span className="muted">
-                        仅消费报告字段，TEST 网络不代表业务路径
-                      </span>
+                      <span className="muted">按当前报告展示路径与来源</span>
                     </div>
                     <div className="business-paths">
                       {report.paths === null ? (
@@ -909,9 +861,14 @@ export function App() {
                             <p>{value(e.quote)}</p>
                             <span className="evidence-axes">
                               <Badge kind="amber">
-                                {e.is_mock ? "Mock 样例" : "来源记录"}
+                                {e.is_mock ? "样例来源" : "来源记录"}
                               </Badge>
-                              <span>可信度 {value(e.credibility_level)}</span>
+                              <span>
+                                可信度{" "}
+                                {e.credibility_level === "mock"
+                                  ? "样例输入"
+                                  : value(e.credibility_level)}
+                              </span>
                               <span>{verification(e.verification_status)}</span>
                             </span>
                           </button>
@@ -1030,7 +987,7 @@ export function App() {
                   {item.scope === "test"
                     ? "TEST · 合成公司"
                     : businessCompany?.is_mock
-                      ? "Mock · 模拟公司"
+                      ? "样例公司"
                       : "来源公司"}
                 </Badge>
                 <h3>{businessCompany?.company_name ?? testCompany?.name}</h3>
@@ -1102,7 +1059,7 @@ export function App() {
                     {item.scope === "test"
                       ? "TEST · 合成记录"
                       : "is_mock" in evidence && evidence.is_mock
-                        ? "Mock · 模拟证据"
+                        ? "样例证据"
                         : "来源记录"}
                   </Badge>
                   <h3>{value(evidence.source_title)}</h3>
@@ -1113,7 +1070,12 @@ export function App() {
                     发布日期<b>{evidence.published_date ?? "未提供"}</b>
                   </span>
                   <span>
-                    来源可信度<b>{value(evidence.credibility_level)}</b>
+                    来源可信度
+                    <b>
+                      {evidence.credibility_level === "mock"
+                        ? "样例输入"
+                        : value(evidence.credibility_level)}
+                    </b>
                   </span>
                   <span>
                     核验状态<b>{verification(evidence.verification_status)}</b>
@@ -1211,9 +1173,6 @@ export function App() {
                   生成时间<b>{value(report?.generated_at)}</b>
                 </span>
               </div>
-              {mode === "file-mock" && (
-                <p>文件模式不伪造服务运行 ID 或生成时间。</p>
-              )}
               <h3>真实接口</h3>
               <p>
                 POST /api/v1/analyze，输入 event_id 与 data_version；GET /health
@@ -1226,15 +1185,9 @@ export function App() {
                   ? "该版本提供节点名称、条件规则、产品节点映射及合成评分分项；传导待核验，合成评分不代表真实受益，缺财务公司保留空分。"
                   : "当前 mock 报告缺少部分节点名称、条件规则或公司映射；缺失分项保持数据不足。相邻关系端点依据 GraphPath 契约绘制。"}
               </div>
-              <h3>TEST 隔离边界</h3>
-              <p>
-                10 个合成节点、9 条关系、5 条路径，仅验证空间操作。TEST
-                公司与记录使用独立 ID，无金融评分或真实来源。
-              </p>
               <h3>公司数量语义</h3>
               <p>
-                分析返回公司仅统计当前报告，不代表完整候选集。PR #9 新评分数据和
-                PR #7 证据库尚未进入此 API，不由前端擅自接入。
+                分析返回公司仅统计当前报告，不代表完整候选集。财务与评分输入以当前版本清单为准。
               </p>
               <p className="trace">{report?.provenance.files.join("\n")}</p>
             </>

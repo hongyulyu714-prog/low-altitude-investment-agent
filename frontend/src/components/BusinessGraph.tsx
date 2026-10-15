@@ -23,7 +23,6 @@ export function BusinessGraph({
   nodeId,
   onSelect,
   onResearch,
-  onTest,
   onExpandedChange,
 }: {
   view: BusinessViewState;
@@ -33,7 +32,6 @@ export function BusinessGraph({
   nodeId: string | null;
   onSelect: (path: string, node: string | null) => void;
   onResearch: (path: string, node: string) => void;
-  onTest: () => void;
   onExpandedChange: (expanded: boolean) => void;
 }) {
   const { camera, held, history } = view;
@@ -137,9 +135,6 @@ export function BusinessGraph({
         <div className="sg-tools">
           <button onClick={toggleExpanded}>
             {expanded ? "收起图谱" : "展开图谱"}
-          </button>
-          <button disabled={expanded} onClick={onTest}>
-            打开独立 TEST 图谱
           </button>
         </div>
       </div>

@@ -1,6 +1,6 @@
 # SkyNexus Frontend V1 · Issue #5
 
-本版以 A · Graph Exploration + Spatial Exploration 为基础，实现事件选择、真实分析 API、ID 路径研究、公司榜、风险与证据共享抽屉。默认图谱绘制报告中的业务 ID 路径；独立 TEST 演示需主动打开，不建立业务节点公司映射。
+本版以 A · Graph Exploration + Spatial Exploration 为基础，实现事件选择、真实分析 API、ID 路径研究、公司榜、风险与证据共享抽屉。当前默认图谱绘制 `prototype-v1` 报告路径；文件数据、旧版链路与独立 TEST 入口已移除。当前演示步骤与数据边界见 [黄金链路 V1](GOLDEN_CHAIN_V1.md)，下文旧版交付记录仅供追溯。
 
 ## 新克隆后的启动
 
@@ -23,9 +23,9 @@ npm ci
 npm run dev
 ```
 
-打开 http://127.0.0.1:5173 。默认数据源为“后端 API · Mock”；先选择已有事件，再点击“查看分析”。Vite 将 `/api` 和 `/health` 代理到8000，无需改后端 CORS。可通过 `SKY_BACKEND_URL=http://127.0.0.1:8001 npm run dev` 指定其他本地服务。静态部署需要同源反向代理 `/api`、`/health`；本 PR 不部署服务。
+打开 http://127.0.0.1:5173 。默认使用后端 API 的 `prototype-v1`；先选择已有历史公告，再点击“查看分析”。Vite 将 `/api` 和 `/health` 代理到8000，无需改后端 CORS。可通过 `SKY_BACKEND_URL=http://127.0.0.1:8001 npm run dev` 指定其他本地服务。静态部署需要同源反向代理 `/api`、`/health`；本 PR 不部署服务。
 
-后端未启动时页面显示连接失败，提供重试，不静默切换到文件。用户可主动选“文件 Mock”后重新选择、分析；此模式读取仓库五类同版本 JSON，分项完整，但没有服务运行 ID、生成时间或源结论，分别显示数据不足。
+后端未启动时页面显示连接失败，提供重试，不静默切换到文件。当前界面不再提供文件数据入口。
 
 ## API 联调
 
