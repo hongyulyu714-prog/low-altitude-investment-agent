@@ -47,7 +47,10 @@ const verification = (v: string | null) =>
   ] ?? (v ? `未知状态 · ${v}` : "核验状态数据不足");
 const risk = (r: string) =>
   ({
-    mock_data: "Mock 样例",
+    mock_data: "合成样例",
+    pending_verification: "传导待核验",
+    scenario_not_forecast: "情景假设，非收益预测",
+    financial_inputs_unavailable: "财务输入不足",
     "demand-elasticity-unknown": "需求弹性未知",
     "cost-pass-through-unknown": "成本传导未知",
   })[r] ?? r;
@@ -61,6 +64,7 @@ function Badge({
   return <span className={`badge ${kind}`}>{children}</span>;
 }
 export function App() {
+  const [version, setVersion] = useState("mock-v1");
   const [mode, setMode] = useState<DataMode>("api"),
     [events, setEvents] = useState<EventView[]>([]),
     [eventError, setEventError] = useState(""),
@@ -118,14 +122,17 @@ export function App() {
   const loadEvents = useCallback(() => {
     const abort = new AbortController();
     setEventError("");
+    setEvents([]);
     adapter
-      .listEvents(abort.signal)
-      .then(setEvents)
+      .listEvents(abort.signal, version)
+      .then((rows) => {
+        if (!abort.signal.aborted) setEvents(rows);
+      })
       .catch((e) => {
         if (!abort.signal.aborted) setEventError(e.message);
       });
     return () => abort.abort();
-  }, [adapter]);
+  }, [adapter, version]);
   useEffect(loadEvents, [loadEvents]);
   useEffect(() => () => request.current.invalidate(), []);
   useEffect(() => {
@@ -151,7 +158,7 @@ export function App() {
     setItems([]);
     setError("");
     try {
-      const r = await adapter.analyze(eventId, req.signal);
+      const r = await adapter.analyze(eventId, req.signal, version);
       if (req.current()) {
         setReport(r);
         setPhase("ready");
@@ -294,13 +301,14 @@ export function App() {
                 setEventId("");
               }}
             >
-              后端 API · Mock
+              后端 API
             </button>
             <button
               className={mode === "file-mock" ? "active" : ""}
               onClick={() => {
                 reset();
                 setMode("file-mock");
+                setVersion("mock-v1");
                 setEventId("");
               }}
             >
@@ -325,7 +333,11 @@ export function App() {
           <div className="workspace-title">
             <h1>图谱探索工作台</h1>
             <p>自由探索路径，保持研究现场</p>
-            <Badge>模拟数据 · 仅用于演示</Badge>
+            <Badge>
+              {version === "prototype-v1"
+                ? "公开历史事件 · 合成评分 · 传导待核验"
+                : "模拟数据 · 仅用于演示"}
+            </Badge>
           </div>
           <section className="card event-card" aria-label="事件选择">
             <div className="event-selector">
@@ -362,11 +374,32 @@ export function App() {
                   </>
                 ) : events.length === 0 ? (
                   "暂无可分析事件"
+                ) : mode === "api" ? (
+                  `事件列表来自 API · ${version}`
                 ) : (
-                  "事件列表来自 data/mock/events.json · 当前 API 无列表接口"
+                  "事件列表来自 data/mock/events.json"
                 )}
               </small>
             </div>
+            {mode === "api" && (
+              <label className="version-selector">
+                数据版本{" "}
+                <select
+                  aria-label="数据版本"
+                  value={version}
+                  onChange={(e) => {
+                    reset();
+                    setEventId("");
+                    setVersion(e.target.value);
+                  }}
+                >
+                  <option value="mock-v1">mock-v1 · 模拟链路</option>
+                  <option value="prototype-v1">
+                    prototype-v1 · 历史公告与合成评分
+                  </option>
+                </select>
+              </label>
+            )}
             <button
               className="outline analyze"
               disabled={!eventId || phase === "loading"}
@@ -378,7 +411,13 @@ export function App() {
               <div className="metrics">
                 <div>
                   <small>事件方向</small>
-                  <span>{value(report.event.direction)}</span>
+                  <span>
+                    {["positive", "negative", "neutral", "uncertain"].includes(
+                      report.event.direction ?? "",
+                    )
+                      ? direction(report.event.direction)
+                      : value(report.event.direction)}
+                  </span>
                 </div>
                 <div>
                   <small>分析返回公司</small>
@@ -535,7 +574,9 @@ export function App() {
                       </div>
                       <small>
                         {tab === "business"
-                          ? "业务节点映射 · 数据不足"
+                          ? report.companies?.some((c) => c.node_ids?.length)
+                            ? "公司来自产品节点映射 · 传导待核验"
+                            : "业务节点映射 · 数据不足"
                           : selection?.nodeKey
                             ? `TEST ${selection.nodeKey} · ${selection.filtered ? "主动筛选" : "仅高亮"}`
                             : "选择 TEST 节点后高亮，主动筛选"}
@@ -586,10 +627,20 @@ export function App() {
                             </thead>
                             <tbody>
                               {companies.map((c, i) => (
-                                <tr key={c.stock_code}>
+                                <tr
+                                  key={c.stock_code}
+                                  className={
+                                    businessNode &&
+                                    c.node_ids?.includes(businessNode)
+                                      ? "mapped-company"
+                                      : ""
+                                  }
+                                >
                                   <td>
                                     <span className="rank">
-                                      {String(i + 1).padStart(2, "0")}
+                                      {c.impact_score === null
+                                        ? "—"
+                                        : String(i + 1).padStart(2, "0")}
                                     </span>
                                     <button
                                       className="company-name"
@@ -734,7 +785,7 @@ export function App() {
                     <div className="evidence-strip">
                       <span>
                         {tab === "business"
-                          ? `${report.data_version ?? missing} · ${mode === "api" ? "API 分项未提供" : "文件 Mock 完整分项"}`
+                          ? `${report.data_version ?? missing} · ${report.companies?.some((c) => c.score_basis) ? "合成财务与情景评分 · 非实际受益" : mode === "api" ? "API 返回分项" : "文件 Mock 完整分项"}`
                           : "TEST 与业务 Mock 严格隔离"}
                       </span>
                       <button
@@ -813,7 +864,9 @@ export function App() {
                               )) ?? missing}
                             </div>
                             <small>
-                              节点名称、公司映射与规则正文尚未提供；相邻端点依据契约
+                              {p.rule_text
+                                ? `条件传导 · ${verification(p.verification_status ?? null)}`
+                                : "节点名称、公司映射与规则正文尚未提供；相邻端点依据契约"}
                             </small>
                             <button
                               className="path-details"
@@ -1007,9 +1060,12 @@ export function App() {
                     ))}
                   </div>
                   <p className="trace">
-                    {mode === "api"
-                      ? "API 未提供分项 / 公式版本"
-                      : `financial_scores.json · ${value(businessCompany.formula_version)}`}
+                    {value(businessCompany.formula_version)} ·{" "}
+                    {businessCompany.score_basis ??
+                      (mode === "api" ? "API 返回值" : "financial_scores.json")}
+                  </p>
+                  <p>
+                    映射节点：{businessCompany.node_ids?.join(" / ") || missing}
                   </p>
                   <h3>风险</h3>
                   <p>{riskText(businessCompany.risk_flags)}</p>
@@ -1120,11 +1176,15 @@ export function App() {
                   </p>
                   <h3>规则 ID</h3>
                   <p className="trace">{p?.rule_id ?? missing}</p>
-                  <div className="missing">
-                    规则正文、节点名称与公司映射 · 数据不足。关系端点依据
-                    GraphPath 契约，按 node_ids 相邻节点与 relation_ids
-                    对应；不推断公司关联。
-                  </div>
+                  <Badge kind="amber">
+                    {verification(p?.verification_status ?? null)}
+                  </Badge>
+                  <p>{p?.rule_text ?? "规则正文 · 数据不足"}</p>
+                  <p>
+                    {p?.node_names
+                      ? Object.values(p.node_names).join(" → ")
+                      : "节点名称 · 数据不足"}
+                  </p>
                   <h3>路径证据</h3>
                   {refs(p?.evidence_ids ?? null)}
                 </>
@@ -1157,13 +1217,14 @@ export function App() {
               <h3>真实接口</h3>
               <p>
                 POST /api/v1/analyze，输入 event_id 与 data_version；GET /health
-                用于服务健康检查。事件列表从已合入 Mock 文件读取。
+                用于服务健康检查。API 模式通过 GET /api/v1/events
+                按版本读取事件列表。
               </p>
               <h3>业务能力缺口</h3>
               <div className="missing">
-                当前报告未提供节点名称、规则正文、节点公司映射、三个评分分项与公式版本。相邻关系端点依据已有
-                GraphPath 契约绘制。文件模式可读取同版本评分分项，API
-                模式保持缺项。
+                {report?.data_version === "prototype-v1"
+                  ? "该版本提供节点名称、条件规则、产品节点映射及合成评分分项；传导待核验，合成评分不代表真实受益，缺财务公司保留空分。"
+                  : "当前 mock 报告缺少部分节点名称、条件规则或公司映射；缺失分项保持数据不足。相邻关系端点依据 GraphPath 契约绘制。"}
               </div>
               <h3>TEST 隔离边界</h3>
               <p>

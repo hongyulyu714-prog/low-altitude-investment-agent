@@ -72,8 +72,12 @@ export function createAnalysisAdapter(
   const base = (options.baseUrl ?? "").replace(/\/$/, "");
   return {
     mode,
-    async listEvents(signal?: AbortSignal) {
-      const payload = await readJson(fetcher, eventsUrl, { signal });
+    async listEvents(signal?: AbortSignal, version = "mock-v1") {
+      const url =
+        mode === "api"
+          ? `${base}/api/v1/events?data_version=${encodeURIComponent(version)}`
+          : eventsUrl;
+      const payload = await readJson(fetcher, url, { signal });
       if (!Array.isArray(payload))
         throw new AdapterError("事件列表不是有效数组", "contract");
       try {
@@ -99,7 +103,10 @@ export function createAnalysisAdapter(
           signal,
         });
         try {
-          return normalizeReport(payload, eventId);
+          const report = normalizeReport(payload, eventId);
+          if (report.data_version !== null && report.data_version !== version)
+            throw new Error("响应数据版本与请求不一致");
+          return report;
         } catch (error) {
           throw new AdapterError(
             error instanceof Error ? error.message : "报告契约无效",

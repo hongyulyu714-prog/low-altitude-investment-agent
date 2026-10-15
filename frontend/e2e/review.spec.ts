@@ -208,7 +208,9 @@ test("source and event changes clear saved business views", async ({
   page,
 }) => {
   await page.route(
-    (url) => url.pathname.endsWith("/events.json") && !url.search,
+    (url) =>
+      url.pathname === "/api/v1/events" ||
+      (url.pathname.endsWith("/events.json") && !url.search),
     async (route) => {
       const response = await route.fetch();
       const events = await response.json();

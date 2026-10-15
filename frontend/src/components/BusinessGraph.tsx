@@ -171,7 +171,8 @@ export function BusinessGraph({
             ))}
           </div>
           <p className="bg-note">
-            名称、类别、规则正文及公司映射：数据不足。连线依据契约中的相邻节点关系。
+            {path?.rule_text ??
+              "名称、类别、规则正文及公司映射：数据不足。连线依据契约中的相邻节点关系。"}
           </p>
         </nav>
         <div
@@ -323,7 +324,7 @@ export function BusinessGraph({
                         y="52"
                         className="bg-node-label"
                       >
-                        {id}
+                        {path.node_names?.[id] ?? id}
                       </text>
                     </g>
                   );
@@ -375,8 +376,12 @@ export function BusinessGraph({
           </div>
           {nodeId && path && (
             <div className="bg-popover">
-              <strong>{nodeId}</strong>
-              <p>名称与公司映射 · 数据不足</p>
+              <strong>{path.node_names?.[nodeId] ?? nodeId}</strong>
+              <p>
+                {path.node_names?.[nodeId]
+                  ? "公司按报告中的产品节点映射高亮；传导待核验"
+                  : "名称与公司映射 · 数据不足"}
+              </p>
               <button onClick={() => onResearch(path.path_id, nodeId)}>
                 查看规则与证据
               </button>
@@ -388,7 +393,7 @@ export function BusinessGraph({
         {held
           ? "保持视角 · 选择节点不移动相机"
           : "自动聚焦 · 平移或缩放后保持视角"}{" "}
-        · 公司表保留实际报告，未推断节点映射
+        · 公司表保留当前报告，按明确节点映射高亮
       </div>
     </section>
   );

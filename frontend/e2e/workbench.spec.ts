@@ -6,7 +6,7 @@ const fixture = {
     event_name: "TEST · 受控报告边界",
     direction: "下降",
   },
-  data_version: "TEST-fixture",
+  data_version: "mock-v1",
   paths: [],
   companies: [],
   evidence: [],
@@ -309,7 +309,7 @@ test("Reduced Motion, pause, narrow desktop and graph anchor", async ({
 });
 
 test("event list empty and read failure remain distinct", async ({ page }) => {
-  const url = (u: URL) => u.pathname.endsWith("/events.json") && !u.search;
+  const url = (u: URL) => u.pathname === "/api/v1/events";
   await page.route(url, (r) => r.fulfill({ json: [] }));
   await page.goto("/");
   await expect(page.getByText("暂无可分析事件")).toBeVisible();

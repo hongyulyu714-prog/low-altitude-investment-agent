@@ -25,6 +25,9 @@ export interface EvidenceView {
   is_mock: boolean;
 }
 export interface PathView {
+  node_names?: Record<string, string>;
+  rule_text?: string | null;
+  verification_status?: string | null;
   path_id: string;
   event_id: string;
   node_ids: string[] | null;
@@ -35,6 +38,8 @@ export interface PathView {
 }
 export interface CompanyView {
   stock_code: string;
+  node_ids?: string[] | null;
+  score_basis?: string | null;
   company_id: string | null;
   company_name: string | null;
   chain_role: string | null;

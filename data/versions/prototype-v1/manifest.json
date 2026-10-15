@@ -1,0 +1,23 @@
+{
+  "data_version": "prototype-v1",
+  "event_id": "EVT_002",
+  "rule_id": "RULE_AIRWORTHINESS_PROGRESS_V1",
+  "scoring_event_id": "EVT_AIRWORTHINESS",
+  "event_node_aliases": {
+    "NODE_EVID_AIRWORTHINESS": "NODE_EVTOL",
+    "NODE_EVID_EVTOL": "NODE_EVTOL",
+    "NODE_EVID_TOURISM": "NODE_AERIAL_TOURISM"
+  },
+  "score_basis": "使用 Issue #3 已有合成财务、合成暴露度和适航情景敏感度；非实际公司财务或已测量因果效应。未匹配公司保留空分。",
+  "files": {
+    "data/events.csv": "e577999c7c46b4f09483e01d4474f05275b4247f81215644eb9ba71370cf2d11",
+    "data/evidence.csv": "b42dc746a84b0666459ac5ac06fcd107c166c7ac663a750aaa6ddc8e26f65ccd",
+    "data/evidence_review.json": "19ba22cd300e54fc2b3c9d6c110a2c871583d6bda3a3d4dbb558d80ae9e84ad6",
+    "data/graph/nodes.csv": "0c1592d9f70a05a3a1ce11a2bed78d8121c799841be73fb3421e4512534f194b",
+    "data/graph/relations.csv": "ef51a661f8e1cb1bd006a8991eb1ef5f503efa0765fe5095eede627564275d2d",
+    "data/graph/event_rules.json": "aaf3c281b1a24afa96e7ae61736680034534330233f05636ada6503f42ef6941",
+    "data/graph/company_mapping.csv": "42b96087ebaf88f4c1207ecf7c763b7bedd1573bd1523fcc9b069c6e171f0038",
+    "data/financials.example.csv": "7d9688306c8c4d28e34826807c1064f8035184f767b03c1e583b7761ff084149",
+    "data/scoring_companies.example.json": "689eaeee818e93740634c3fe6b5fc556478e7e1db65eebc6b55d5cfaf5fbad64"
+  }
+}
