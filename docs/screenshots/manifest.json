@@ -1,0 +1,248 @@
+{
+  "captured_at": "2026-10-15T04:26:29.327Z",
+  "implementation_commit": "86a440ab62c4e0e5656e3e954c9400c1a547219c",
+  "browser": "Chrome / Playwright",
+  "images": [
+    {
+      "file": "01-entry.png",
+      "title": "未选择事件",
+      "source": "current API / mock-v1",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "fullPage": false
+    },
+    {
+      "file": "02-loading.png",
+      "title": "分析请求等待中",
+      "source": "controlled delay of real API request; no fake progress",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "fullPage": false
+    },
+    {
+      "file": "03-business-1440.png",
+      "title": "当前业务图谱首屏",
+      "source": "current API / mock-v1",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "fullPage": false
+    },
+    {
+      "file": "04-business-full.png",
+      "title": "当前报告完整页面",
+      "source": "current API / mock-v1",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "fullPage": true
+    },
+    {
+      "file": "05-business-held.png",
+      "title": "业务节点选择与保持视角",
+      "source": "current API / mock-v1",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "fullPage": false
+    },
+    {
+      "file": "06-business-path.png",
+      "title": "业务节点、规则 ID 与路径证据",
+      "source": "current API / mock-v1",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "fullPage": false
+    },
+    {
+      "file": "07-business-expanded.png",
+      "title": "业务图谱展开",
+      "source": "current API / mock-v1",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "fullPage": false
+    },
+    {
+      "file": "08-company.png",
+      "title": "业务公司评分与风险",
+      "source": "current API / mock-v1",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "fullPage": false
+    },
+    {
+      "file": "09-evidence.png",
+      "title": "业务原始证据抽屉",
+      "source": "current API / mock-v1",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "fullPage": false
+    },
+    {
+      "file": "10-sources.png",
+      "title": "报告来源、版本与运行信息",
+      "source": "current API / mock-v1",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "fullPage": false
+    },
+    {
+      "file": "11-file-1440.png",
+      "title": "文件 Mock 首屏",
+      "source": "five repository data/mock JSON files",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "fullPage": false
+    },
+    {
+      "file": "12-file-full.png",
+      "title": "文件 Mock 完整报告和分项",
+      "source": "five repository data/mock JSON files",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "fullPage": true
+    },
+    {
+      "file": "13-test-graph.png",
+      "title": "独立 TEST 空间探索",
+      "source": "synthetic TEST graph, separate from business API",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "fullPage": false
+    },
+    {
+      "file": "14-test-companies.png",
+      "title": "TEST 主动筛选与公司联动",
+      "source": "synthetic TEST mappings; no stock codes or financial scores",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "fullPage": false
+    },
+    {
+      "file": "15-test-company.png",
+      "title": "TEST 公司详情",
+      "source": "synthetic TEST company; no business financial values",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "fullPage": false
+    },
+    {
+      "file": "16-test-evidence.png",
+      "title": "TEST 合成记录",
+      "source": "synthetic TEST record; no real source URL",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "fullPage": false
+    },
+    {
+      "file": "17-test-expanded.png",
+      "title": "TEST 图谱展开",
+      "source": "synthetic TEST graph",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "fullPage": false
+    },
+    {
+      "file": "18-error.png",
+      "title": "请求失败与重试",
+      "source": "explicit TEST HTTP 503 fixture; not actual outage",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "fullPage": false
+    },
+    {
+      "file": "19-empty.png",
+      "title": "明确空报告",
+      "source": "explicit synthetic TEST response fixture; not business dataset",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "fullPage": true
+    },
+    {
+      "file": "20-missing.png",
+      "title": "缺失字段状态",
+      "source": "explicit synthetic TEST response fixture; not business dataset",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "fullPage": true
+    },
+    {
+      "file": "21-responsive-1280.png",
+      "title": "1280px 桌面布局",
+      "source": "current API / mock-v1",
+      "viewport": {
+        "width": 1280,
+        "height": 1024
+      },
+      "fullPage": false
+    },
+    {
+      "file": "21-responsive-800.png",
+      "title": "800px 桌面布局",
+      "source": "current API / mock-v1",
+      "viewport": {
+        "width": 800,
+        "height": 1024
+      },
+      "fullPage": false
+    },
+    {
+      "file": "22-test-node.png",
+      "title": "TEST 节点详情",
+      "source": "synthetic TEST graph/node/mappings; business report remains separate",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "fullPage": false
+    },
+    {
+      "file": "23-test-full.png",
+      "title": "TEST 图谱与完整纵向页面",
+      "source": "synthetic TEST graph/node/mappings; business report remains separate",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "fullPage": true
+    }
+  ],
+  "application_errors": []
+}
