@@ -12,6 +12,8 @@
 4. 阅读本人Issue与本目录 `AGENTS.md`，替换所分配页面的指引、图表占位和待补内容。
 5. 编译完整计划书，检查本人负责的全部页面，按下文规定提交PR。
 
+写作任务：[吕洪宇 #17](https://github.com/hongyulyu714-prog/low-altitude-investment-agent/issues/17) · [武桐宇 #18](https://github.com/hongyulyu714-prog/low-altitude-investment-agent/issues/18)
+
 ## 两人分工
 
 | 作者 | 账号 | 页位 | 数量 | 写作范围 |
