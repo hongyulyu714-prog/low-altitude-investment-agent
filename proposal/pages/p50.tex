@@ -1,7 +1,25 @@
 % !TEX root = ../main.tex
 \PlanPage{成果与复现入口}{武桐宇}{50}
-\WritingGuide{集中列出仓库、演示、版本、测试与材料索引。}{可访问入口与最终交付检查。}{模板未填写的内容不得作为正式成果提交。}
-\NeedEvidence{替换本页写作指引，补入正文、真实材料与可定位出处。}
-\FigureSlot{成果与复现入口所需图表}{可访问入口与最终交付检查。}
+\textbf{本页结论：}成果可被复现的最小条件是拿到同一份仓库、同一数据包和同一规则版本，并明确哪些输出只是 \texttt{mock-v1} 演示。复现不等于复现真实市场表现。
 
-% 按“一句话结论—证据—解释—适用条件”组织本页正文。
+复现者先阅读数据字典、证据标准和评分方法，再以仓库说明启动服务或运行测试。文档 PDF 由 \texttt{proposal/main.tex} 完整编译；数据与页面分别保留来源、公式和版本入口。若外部链接失效或受限数据不可获取，应记录差异，而不以替代材料静默覆盖。
+
+\begin{table}[htbp]
+\centering
+\caption{计划书与研究原型的复现清单}
+\label{tab:wty-reproducibility}
+\small
+\begin{tabularx}{\linewidth}{p{0.24\linewidth}X p{0.22\linewidth}}
+\toprule
+复现对象 & 入口/操作 & 预期边界 \\
+\midrule
+计划书全文 & 在 \texttt{proposal/} 执行 XeLaTeX 或 Tectonic 编译 \texttt{main.tex} & 生成完整 PDF；未交付方页面仍可能是模板草稿 \\
+事件证据 & 查看 \texttt{data/events.csv} 与证据规范，打开原始链接 & 复查事件字段，不保证外部页面永远在线 \\
+图谱资产 & 查看 \texttt{data/graph/} 的节点、关系、映射和规则文件 & 识别已核验与待核验部分；当前未接入 API \\
+评分规则 & 查看 \texttt{backend/scoring.py} 与 \texttt{docs/SCORING\_METHOD.md} & 重算样例强度；不产生投资建议 \\
+质量检查 & 运行仓库测试与证据字段校验脚本 & 验证实现/结构，不替代人工事实核验 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+本轮交付包含本人 25 个页面、证据账本、参考文献、概念图、自检记录与完整编译预览。读者应以各项状态标注理解材料：已实现不等于已验证，样例不等于真实业务数据，规划不等于已发生结果。
