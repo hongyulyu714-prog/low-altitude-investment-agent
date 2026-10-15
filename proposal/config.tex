@@ -20,7 +20,7 @@
 \renewcommand{\headrulewidth}{0.3pt}
 \captionsetup{font=small,labelfont=bf}
 \newif\ifdraftversion
-\draftversiontrue % Switch to \draftversionfalse only for final release.
+\draftversionfalse
 \newcommand{\PlanPage}[3]{%
   \subsection*{#1}\label{page:#3}%
   \ifdraftversion{\noindent\small\color{gray}写作页位 #3\quad 负责人 #2\par}\fi}
