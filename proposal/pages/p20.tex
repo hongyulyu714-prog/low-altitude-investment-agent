@@ -1,8 +1,8 @@
 % !TEX root = ../main.tex
-\PlanPage{工程实现与可复现运行环境}{吕洪宇}{20}
+\subsection*{4.7 工程实现与可复现运行环境}\label{page:20}
 \noindent\textbf{项目以可复现的本地研究演示为工程起点，前后端通过稳定HTTP接口解耦。}后端使用Python、FastAPI、Pydantic与Uvicorn，承担事件分析、总控编排、契约校验与运行记录；前端使用React、TypeScript与Vite，承担研究发起、路径阅读、公司比较与证据回溯。默认开发环境中，后端服务监听本地\texttt{8000}端口，前端开发服务监听\texttt{5173}端口，并将\texttt{/api}和\texttt{/health}请求代理给后端\cite{lhy-repository,lhy-frontend}。
 
-工程解耦的含义不止是部署方便。前端只读取结构化报告和状态字段，不直接拼接数据目录中的关系或评分；后端以注册数据版本为边界读取输入，不依赖浏览器传入未登记的文件路径。由此，当图谱、证据、财务数据或模型输出发生升级时，只要接口契约保持兼容，研究界面和报告阅读方式无需改变；若契约变化，则可在测试和版本门禁中被明确识别。
+工程解耦让研究界面与数据资产能够同步演进。前端以结构化报告和状态字段组织阅读；后端以注册数据版本读取输入；图谱、证据、财务数据和模型输出在契约内持续升级。接口兼容性由测试和版本门禁维护，使研究界面、报告阅读与数据治理形成稳定协同。
 
 \begin{center}
 \includegraphics[width=0.93\linewidth,height=0.40\textheight,keepaspectratio]{assets/hongyulyu714-prog/fig-full-report.png}
@@ -22,4 +22,4 @@
 \bottomrule
 \end{tabularx}\end{center}
 
-仓库记录的验证包括31项前端单元测试、20个Linux Chrome端到端场景和37项后端测试，并已完成类型检查、Lint、构建及三平台CI验证\cite{lhy-repository,lhy-frontend}。这些证据说明当前代码、接口与演示流程能够在规定环境中复现；而产业路径和金融研究质量的评价，将在统一数据接入后按固定事件任务、人工复核和对照实验持续积累。工程可复现性由此成为研究可验证性的基础设施。
+仓库记录的验证包括31项前端单元测试、20个Linux Chrome端到端场景和37项后端测试，并已完成类型检查、Lint、构建及三平台CI验证\cite{lhy-repository,lhy-frontend}。这些验证记录为产业路径、证据和公司研究的事件级评测提供稳定基础；固定任务、人工复核和对照实验将持续积累金融研究效果证据。工程可复现性由此成为研究可验证性的基础设施。

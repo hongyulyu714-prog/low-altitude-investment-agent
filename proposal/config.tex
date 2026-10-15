@@ -22,7 +22,7 @@
 \newif\ifdraftversion
 \draftversiontrue % Switch to \draftversionfalse only for final release.
 \newcommand{\PlanPage}[3]{%
-  \clearpage\subsection*{#1}\label{page:#3}%
+  \subsection*{#1}\label{page:#3}%
   \ifdraftversion{\noindent\small\color{gray}写作页位 #3\quad 负责人 #2\par}\fi}
 \newcommand{\WritingGuide}[3]{\ifdraftversion
   \begin{quote}\small\color{gray}

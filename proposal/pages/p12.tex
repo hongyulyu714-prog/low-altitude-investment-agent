@@ -1,6 +1,6 @@
 % !TEX root = ../main.tex
-\PlanPage{公司比较与财务解释：从概念关联到研究队列}{吕洪宇}{12}
-\noindent\textbf{公司比较模块的目的，是把“某企业可能相关”的概念判断转化为可以逐项审阅的研究队列。}每个公司对象同时携带证券代码、产业角色、影响方向、影响强度、风险标记、证据ID与核验状态。公司之所以进入报告，不是因为名称出现在一段文本中，而是因为其证券主体、产品或业务角色能够与图谱节点和事件路径建立显式映射；随后才讨论该公司对事件的暴露、敏感性和财务重要性。
+\subsection*{3.4 公司比较与财务解释：从概念关联到研究队列}\label{page:12}
+\noindent\textbf{公司比较模块将产业概念转化为可以逐项审阅的研究队列。}每个公司对象同时携带证券代码、产业角色、影响方向、影响强度、风险标记、证据ID与核验状态。公司通过证券主体、产品或业务角色与图谱节点和事件路径建立显式映射；在此基础上，系统进一步刻画该公司对事件的暴露、敏感性和财务重要性。
 
 \begin{center}
 \includegraphics[width=0.90\linewidth,height=0.40\textheight,keepaspectratio]{assets/hongyulyu714-prog/fig-company-analysis.png}
@@ -11,7 +11,7 @@
 \[
 \mathrm{Impact}=\frac{\mathrm{Exposure}\times\mathrm{Sensitivity}\times\mathrm{FinancialMateriality}}{10000}.
 \]
-其中，\textit{Exposure}衡量公司业务与被影响产业环节的连接程度，\textit{Sensitivity}描述事件变化对该环节的传导敏感度，\textit{FinancialMateriality}表达成本、毛利、现金流或杠杆等财务变量对传导的放大程度。影响方向通过\texttt{positive}、\texttt{negative}、\texttt{neutral}和\texttt{uncertain}字段单独呈现，避免将一个0--100的影响强度分误读为股价预测、估值结论或公司质量评级\cite{lhy-scoring,lhy-architecture}。
+其中，\textit{Exposure}衡量公司业务与被影响产业环节的连接程度，\textit{Sensitivity}描述事件变化对该环节的传导敏感度，\textit{FinancialMateriality}表达成本、毛利、现金流或杠杆等财务变量对传导的放大程度。影响方向通过\texttt{positive}、\texttt{negative}、\texttt{neutral}和\texttt{uncertain}字段单独呈现，使研究者能够同时阅读传导方向、影响强度与风险信号\cite{lhy-scoring,lhy-architecture}。
 
 \begin{center}\small 表12-1\quad 公司研究队列的字段、解释任务与审阅规则\par\vspace{1mm}
 \begin{tabularx}{\linewidth}{p{0.20\linewidth}p{0.28\linewidth}X}

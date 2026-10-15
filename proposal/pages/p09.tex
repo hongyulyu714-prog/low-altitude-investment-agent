@@ -1,15 +1,15 @@
 % !TEX root = ../main.tex
 \clearpage
 \section{产品设计与使用流程}
-\subsection*{以研究问题为中心的投研工作台}\label{page:09}
-\noindent\textbf{低空智研的产品形态是一张面向事件驱动研究的工作台，而不是一张只给出推荐顺序的看板。}研究者从一个已登记事件出发，在同一研究现场依次阅读事件事实、产业传导路径、公司比较、评分构成、证据摘录和运行来源。界面将这些对象放在一份报告上下文中，是为了让使用者能够沿结论反向检查：某家公司为何出现在研究队列中、该公司受到何种方向的影响、系统依据了哪条路径、引用来自何处。
+\subsection*{3.1 以研究问题为中心的投研工作台}\label{page:09}
+\noindent\textbf{低空智研以事件驱动研究工作台组织投研流程。}研究者从一个已登记事件出发，在同一研究现场依次阅读事件事实、产业传导路径、公司比较、评分构成、证据摘录和运行来源。界面将这些对象置于一份报告上下文中，使使用者能够沿结论反向检查：某家公司为何出现在研究队列中、该公司受到何种方向的影响、系统依据了哪条路径、引用来自何处。
 
 \begin{center}
 \includegraphics[width=0.94\linewidth,height=0.43\textheight,keepaspectratio]{assets/hongyulyu714-prog/fig-workbench.png}
 \PlanFigureCaption{图9-1}{当前业务工作台截图。页面在“后端API·Mock”模式下展示已选事件、业务图谱、公司影响、证据抽屉和研究现场；截图来源于仓库\texttt{docs/screenshots/03-business-1440.png}，采集清单记录的实现提交为\texttt{86a440a}。}
 \end{center}
 
-图9-1所示界面把“得到答案”改造成“完成研究动作”。研究者先确认事件与版本，再主动提交分析；返回报告后，先阅读图谱中的有序业务ID，再查看与路径相关的公司卡片；当公司分数或传导解释需要确认时，可以打开证据抽屉并回到来源与运行信息。整个过程不是以页面排序替代判断，而是为研究者提供一份具备对象层次的证据索引\cite{lhy-frontend,lhy-architecture}。
+图9-1所示界面将“得到答案”转化为“完成研究动作”。研究者先确认事件与版本，再主动提交分析；返回报告后，先阅读图谱中的有序业务ID，再查看与路径相关的公司卡片；随后通过证据抽屉、来源与运行信息完成复核。页面排序、路径阅读、公司比较和证据回溯共同构成具备对象层次的研究证据索引\cite{lhy-frontend,lhy-architecture}。
 
 \begin{center}\small 表9-1\quad 工作台的研究动作、输出对象与使用价值\par\vspace{1mm}
 \begin{tabularx}{\linewidth}{p{0.20\linewidth}p{0.30\linewidth}X}
