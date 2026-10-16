@@ -1,7 +1,25 @@
 % !TEX root = ../main.tex
-\PlanPage{工程实现与部署}{吕洪宇}{20}
-\WritingGuide{交代前后端、运行环境、接口和数据接入。}{部署图、依赖版本与资源配置。}{尚无生产部署时提供明确方案。}
-\NeedEvidence{替换本页写作指引，补入正文、真实材料与可定位出处。}
-\FigureSlot{工程实现与部署所需图表}{部署图、依赖版本与资源配置。}
+\subsection*{4.7 工程实现与可复现运行环境}\label{page:20}
+\noindent\textbf{项目以可复现的本地研究演示为工程起点，前后端通过稳定HTTP接口解耦。}后端使用Python、FastAPI、Pydantic与Uvicorn，承担事件分析、总控编排、契约校验与运行记录；前端使用React、TypeScript与Vite，承担研究发起、路径阅读、公司比较与证据回溯。默认开发环境中，后端服务监听本地\texttt{8000}端口，前端开发服务监听\texttt{5173}端口，并将\texttt{/api}和\texttt{/health}请求代理给后端\cite{lhy-repository,lhy-frontend}。
 
-% 按“一句话结论—证据—解释—适用条件”组织本页正文。
+工程解耦让研究界面与数据资产能够同步演进。前端以结构化报告和状态字段组织阅读；后端以注册数据版本读取输入；图谱、证据、财务数据和模型输出在契约内持续升级。接口兼容性由测试和版本门禁维护，使研究界面、报告阅读与数据治理形成稳定协同。
+
+\begin{center}
+\includegraphics[width=0.93\linewidth,height=0.40\textheight,keepaspectratio]{assets/hongyulyu714-prog/fig-full-report.png}
+\PlanFigureCaption{图20-1}{完整研究报告界面截图。图中展示工作台在一次分析完成后组织事件、路径、公司和证据对象的方式；截图来源于\texttt{docs/screenshots/04-business-full.png}。该页面呈现的是\texttt{mock-v1}下的可复现研究流程。}
+\end{center}
+
+\begin{center}\small 表20-1\quad 工程层、当前配置与复现要求\par\vspace{1mm}
+\begin{tabularx}{\linewidth}{p{0.18\linewidth}p{0.29\linewidth}X}
+\toprule
+工程层 & 当前实现 & 复现与演进要求\\
+\midrule
+分析服务 & FastAPI接口、Pydantic数据模型、总控与本地运行记录 & 每次分析保留事件ID、版本、运行状态与报告ID；异常返回可读错误。\\
+研究前端 & React/TypeScript工作台、路径交互、公司卡片与证据抽屉 & 以API返回的状态驱动展示；API模式与文件Mock模式在界面中明确区分。\\
+数据目录 & 默认\texttt{mock-v1}五类JSON与独立图谱、证据、评分资产 & 数据接入需记录来源、口径、版本、权限与核验状态，受限凭据和原始导出不进入仓库。\\
+自动化验证 & 前端单测、浏览器场景、后端测试、类型检查、Lint、构建和CI & 验证记录与具体提交、环境和命令对应，用于保障工程链路的可重复执行。\\
+产品化环境 & 当前以本地演示为主 & 后续以同源反向代理、受控服务进程、访问审计和版本化数据源承接，另行完成权限与性能验收。\\
+\bottomrule
+\end{tabularx}\end{center}
+
+仓库记录的验证包括31项前端单元测试、20个Linux Chrome端到端场景和37项后端测试，并已完成类型检查、Lint、构建及三平台CI验证\cite{lhy-repository,lhy-frontend}。这些验证记录为产业路径、证据和公司研究的事件级评测提供稳定基础；固定任务、人工复核和对照实验将持续积累金融研究效果证据。工程可复现性由此成为研究可验证性的基础设施。
